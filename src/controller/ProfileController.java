@@ -66,17 +66,17 @@ public class ProfileController implements Initializable {
         
          PhotoServiceDao ps1 = new PhotoServiceDao();
          InputStream stream;
-         Image image = new Image("/img/16.jpg");
+         Image image = new Image("/img/user.png");
          phProfil.setImage(image);
          
    
       
     for(photo j : ps1.displayAll()){
-            ima.add(new Image(getClass().getResourceAsStream(j.geturl())));}
+            ima.add(new Image(j.geturl()));}
             for(int i=0;i<ima.size();i++){
             pics.add(new ImageView(ima.get(i)));
-            pics.get(i).setFitWidth(200);
-            pics.get(i).setFitHeight(200);
+            pics.get(i).setFitWidth(300);
+            pics.get(i).setFitHeight(400);
             gp.add(pics.get(i),i+2,1);      }
             sp.setContent(gp);
             sp.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);

@@ -18,8 +18,8 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="357.0" prefWidth="145.0">
                <children>
-                  <ImageView fx:id="phProfil" fitHeight="127.0" fitWidth="151.0" layoutX="23.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="nomlabel" layoutX="29.0" layoutY="175.0" prefHeight="17.0" prefWidth="151.0" />
+                  <ImageView fx:id="phProfil" fitHeight="127.0" fitWidth="151.0" layoutX="29.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="nomlabel" layoutX="74.0" layoutY="224.0" prefHeight="17.0" prefWidth="60.0" textAlignment="CENTER" />
                   <Button fx:id="btnAjPh" layoutX="32.0" layoutY="355.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="Ajouter une photo" />
                   <Button fx:id="btnrech" layoutX="32.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="Rechercher" />
                </children>
@@ -31,7 +31,7 @@
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
-                  <ScrollPane fx:id="sp" fitToHeight="true" fitToWidth="true" layoutX="12.0" layoutY="60.0" prefHeight="167.0" prefWidth="474.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="10.0">
+                  <ScrollPane fx:id="sp" fitToHeight="true" fitToWidth="true" layoutX="11.0" layoutY="89.0" prefHeight="239.0" prefWidth="472.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0">
                      <content>
                         <GridPane fx:id="gp" alignment="CENTER" hgap="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="156.0" prefWidth="458.0">
                           <columnConstraints>

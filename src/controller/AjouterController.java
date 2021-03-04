@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.sun.javafx.iio.common.ImageTools;
 import dao.PhotoServiceDao;
 import entity.photo;
 import java.io.File;
@@ -64,7 +65,13 @@ public class AjouterController implements Initializable {
     
     private FileChooser filechooser = new FileChooser();
     public String url;
+    
 
+    
+    
+    
+    String path ; 
+     Path finale ; 
     /**
      * Initializes the controller class.
      */
@@ -88,24 +95,26 @@ public class AjouterController implements Initializable {
                   SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
                   Date date = new Date(System.currentTimeMillis());
                   PhotoServiceDao ps1 = new PhotoServiceDao();
-                  photo p1 = new photo("/img/"+this.url,tfTitre.getText(),tfTheme.getText(),date.toString(),tfCouleur.getText(),tfLocalisation.getText());
+                  photo p1 = new photo(this.url,tfTitre.getText(),tfTheme.getText(),date.toString(),tfCouleur.getText(),tfLocalisation.getText());
                   ps1.insert(p1);}
     });
         
     addPH.setOnAction(e->{
+         ImageTools It = new ImageTools() ;
+         path="" ; 
             try {
+               
                         File infile = filechooser.showOpenDialog(null);
                         Image img = SwingFXUtils.toFXImage(ImageIO.read(infile), null); 
                         phv.setImage(img);
-                        String s= infile.getName();
+                        path="http://localhost/image/"+infile.getName() ;
                         Path from = Paths.get(infile.toURI());
-                        Path to = Paths.get("D:\\one\\PIDEV\\src\\img\\"+s);
+                        Path to = Paths.get("c:\\xampp\\htdocs\\image\\"+infile.getName());
                         CopyOption[] options = new CopyOption[]{
                                StandardCopyOption.REPLACE_EXISTING,
                                StandardCopyOption.COPY_ATTRIBUTES};
-                        this.url =s;
-                     
                         Path temp = Files.copy(from,to,options);
+                        this.url=path;
             }
             catch (IOException ex) {
                          } ;
