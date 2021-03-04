@@ -64,34 +64,14 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         
          PhotoServiceDao ps1 = new PhotoServiceDao();
-         ArrayList a = new ArrayList(ps1.displayAll()) ;
-         for(photo j : ps1.displayAll()){
-             System.out.println(j.geturl());
-         }
+         InputStream stream;
+         Image image = new Image("/img/16.jpg");
+         phProfil.setImage(image);
          
-       imagess.add("/img/16.jpg");
-       imagess.add("/img/17.jpg");
-       imagess.add("/img/16.jpg");
-       imagess.add("/img/17.jpg");
-       imagess.add("/img/17.jpg");
-       imagess.add("/img/16.jpg");
-       imagess.add("/img/17.jpg");
-       imagess.add("/img/17.jpg");
-       imagess.add("/img/17.jpg");
-       imagess.add("/img/16.jpg");
-       imagess.add("/img/17.jpg");
-
-        InputStream stream;
-    try {
-            stream = new FileInputStream("D:\\one\\PIDEV\\src\\img\\16.jpg");
-            Image image = new Image(stream);
-            phProfil.setImage(image);}
-    catch (FileNotFoundException ex) {
-            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      for(photo j : ps1.displayAll()){
+   
+      
+    for(photo j : ps1.displayAll()){
             ima.add(new Image(getClass().getResourceAsStream(j.geturl())));}
             for(int i=0;i<ima.size();i++){
             pics.add(new ImageView(ima.get(i)));
@@ -101,16 +81,6 @@ public class ProfileController implements Initializable {
             sp.setContent(gp);
             sp.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
          
-    //for(int i=0;i<imagess.size();i++){
-      //      System.out.println(imagess.get(i));
-        //    ima.add(new Image(getClass().getResourceAsStream(imagess.get(i))));
-          //  pics.add(new ImageView(ima.get(i)));
-            //pics.get(i).setFitWidth(200);
-            //pics.get(i).setFitHeight(200);
-        //    gp.add(pics.get(i),i+2,1);      
-        //  sp.setContent(gp);
-          //  sp.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
-    //};
            
 btnAjPh.setOnAction(e->{
     try {
