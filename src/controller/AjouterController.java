@@ -65,13 +65,7 @@ public class AjouterController implements Initializable {
     
     private FileChooser filechooser = new FileChooser();
     public String url;
-    
-
-    
-    
-    
-    String path ; 
-     Path finale ; 
+    public String path ; 
     /**
      * Initializes the controller class.
      */
@@ -80,7 +74,6 @@ public class AjouterController implements Initializable {
         
          
     addAll.setOnAction(e->{
-            
             if(tfTitre.getText().isEmpty()||tfCouleur.getText().isEmpty()||tfLocalisation.getText().isEmpty()||tfTheme.getText().isEmpty()){
                  Alert alert = new Alert(AlertType.NONE, "Erreur de champs", ButtonType.OK);
                  alert.setTitle("Erreur");
@@ -100,8 +93,6 @@ public class AjouterController implements Initializable {
     });
         
     addPH.setOnAction(e->{
-         ImageTools It = new ImageTools() ;
-         path="" ; 
             try {
                
                         File infile = filechooser.showOpenDialog(null);

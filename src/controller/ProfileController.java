@@ -6,6 +6,7 @@
 package controller;
 import dao.PhotoServiceDao;
 import entity.photo;
+import java.awt.Rectangle;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -66,6 +67,7 @@ public class ProfileController implements Initializable {
         
          PhotoServiceDao ps1 = new PhotoServiceDao();
          InputStream stream;
+        
          Image image = new Image("/img/user.png");
          phProfil.setImage(image);
          
@@ -76,7 +78,7 @@ public class ProfileController implements Initializable {
             for(int i=0;i<ima.size();i++){
             pics.add(new ImageView(ima.get(i)));
             pics.get(i).setFitWidth(300);
-            pics.get(i).setFitHeight(400);
+            pics.get(i).setFitHeight(250);
             gp.add(pics.get(i),i+2,1);      }
             sp.setContent(gp);
             sp.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
@@ -85,6 +87,17 @@ public class ProfileController implements Initializable {
 btnAjPh.setOnAction(e->{
     try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/AjouterPhotoView.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();}
+    catch (IOException ex) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         });
+btnrech.setOnAction(e->{
+    try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/view/RechercheView.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);

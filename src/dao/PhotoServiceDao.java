@@ -97,6 +97,30 @@ public class PhotoServiceDao implements Idao<photo> {
         }
         return list;
     }
+    public ObservableList<photo> displayAlll() {
+        String req="select * from photo";
+        ObservableList<photo> list=FXCollections.observableArrayList();       
+        
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+               photo p=new photo();
+                p.setid_photo(rs.getInt(1));
+                p.seturl(rs.getString(2));
+                p.settitre(rs.getString(3));
+                p.settheme(rs.getString(4));
+                p.setdate_ajout(rs.getString(5));
+                p.setcouleur(rs.getString(6));
+                p.setlocalisation(rs.getString(7));
+               
+                list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 
     @Override
     public photo displayById(int id_photo) {
