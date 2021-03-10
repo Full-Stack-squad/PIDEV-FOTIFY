@@ -66,6 +66,8 @@ public class AjouterController implements Initializable {
     private FileChooser filechooser = new FileChooser();
     public String url;
     public String path ; 
+    public int Id_membre=1;
+    
     /**
      * Initializes the controller class.
      */
@@ -88,7 +90,7 @@ public class AjouterController implements Initializable {
                   SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
                   Date date = new Date(System.currentTimeMillis());
                   PhotoServiceDao ps1 = new PhotoServiceDao();
-                  photo p1 = new photo(this.url,tfTitre.getText(),tfTheme.getText(),date.toString(),tfCouleur.getText(),tfLocalisation.getText());
+                  photo p1 = new photo(this.url,tfTitre.getText(),tfTheme.getText(),date.toString(),tfCouleur.getText(),tfLocalisation.getText(),Id_membre);
                   ps1.insert(p1);}
     });
         

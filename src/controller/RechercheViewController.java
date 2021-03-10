@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -46,14 +48,14 @@ public class RechercheViewController implements Initializable {
     private GridPane gr;
     public ArrayList<Image> ima = new ArrayList<>();
     public ArrayList<Label> imaa =new ArrayList<>();
-     public ArrayList<Integer> imaaa =new ArrayList<>();
+    public ArrayList<Integer> imaaa =new ArrayList<>();
     public ArrayList<ImageView> pics = new ArrayList();
-    
     @FXML
     private FlowPane fp;
     public List <photo> f = new ArrayList<>();
     @FXML
     private Button btnrech;
+    BorderPane borderPane;
 
     /**
      * Initializes the controller class.
@@ -62,56 +64,55 @@ public class RechercheViewController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
+        // TODO        
         PhotoServiceDao ps1 = new PhotoServiceDao();
-        
-
-     
+  
         for(photo j : ps1.displayAll()){
             ima.add(new Image(j.geturl()));
-        imaa.add(new Label(j.gettitre()));
-        imaaa.add(j.getid_photo());}
-        
-         System.out.println(ima);
-    for(int i=0;i<ima.size();i++){              
+            imaa.add(new Label(j.gettitre()));
+            imaaa.add(j.getid_photo());}        
+         
+        for(int i=0;i<ima.size();i++){              
             pics.add(new ImageView(ima.get(i)));
             pics.get(i).setFitWidth(300);
-            pics.get(i).setFitHeight(200);
-    
-    }
-     for(int i=0;i<ima.size();i++){  
-         BorderPane borderPane = new BorderPane();
-         borderPane.setCenter(pics.get(i));
-     borderPane.setBottom(imaa.get(i));
-      BorderPane.setAlignment(imaa.get(i),Pos.TOP_CENTER);
-      String s =imaa.get(i).getText();
-      int n = imaaa.get(i);
-      borderPane.setOnMouseClicked(e->{
+            pics.get(i).setFitHeight(200);}
+        
+        for(int i=0;i<ima.size();i++){  
+            BorderPane borderPane = new BorderPane();
+            borderPane.setCenter(pics.get(i));
+            borderPane.setBottom(imaa.get(i));
+            BorderPane.setAlignment(imaa.get(i),Pos.TOP_CENTER);
+            String s =imaa.get(i).getText();
+            int n = imaaa.get(i);
+            
+            
+ borderPane.setOnMouseClicked(e->{
           
-      try {
+    try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ShowPhoto.fxml"));
-                 Region root = (Region) loader.load();
+                Region root = (Region) loader.load();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 ShowPhotoController spc = loader.getController();
                 spc.setIdd(n);  
-                
                 stage.setScene(scene);
                 stage.show();}
     catch (IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
   
-      });
+});
             fp.getChildren().addAll(borderPane);
             fp.setHgap(10);
-            fp.setVgap(10);}}
+            fp.setVgap(10);}
+   
+    
+    
     
 
                
 
-}
+}}
             
             
         

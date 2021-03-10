@@ -20,7 +20,8 @@ public class photo {
     private SimpleStringProperty theme;
     private SimpleStringProperty date_ajout;
     private SimpleStringProperty couleur;
-    private SimpleStringProperty localisation;
+    private SimpleStringProperty localisation; 
+    private SimpleIntegerProperty Id_membre;
 
     public photo() {
     }
@@ -34,17 +35,40 @@ public class photo {
         this.couleur = new SimpleStringProperty(couleur);
         this.localisation = new SimpleStringProperty(localisation);
     }
-    public photo(String url, String titre, String theme, String date_ajout, String couleur, String localisation) {
+    public photo(int id_photo,String url, String titre, String theme, String date_ajout, String couleur, String localisation, int Id_membre) {
+        this.id_photo = new SimpleIntegerProperty(id_photo);
         this.url = new SimpleStringProperty(url);
         this.titre = new SimpleStringProperty(titre);
         this.theme = new SimpleStringProperty(theme);
         this.date_ajout = new SimpleStringProperty(date_ajout);
         this.couleur = new SimpleStringProperty(couleur);
         this.localisation = new SimpleStringProperty(localisation);
+        this.Id_membre = new SimpleIntegerProperty(Id_membre);
+    }
+    public photo(String url, String titre, String theme, String date_ajout, String couleur, String localisation,int Id_membre) {
+        this.url = new SimpleStringProperty(url);
+        this.titre = new SimpleStringProperty(titre);
+        this.theme = new SimpleStringProperty(theme);
+        this.date_ajout = new SimpleStringProperty(date_ajout);
+        this.couleur = new SimpleStringProperty(couleur);
+        this.localisation = new SimpleStringProperty(localisation);
+        this.Id_membre = new SimpleIntegerProperty(Id_membre);
+    }
+    public photo( int id_photo,String titre, String theme,String couleur, String localisation) {
+      this.id_photo = new SimpleIntegerProperty(id_photo);
+        this.titre = new SimpleStringProperty(titre);
+        this.theme = new SimpleStringProperty(theme);
+        this.couleur = new SimpleStringProperty(couleur);
+        this.localisation = new SimpleStringProperty(localisation);
     }
     
-    
-    public int getid_photo() {
+    public int getid_membre() {
+        return Id_membre.get();
+    }
+    public void setid_membre(int Id_membre) {
+        this.Id_membre = new SimpleIntegerProperty(Id_membre);
+    }
+     public int getid_photo() {
         return id_photo.get();
     }
     public void setid_photo(int id_photo) {

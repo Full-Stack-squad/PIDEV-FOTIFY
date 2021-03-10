@@ -46,7 +46,7 @@ public class PhotoServiceDao implements Idao<photo> {
 
     @Override
     public void insert(photo o) {
-        String req="insert into photo (url,titre,theme,date_ajout,couleur,localisation) values ('"+o.geturl()+"','"+o.gettitre()+"','"+o.gettheme()+"','"+o.getdate_ajout()+"','"+o.getcouleur()+"','"+o.getlocalisation()+"')";
+        String req="insert into photo (url,titre,theme,date_ajout,couleur,localisation,Id_membre) values ('"+o.geturl()+"','"+o.gettitre()+"','"+o.gettheme()+"','"+o.getdate_ajout()+"','"+o.getcouleur()+"','"+o.getlocalisation()+"','"+o.getid_membre()+"')";
         try {
             st.executeUpdate(req);
             System.out.println("photo inseré");
@@ -54,7 +54,6 @@ public class PhotoServiceDao implements Idao<photo> {
             Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     @Override
     public void delete(photo o) {
        String req="delete from photo where id_photo="+o.getid_photo();
@@ -69,9 +68,6 @@ public class PhotoServiceDao implements Idao<photo> {
             Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
         }else System.out.println("n'existe pas");
     }
-
-    
-    
     @Override
     public List<photo> displayAll() {
         String req="select * from photo";
@@ -121,7 +117,6 @@ public class PhotoServiceDao implements Idao<photo> {
         }
         return list;
     }
-
     @Override
     public photo displayById(int id_photo) {
         String req="select * from photo where id_photo ="+id_photo;
@@ -138,15 +133,42 @@ public class PhotoServiceDao implements Idao<photo> {
                 p.setcouleur(rs.getString(6));
                 p.setlocalisation(rs.getString(7));
             //}  
+            
         } catch (SQLException ex) {
             Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     return p;
     }
-
+    public List<photo> displayByIdMembre(int Id_membre) {
+        String req="select * from photo where Id_membre ="+Id_membre;
+        List<photo> list=new ArrayList<>();      
+        
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+               photo p=new photo();
+                p.setid_photo(rs.getInt(1));
+                p.seturl(rs.getString(2));
+                p.settitre(rs.getString(3));
+                p.settheme(rs.getString(4));
+                p.setdate_ajout(rs.getString(5));
+                p.setcouleur(rs.getString(6));
+                p.setlocalisation(rs.getString(7));
+                p.setid_membre(rs.getInt(8));
+               
+                list.add(p);
+            }
+            
+        } 
+            //}  
+         catch (SQLException ex) {
+            Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return list;
+    }
     @Override
     public boolean update(photo os) {
-       String qry = "UPDATE photo SET url = '"+os.geturl()+"', titre = '"+os.gettitre()+"' WHERE id = "+os.getid_photo();
+       String qry = "UPDATE photo SET titre = '"+os.gettitre()+"', theme = '"+os.gettheme()+"', couleur = '"+os.getcouleur()+"', localisation = '"+os.getlocalisation()+"' WHERE id_photo = "+os.getid_photo();
         
         try {
             if (st.executeUpdate(qry) > 0) {

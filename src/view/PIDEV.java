@@ -38,7 +38,7 @@ public class PIDEV extends Application {
         
         Scene scene = new Scene(root, 800, 500);
         
-        primaryStage.setTitle("Ajouter photo");
+        primaryStage.setTitle("Fotify");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -51,11 +51,6 @@ public class PIDEV extends Application {
 //Date date = new Date(System.currentTimeMillis());
 
       
-        PhotoServiceDao ps1 = new PhotoServiceDao();
-         //photo p1 = new photo("1","2","3","4","5","444");
-       //ps1.insert(p1);
-       
-       ps1.displayAll().forEach(e->System.out.println(e.toString()));
         launch(args);
     }
     
