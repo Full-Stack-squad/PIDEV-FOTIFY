@@ -5,6 +5,8 @@
  */
 package entity;
 
+
+
 import java.util.Objects;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,7 +15,7 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author YACINE
  */
-public class photo {
+public class Photo {
     private SimpleIntegerProperty id_photo;
     private SimpleStringProperty url;
     private SimpleStringProperty titre;
@@ -23,10 +25,10 @@ public class photo {
     private SimpleStringProperty localisation; 
     private SimpleIntegerProperty Id_membre;
 
-    public photo() {
+    public Photo() {
     }
 
-    public photo(int id_photo,String url, String titre, String theme, String date_ajout, String couleur, String localisation) {
+    public Photo(int id_photo,String url, String titre, String theme, String date_ajout, String couleur, String localisation) {
         this.id_photo = new SimpleIntegerProperty(id_photo);
         this.url = new SimpleStringProperty(url);
         this.titre = new SimpleStringProperty(titre);
@@ -35,7 +37,7 @@ public class photo {
         this.couleur = new SimpleStringProperty(couleur);
         this.localisation = new SimpleStringProperty(localisation);
     }
-    public photo(int id_photo,String url, String titre, String theme, String date_ajout, String couleur, String localisation, int Id_membre) {
+    public Photo(int id_photo,String url, String titre, String theme, String date_ajout, String couleur, String localisation, int Id_membre) {
         this.id_photo = new SimpleIntegerProperty(id_photo);
         this.url = new SimpleStringProperty(url);
         this.titre = new SimpleStringProperty(titre);
@@ -45,7 +47,7 @@ public class photo {
         this.localisation = new SimpleStringProperty(localisation);
         this.Id_membre = new SimpleIntegerProperty(Id_membre);
     }
-    public photo(String url, String titre, String theme, String date_ajout, String couleur, String localisation,int Id_membre) {
+    public Photo(String url, String titre, String theme, String date_ajout, String couleur, String localisation,int Id_membre) {
         this.url = new SimpleStringProperty(url);
         this.titre = new SimpleStringProperty(titre);
         this.theme = new SimpleStringProperty(theme);
@@ -54,7 +56,7 @@ public class photo {
         this.localisation = new SimpleStringProperty(localisation);
         this.Id_membre = new SimpleIntegerProperty(Id_membre);
     }
-    public photo( int id_photo,String titre, String theme,String couleur, String localisation) {
+    public Photo( int id_photo,String titre, String theme,String couleur, String localisation) {
       this.id_photo = new SimpleIntegerProperty(id_photo);
         this.titre = new SimpleStringProperty(titre);
         this.theme = new SimpleStringProperty(theme);
@@ -134,7 +136,7 @@ public class photo {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final photo other = (photo) obj;
+        final Photo other = (Photo) obj;
         if (!Objects.equals(this.id_photo, other.id_photo)) {
             return false;
         }

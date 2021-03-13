@@ -1,6 +1,6 @@
 package dao;
 
-import entity.photo;
+import entity.Photo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import utils.DataSource;
 
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,7 +24,7 @@ import utils.DataSource;
  *
  * @author YACINE
  */
-public class PhotoServiceDao implements Idao<photo> {
+public class PhotoServiceDao implements Idao<Photo> {
     
     private static PhotoServiceDao instance;
     private Statement st;
@@ -45,7 +46,7 @@ public class PhotoServiceDao implements Idao<photo> {
     }
 
     @Override
-    public void insert(photo o) {
+    public void insert(Photo o) {
         String req="insert into photo (url,titre,theme,date_ajout,couleur,localisation,Id_membre) values ('"+o.geturl()+"','"+o.gettitre()+"','"+o.gettheme()+"','"+o.getdate_ajout()+"','"+o.getcouleur()+"','"+o.getlocalisation()+"','"+o.getid_membre()+"')";
         try {
             st.executeUpdate(req);
@@ -55,9 +56,9 @@ public class PhotoServiceDao implements Idao<photo> {
         }
     }
     @Override
-    public void delete(photo o) {
+    public void delete(Photo o) {
        String req="delete from photo where id_photo="+o.getid_photo();
-        photo p=displayById(o.getid_photo());
+        Photo p=displayById(o.getid_photo());
         
           if(p!=null)
               try {
@@ -69,14 +70,14 @@ public class PhotoServiceDao implements Idao<photo> {
         }else System.out.println("n'existe pas");
     }
     @Override
-    public List<photo> displayAll() {
+    public List<Photo> displayAll() {
         String req="select * from photo";
-        List<photo> list=new ArrayList<>();
+        List<Photo> list=new ArrayList<>();
         
         try {
             rs=st.executeQuery(req);
             while(rs.next()){
-                photo p=new photo();
+                Photo p=new Photo();
                 p.setid_photo(rs.getInt(1));
                 p.seturl(rs.getString(2));
                 p.settitre(rs.getString(3));
@@ -93,14 +94,14 @@ public class PhotoServiceDao implements Idao<photo> {
         }
         return list;
     }
-    public ObservableList<photo> displayAlll() {
+    public ObservableList<Photo> displayAlll() {
         String req="select * from photo";
-        ObservableList<photo> list=FXCollections.observableArrayList();       
+        ObservableList<Photo> list=FXCollections.observableArrayList();       
         
         try {
             rs=st.executeQuery(req);
             while(rs.next()){
-               photo p=new photo();
+                Photo p=new Photo();
                 p.setid_photo(rs.getInt(1));
                 p.seturl(rs.getString(2));
                 p.settitre(rs.getString(3));
@@ -108,7 +109,6 @@ public class PhotoServiceDao implements Idao<photo> {
                 p.setdate_ajout(rs.getString(5));
                 p.setcouleur(rs.getString(6));
                 p.setlocalisation(rs.getString(7));
-               
                 list.add(p);
             }
             
@@ -118,9 +118,9 @@ public class PhotoServiceDao implements Idao<photo> {
         return list;
     }
     @Override
-    public photo displayById(int id_photo) {
+    public Photo displayById(int id_photo) {
         String req="select * from photo where id_photo ="+id_photo;
-           photo p=new photo();
+           Photo p=new Photo();
         try {
             rs=st.executeQuery(req);
            // while(rs.next()){
@@ -139,14 +139,14 @@ public class PhotoServiceDao implements Idao<photo> {
         }
     return p;
     }
-    public List<photo> displayByIdMembre(int Id_membre) {
+    public List<Photo> displayByIdMembre(int Id_membre) {
         String req="select * from photo where Id_membre ="+Id_membre;
-        List<photo> list=new ArrayList<>();      
+        List<Photo> list=new ArrayList<>();      
         
         try {
             rs=st.executeQuery(req);
             while(rs.next()){
-               photo p=new photo();
+               Photo p=new Photo();
                 p.setid_photo(rs.getInt(1));
                 p.seturl(rs.getString(2));
                 p.settitre(rs.getString(3));
@@ -167,7 +167,7 @@ public class PhotoServiceDao implements Idao<photo> {
     return list;
     }
     @Override
-    public boolean update(photo os) {
+    public boolean update(Photo os) {
        String qry = "UPDATE photo SET titre = '"+os.gettitre()+"', theme = '"+os.gettheme()+"', couleur = '"+os.getcouleur()+"', localisation = '"+os.getlocalisation()+"' WHERE id_photo = "+os.getid_photo();
         
         try {

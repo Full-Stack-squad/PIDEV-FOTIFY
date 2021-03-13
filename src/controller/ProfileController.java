@@ -5,7 +5,7 @@
  */
 package controller;
 import dao.PhotoServiceDao;
-import entity.photo;
+import entity.Photo;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -72,22 +71,20 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         PhotoServiceDao ps1 = new PhotoServiceDao();
-         InputStream stream;
-        
+         PhotoServiceDao ps1 = new PhotoServiceDao();      
          Image image = new Image("/img/user.png");
          phProfil.setImage(image);
          
    
       
-    for(photo j : ps1.displayByIdMembre(Id_membre)){
-            ima.add(new Image(j.geturl()));
-            imaa.add(new Label(j.gettitre()));
-            imaaa.add(j.getid_photo());
+    for(Photo j : ps1.displayByIdMembre(Id_membre)){//extrarire les photo apparartenant a un seul utilisateur
+            ima.add(new Image(j.geturl()));//Arraylist avec les urls des photo
+            imaa.add(new Label(j.gettitre()));//ArrayList avec les titres des photos
+            imaaa.add(j.getid_photo());//ArrayList avec les id des photos
         }  
     
     for(int i=0;i<ima.size();i++){              
-            pics.add(new ImageView(ima.get(i)));
+            pics.add(new ImageView(ima.get(i)));//ArrayList des photo
             pics.get(i).setFitWidth(250);
             pics.get(i).setFitHeight(250);}
         
@@ -95,13 +92,13 @@ public class ProfileController implements Initializable {
             BorderPane borderPane = new BorderPane();
             borderPane.setCenter(pics.get(i));
             borderPane.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
-            borderPane.setBottom(imaa.get(i));
+            borderPane.setBottom(imaa.get(i));//insertion du titre de l'image au dessus de chaque photo
             BorderPane.setMargin(imaa.get(i), new Insets(10, 10, 10, 10));
             BorderPane.setAlignment(imaa.get(i),Pos.TOP_CENTER);
             String s =imaa.get(i).getText();
             int n = imaaa.get(i);
             
-            
+ // redirection vers view de modification lors du clic sur une photo           
  borderPane.setOnMouseClicked(e->{
     try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpdatePhotoView.fxml"));
@@ -109,7 +106,7 @@ public class ProfileController implements Initializable {
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 UpdatePhotoViewController spc = loader.getController();
-                spc.setIdd(n);  
+                spc.setIdd(n);//envoie de l'ID de la photo   
                 stage.setScene(scene);
                 stage.show();}
     catch (IOException ex) {
@@ -117,13 +114,11 @@ public class ProfileController implements Initializable {
             }
   
 });
-        gp.add(borderPane,i+2,1);
-        
-        
-        sp.setContent(gp);}
+        gp.add(borderPane,i+2,1);//inserer les images dans un gridpane avec une seul ligne et i colonnes
+       sp.setContent(gp);}//inserer le gridpane dans un scrollpane pour pouvoir scroller les images
     
          
-           
+//redirection vers la view d'ajout           
 btnAjPh.setOnAction(e->{
     try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/AjouterPhotoView.fxml"));
@@ -135,6 +130,7 @@ btnAjPh.setOnAction(e->{
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
          });
+//redirection vers la view de recherche
 btnrech.setOnAction(e->{
     try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/RechercheView.fxml"));

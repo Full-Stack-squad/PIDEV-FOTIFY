@@ -6,7 +6,7 @@
 package controller;
 
 import dao.PhotoServiceDao;
-import entity.photo;
+import entity.Photo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,7 +51,7 @@ public class UpdatePhotoViewController implements Initializable {
     @FXML
     private Button btnprofil;
     public int g;
-    public photo p;
+    public Photo p;
 
     /**
      * Initializes the controller class.
@@ -75,7 +75,7 @@ public class UpdatePhotoViewController implements Initializable {
 btnmodif.setOnAction(e->{
   
    PhotoServiceDao ps1 = PhotoServiceDao.getInstance();
-   photo updated = new photo(g,tftitre.getText(),tftheme.getText(),tfcouleur.getText(),tfloc.getText());
+   Photo updated = new Photo(g,tftitre.getText(),tftheme.getText(),tfcouleur.getText(),tfloc.getText());
    ps1.update(updated);
            
    
@@ -89,7 +89,7 @@ btnmodif.setOnAction(e->{
     public int setIdd(int id){
 
 PhotoServiceDao ps1 = new PhotoServiceDao();
-        photo photo1 = new photo();
+        Photo photo1 = new Photo();
         p=photo1;
         photo1=ps1.displayById(id);
         

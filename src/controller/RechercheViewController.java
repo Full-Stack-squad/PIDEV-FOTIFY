@@ -6,7 +6,7 @@
 package controller;
 
 import dao.PhotoServiceDao;
-import entity.photo;
+import entity.Photo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class RechercheViewController implements Initializable {
     public ArrayList<ImageView> pics = new ArrayList();
     @FXML
     private FlowPane fp;
-    public List <photo> f = new ArrayList<>();
+    public List <Photo> f = new ArrayList<>();
     @FXML
     private Button btnrech;
     BorderPane borderPane;
@@ -67,7 +67,7 @@ public class RechercheViewController implements Initializable {
         // TODO        
         PhotoServiceDao ps1 = new PhotoServiceDao();
   
-        for(photo j : ps1.displayAll()){
+        for(Photo j : ps1.displayAll()){
             ima.add(new Image(j.geturl()));
             imaa.add(new Label(j.gettitre()));
             imaaa.add(j.getid_photo());}        

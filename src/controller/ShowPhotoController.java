@@ -8,7 +8,7 @@ package controller;
 import dao.CommentaireServiceDao;
 import dao.PhotoServiceDao;
 import entity.commentaire;
-import entity.photo;
+import entity.Photo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,7 +24,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -115,12 +118,10 @@ BtnRech.setOnAction(e->{
     
     
     
-    public int setIdd(int id){
-
-PhotoServiceDao ps1 = new PhotoServiceDao();
-        photo photo1 = new photo();
-        photo1=ps1.displayById(id);
-        System.out.println("hhh"+photo1.gettitre());
+public int setIdd(int id){
+        PhotoServiceDao ps1 = new PhotoServiceDao();
+        Photo photo1 = new Photo();
+        photo1=ps1.displayById(id);//recuperer la photo avec son id
         g=id;
         tftitre.setText(photo1.gettitre());
         Image image = new Image(photo1.geturl());
@@ -129,54 +130,40 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
         ima.setFitWidth(300);
         
 CommentaireServiceDao cc = new CommentaireServiceDao();
-for (commentaire c : cc.displaycomms(g)){
-    
-   comms.add(c.getcomm());
-   
-   usernames.add(c.getnom_user());
-   }
-   for (int i=0;i<comms.size();i++){
-       System.out.println(comms.get(i));
-       imaa.add(new Label("  "+comms.get(i)+" : "+usernames.get(i)));
-       VBox vBox=new VBox(); 
-       //vBox.setAlignment(Pos.BASELINE_CENTER);
-       imaa.forEach( e-> vBox.getChildren().add(e));
-       imaa.get(i).setMinHeight(50);
+
+    for (commentaire c : cc.displaycomms(g)){
+               comms.add(c.getcomm()); //arrayList des commentaires
+               usernames.add(c.getnom_user());} // arraylist des nom des utilisateurs
+    for (int i=0;i<comms.size();i++){
+               System.out.println(comms.get(i));
+               imaa.add(new Label("  "+usernames.get(i)+" :    "+comms.get(i)));
+               VBox vBox=new VBox(); 
+               imaa.forEach( e-> vBox.getChildren().add(e));
+               imaa.get(i).setMinHeight(50);
         String cssLayout = "-fx-border-color: black;\n" +
                    "-fx-border-insets: 2;\n" +
                    "-fx-border-width: 2;\n" +
                    "-fx-border-style: solid;\n"+
-                "-fx-border-radius: 10;\n";
-       imaa.get(i).setMaxWidth(Double.MAX_VALUE);
-       imaa.get(i).setStyle(cssLayout);
-      
-       
-       
-
-       sp.setContent(vBox);
-    
+                   "-fx-border-radius: 10;\n";
+               imaa.get(i).setMaxWidth(Double.MAX_VALUE);
+               imaa.get(i).setStyle(cssLayout);
+               sp.setContent(vBox);   
     }
-   
-btncomm.setOnAction(e->{  
-commentaire c1 = new commentaire(tfcomm.getText(),"user",id);
-cc.insert(c1);
+     //le Bouton Ajouter Commentaire Lambda expression 🙂🙂   
+        btncomm.setOnAction(e->{
+                if(tfcomm.getText()==null || tfcomm.getText().isEmpty()){
+                      Alert alert = new Alert(AlertType.NONE, "Erreur de champ", ButtonType.OK);
+                      alert.setTitle("Erreur"); 
+                      alert.setContentText("Pas de commentaire a ajouter!"); 
+                      alert.showAndWait();     }
+                else{
+                      commentaire c1 = new commentaire(tfcomm.getText(),"user",id);
+                      cc.insert(c1);}
 });
-
-
-   
-   
-   
- 
-        
-        
-        
-        return id;
-        
+return id;        
 };
 
-    private Insets Insets(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
 }
 

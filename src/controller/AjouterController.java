@@ -7,7 +7,7 @@ package controller;
 
 import com.sun.javafx.iio.common.ImageTools;
 import dao.PhotoServiceDao;
-import entity.photo;
+import entity.Photo;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -74,7 +74,7 @@ public class AjouterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         
+    //fonction du bouton d'ajout des photos     
     addAll.setOnAction(e->{
             if(tfTitre.getText().isEmpty()||tfCouleur.getText().isEmpty()||tfLocalisation.getText().isEmpty()||tfTheme.getText().isEmpty()){
                  Alert alert = new Alert(AlertType.NONE, "Erreur de champs", ButtonType.OK);
@@ -90,10 +90,12 @@ public class AjouterController implements Initializable {
                   SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
                   Date date = new Date(System.currentTimeMillis());
                   PhotoServiceDao ps1 = new PhotoServiceDao();
-                  photo p1 = new photo(this.url,tfTitre.getText(),tfTheme.getText(),date.toString(),tfCouleur.getText(),tfLocalisation.getText(),Id_membre);
+                  Photo p1 = new Photo(this.url,tfTitre.getText(),tfTheme.getText(),date.toString(),tfCouleur.getText(),tfLocalisation.getText(),Id_membre);
                   ps1.insert(p1);}
     });
-        
+     
+    
+    //Fonction du bouton de selection de la photo a inserr
     addPH.setOnAction(e->{
             try {
                
@@ -114,6 +116,7 @@ public class AjouterController implements Initializable {
         
     });
     
+//bouton de redirection vers la view profil
     btnProfil.setOnAction(e->{
             try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));

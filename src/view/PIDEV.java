@@ -6,7 +6,7 @@
 package view;
 
 import dao.PhotoServiceDao;
-import entity.photo;
+import entity.Photo;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.DateFormat;
