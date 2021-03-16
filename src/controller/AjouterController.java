@@ -8,6 +8,7 @@ package controller;
 import com.sun.javafx.iio.common.ImageTools;
 import dao.PhotoServiceDao;
 import entity.Photo;
+import utils.Upload;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -68,6 +69,12 @@ public class AjouterController implements Initializable {
     public String path ; 
     public int Id_membre=1;
     
+    
+    
+    
+    
+    private File file;
+    String pic;
     /**
      * Initializes the controller class.
      */
@@ -97,24 +104,28 @@ public class AjouterController implements Initializable {
     
     //Fonction du bouton de selection de la photo a inserr
     addPH.setOnAction(e->{
-            try {
-               
-                        File infile = filechooser.showOpenDialog(null);
-                        Image img = SwingFXUtils.toFXImage(ImageIO.read(infile), null); 
-                        phv.setImage(img);
-                        path="http://localhost/image/"+infile.getName() ;
-                        Path from = Paths.get(infile.toURI());
-                        Path to = Paths.get("c:\\xampp\\htdocs\\image\\"+infile.getName());
-                        CopyOption[] options = new CopyOption[]{
-                               StandardCopyOption.REPLACE_EXISTING,
-                               StandardCopyOption.COPY_ATTRIBUTES};
-                        Path temp = Files.copy(from,to,options);
-                        this.url=path;
-            }
-            catch (IOException ex) {
-                         } ;
+            FileChooser fileChooser = new FileChooser();
+            file= fileChooser.showOpenDialog(null);
+             //FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+            //FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+            //fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+
+            
+            pic=(file.toURI().toString());
+            phv.setImage(new Image(pic));
+        try {
+            //  pic=new Upload().upload(file,"uimg");
+            pic=new Upload().upload(file, "");
+        } catch (IOException ex) {
+            Logger.getLogger(AjouterController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            System.out.println(pic);
+   //   image= new Image("http://localhost/uimg/"+pic);
+            
+           this.url= "http://localhost/image/"+pic;
+  }
         
-    });
+    );
     
 //bouton de redirection vers la view profil
     btnProfil.setOnAction(e->{
