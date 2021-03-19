@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.InvalidationListener;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -140,6 +141,7 @@ public class AjouterController implements Initializable {
                 Logger.getLogger(AjouterController.class.getName()).log(Level.SEVERE, null, ex);
             }
     });
+    
     
     }    
     

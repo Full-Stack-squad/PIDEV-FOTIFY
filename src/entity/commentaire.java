@@ -18,15 +18,22 @@ public class commentaire {
     private SimpleStringProperty comm;
     private SimpleStringProperty nom_user;
     private SimpleIntegerProperty id_photo;
+    private SimpleIntegerProperty idU;
     
 
 
 public commentaire(){};
-public commentaire(int id_comm, String comm, String nom_user,int id_photo) {
+public commentaire(int id_comm, String comm, String nom_user,int id_photo,int idU) {
         this.id_comm = new SimpleIntegerProperty(id_comm);   
         this.comm = new SimpleStringProperty(comm);
         this.nom_user = new SimpleStringProperty(nom_user);
         this.id_photo = new SimpleIntegerProperty(id_photo);
+         this.id_comm = new SimpleIntegerProperty(idU); 
+};
+public commentaire(int id_comm, String comm) {
+        this.id_comm = new SimpleIntegerProperty(id_comm);   
+        this.comm = new SimpleStringProperty(comm);
+        
 };
 public commentaire(String comm, String nom_user,int id_photo) {
         
@@ -34,6 +41,14 @@ public commentaire(String comm, String nom_user,int id_photo) {
         this.nom_user = new SimpleStringProperty(nom_user);
         this.id_photo = new SimpleIntegerProperty(id_photo);
 };
+public commentaire(String comm, String nom_user,int id_photo,int idU) {
+        
+        this.comm = new SimpleStringProperty(comm);
+        this.nom_user = new SimpleStringProperty(nom_user);
+        this.id_photo = new SimpleIntegerProperty(id_photo);
+        this.idU = new SimpleIntegerProperty(idU);
+};
+
 
 public int getid_comm() {
         return id_comm.get();
@@ -61,6 +76,12 @@ public int getid_photo() {
     }
 public void setid_photo(int id_photo) {
         this.id_photo = new SimpleIntegerProperty(id_photo);
+    }
+public int getidUser() {
+        return idU.get();
+    }
+public void setidUser(int idU) {
+        this.idU = new SimpleIntegerProperty(idU);
     }
 
 

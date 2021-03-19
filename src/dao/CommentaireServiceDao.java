@@ -41,7 +41,7 @@ public class CommentaireServiceDao implements Idao<commentaire>{
 
     @Override
     public void insert(commentaire o) {
-        String req="insert into commentaire (comm,nom_user,id_photo) values ('"+o.getcomm()+"','"+o.getnom_user()+"','"+o.getid_photo()+"')";
+        String req="insert into commentaire (comm,nom_user,id_photo,idU) values ('"+o.getcomm()+"','"+o.getnom_user()+"','"+o.getid_photo()+"','"+o.getidUser()+"')";
         try {
             st.executeUpdate(req);
             System.out.println("commentaire inseré");
@@ -59,7 +59,7 @@ public class CommentaireServiceDao implements Idao<commentaire>{
               try {
            
             st.executeUpdate(req);
-             
+                  System.out.println("fassa5");
         } catch (SQLException ex) {
             Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
         }else System.out.println("n'existe pas");
@@ -94,13 +94,14 @@ public class CommentaireServiceDao implements Idao<commentaire>{
            commentaire p=new commentaire();
         try {
             rs=st.executeQuery(req);
-           // while(rs.next()){
+           
             rs.next();
                 p.setid_comm(rs.getInt(1));
                 p.setcomm(rs.getString(2));
                 p.setnom_user(rs.getString(3));
                 p.setid_photo(rs.getInt(4));
-            //}  
+                p.setidUser(rs.getInt(5));
+             
             
         } catch (SQLException ex) {
             Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -114,7 +115,9 @@ public class CommentaireServiceDao implements Idao<commentaire>{
         
         try {
             if (st.executeUpdate(qry) > 0) {
+               
                 return true;
+                
             }
             
         } catch (SQLException ex) {
@@ -126,6 +129,31 @@ public class CommentaireServiceDao implements Idao<commentaire>{
     
     public List<commentaire> displaycomms (int id_photo){
     String req="select * from commentaire where id_photo ="+id_photo;
+     List<commentaire> list=new ArrayList<>();
+        
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+                commentaire p=new commentaire();
+                p.setid_comm(rs.getInt(1));
+                p.setcomm(rs.getString(2));
+                p.setnom_user(rs.getString(3));
+                p.setid_photo(rs.getInt(4));
+                
+                             
+                list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    
+    
+    }
+    
+    public List<commentaire> owndisplaycomms (int id_photo,int idU){
+    String req="select * from commentaire where id_photo ='"+id_photo+"'and idU="+idU;
      List<commentaire> list=new ArrayList<>();
         
         try {

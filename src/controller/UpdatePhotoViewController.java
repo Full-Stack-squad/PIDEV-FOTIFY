@@ -82,7 +82,9 @@ btnmodif.setOnAction(e->{
          });
         
         
-        
+
+
+
     }    
     
     
@@ -92,6 +94,7 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
         Photo photo1 = new Photo();
         p=photo1;
         photo1=ps1.displayById(id);
+        p=ps1.displayById(id);
         
         g=id;
         
@@ -103,7 +106,31 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
         img.setImage(image);
         img.setFitHeight(200);
         img.setFitWidth(200);
+       btnsupprim.setOnAction(e->{
+           ps1.delete(p);
+           try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();}
+    catch (IOException ex) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+});
+        
+        
+        
+        
+        
+        
+        
         return id;
         
+        
+        
 };
+
+   
 }

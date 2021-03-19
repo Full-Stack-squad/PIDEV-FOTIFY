@@ -72,7 +72,7 @@ public class ProfileController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
          PhotoServiceDao ps1 = new PhotoServiceDao();      
-         Image image = new Image("/img/user.png");
+         Image image = new Image("/img/nn.png");
          phProfil.setImage(image);
          
    

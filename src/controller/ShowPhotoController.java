@@ -12,42 +12,25 @@ import entity.Photo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import static javafx.scene.paint.Color.color;
-import static javafx.scene.paint.Color.color;
-import static javafx.scene.paint.Color.color;
-import static javafx.scene.paint.Color.color;
 import javafx.stage.Stage;
 
 /**
@@ -72,17 +55,63 @@ public class ShowPhotoController implements Initializable {
     private ScrollPane sp;
     @FXML
     private Button btncomm;
-    @FXML
-    private TextArea tfcomm;
     public ArrayList comments;
-    public ArrayList<String> comms = new ArrayList<>();
+    public ArrayList<Label> comms = new ArrayList<>();
     public ArrayList<String> usernames = new ArrayList<>();
     public ArrayList<Label> imaa =new ArrayList<>();
     @FXML
-    private VBox vb;
+    private ScrollPane sp1;
+    public int idU=1;
+    @FXML
+    private Button btnmodif;
 
     
     
+    
+    
+    public void getcomms(int iidd){
+        
+    CommentaireServiceDao cc = new CommentaireServiceDao();
+     
+imaa.clear();
+    for (commentaire c : cc.displaycomms(iidd)){
+               
+               imaa.add(new Label("  "+c.getnom_user()+" :    "+c.getcomm()));
+               VBox vBox=new VBox();
+               vBox.getChildren().clear();
+               imaa.forEach( e-> vBox.getChildren().add(e));
+               imaa.forEach(e->e.setMinHeight(50));
+               String cssLayout = "-fx-border-color: black;\n" +
+                   "-fx-border-insets: 2;\n" +
+                   "-fx-border-width: 2;\n" +
+                   "-fx-border-style: solid;\n"+
+                   "-fx-border-radius: 10;\n";
+               imaa.forEach(e->e.setMaxWidth(Double.MAX_VALUE));
+               imaa.forEach(e->e.setStyle(cssLayout));
+               sp.setContent(vBox);   
+    }}
+    public void mycomms(int iidd){
+        
+    CommentaireServiceDao ccc = new CommentaireServiceDao();
+     
+comms.clear();
+    for (commentaire c : ccc.owndisplaycomms(iidd, idU)){
+               
+               comms.add(new Label("  "+c.getnom_user()+" :    "+c.getcomm()));
+               VBox vB=new VBox();
+               vB.getChildren().clear();
+               comms.forEach( e-> vB.getChildren().add(e));
+               comms.forEach(e->e.setMinHeight(50));
+               String cssLayout = "-fx-border-color: black;\n" +
+                   "-fx-border-insets: 2;\n" +
+                   "-fx-border-width: 2;\n" +
+                   "-fx-border-style: solid;\n"+
+                   "-fx-border-radius: 10;\n";
+               comms.forEach(e->e.setMaxWidth(Double.MAX_VALUE));
+               comms.forEach(e->e.setStyle(cssLayout));
+               sp1.setContent(vB);   
+               
+    }}
     /**
      * Initializes the controller class.
      */
@@ -90,7 +119,7 @@ public class ShowPhotoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-     
+
 BtnRech.setOnAction(e->{
     try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/RechercheView.fxml"));
@@ -119,6 +148,7 @@ BtnRech.setOnAction(e->{
     
     
 public int setIdd(int id){
+    
         PhotoServiceDao ps1 = new PhotoServiceDao();
         Photo photo1 = new Photo();
         photo1=ps1.displayById(id);//recuperer la photo avec son id
@@ -128,39 +158,49 @@ public int setIdd(int id){
         ima.setImage(image);
         ima.setFitHeight(300);
         ima.setFitWidth(300);
-        
-CommentaireServiceDao cc = new CommentaireServiceDao();
+        sp.setContent(null);
+        getcomms(id);
+        mycomms(id);
 
-    for (commentaire c : cc.displaycomms(g)){
-               comms.add(c.getcomm()); //arrayList des commentaires
-               usernames.add(c.getnom_user());} // arraylist des nom des utilisateurs
-    for (int i=0;i<comms.size();i++){
-               System.out.println(comms.get(i));
-               imaa.add(new Label("  "+usernames.get(i)+" :    "+comms.get(i)));
-               VBox vBox=new VBox(); 
-               imaa.forEach( e-> vBox.getChildren().add(e));
-               imaa.get(i).setMinHeight(50);
-        String cssLayout = "-fx-border-color: black;\n" +
-                   "-fx-border-insets: 2;\n" +
-                   "-fx-border-width: 2;\n" +
-                   "-fx-border-style: solid;\n"+
-                   "-fx-border-radius: 10;\n";
-               imaa.get(i).setMaxWidth(Double.MAX_VALUE);
-               imaa.get(i).setStyle(cssLayout);
-               sp.setContent(vBox);   
-    }
+    
      //le Bouton Ajouter Commentaire Lambda expression 🙂🙂   
-        btncomm.setOnAction(e->{
-                if(tfcomm.getText()==null || tfcomm.getText().isEmpty()){
-                      Alert alert = new Alert(AlertType.NONE, "Erreur de champ", ButtonType.OK);
-                      alert.setTitle("Erreur"); 
-                      alert.setContentText("Pas de commentaire a ajouter!"); 
-                      alert.showAndWait();     }
-                else{
-                      commentaire c1 = new commentaire(tfcomm.getText(),"user",id);
-                      cc.insert(c1);}
+        
+    btncomm.setOnAction(e->{
+               CommentaireServiceDao ccc =CommentaireServiceDao.getInstance();
+                    TextInputDialog dialog = new TextInputDialog("walter");
+                    dialog.setTitle("ajouter un commentaire");
+                    
+                    dialog.setContentText("ajoutez votre commentaire:");
+                    Optional<String> result = dialog.showAndWait();
+                    if (result.isPresent()){
+                    commentaire c1 = new commentaire(result.get(),"user",id,idU);
+                    ccc.insert(c1);
+                    sp.setContent(null);
+                    getcomms(id);
+                    mycomms(id);                   
+}                    
 });
-return id;        
+    
+    btnmodif.setOnAction(e->{
+     try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GererComm.fxml"));
+                Region root = (Region) loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                GererCommController gcc = loader.getController();
+                gcc.setIdd(id,idU);//envoie de l'ID de la photo  
+                System.err.println(id+"+"+idU);
+                stage.setScene(scene);
+                stage.show();}
+    catch (IOException ex) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    });
+  
+
+
+return id; 
+
 };
 
     
