@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2c3e50;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeMenuController">
+   <children>
+      <VBox alignment="CENTER" fillWidth="false" layoutX="183.0" layoutY="133.0" prefHeight="253.0" prefWidth="235.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="182.0" AnchorPane.topAnchor="133.0">
+         <children>
+            <Button fx:id="btngallerie" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="41.0" prefWidth="235.0" style="-fx-text-fill: white; -fx-border-color: #2980b9; -fx-border-radius: 40; -fx-background-color: #2c3e50; -fx-border-width: 3;" text="Gérer Gallerie" textAlignment="CENTER">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="41.0" prefWidth="235.0" style="-fx-text-fill: white; -fx-border-color: #2980b9; -fx-border-radius: 40; -fx-background-color: #2c3e50; -fx-border-width: 3;" text="Consulter Cours" textAlignment="CENTER">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="41.0" prefWidth="235.0" style="-fx-text-fill: white; -fx-border-color: #2980b9; -fx-border-radius: 40; -fx-background-color: #2c3e50; -fx-border-width: 3;" text="Mes évenements" textAlignment="CENTER">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="-5.0" prefHeight="110.0" prefWidth="608.0" style="-fx-background-color: #2980b9;" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="102.0" prefWidth="315.0" style="-fx-text-fill: #2c3e50;" text="Fotify" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bauhaus 93" size="89.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
