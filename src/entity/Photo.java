@@ -23,7 +23,7 @@ public class Photo {
     private SimpleStringProperty date_ajout;
     private SimpleStringProperty couleur;
     private SimpleStringProperty localisation; 
-    private SimpleIntegerProperty Id_membre;
+    private SimpleIntegerProperty idU;
 
     public Photo() {
     }
@@ -37,7 +37,7 @@ public class Photo {
         this.couleur = new SimpleStringProperty(couleur);
         this.localisation = new SimpleStringProperty(localisation);
     }
-    public Photo(int id_photo,String url, String titre, String theme, String date_ajout, String couleur, String localisation, int Id_membre) {
+    public Photo(int id_photo,String url, String titre, String theme, String date_ajout, String couleur, String localisation, int idU) {
         this.id_photo = new SimpleIntegerProperty(id_photo);
         this.url = new SimpleStringProperty(url);
         this.titre = new SimpleStringProperty(titre);
@@ -45,16 +45,16 @@ public class Photo {
         this.date_ajout = new SimpleStringProperty(date_ajout);
         this.couleur = new SimpleStringProperty(couleur);
         this.localisation = new SimpleStringProperty(localisation);
-        this.Id_membre = new SimpleIntegerProperty(Id_membre);
+        this.idU = new SimpleIntegerProperty(idU);
     }
-    public Photo(String url, String titre, String theme, String date_ajout, String couleur, String localisation,int Id_membre) {
+    public Photo(String url, String titre, String theme, String date_ajout, String couleur, String localisation,int idU) {
         this.url = new SimpleStringProperty(url);
         this.titre = new SimpleStringProperty(titre);
         this.theme = new SimpleStringProperty(theme);
         this.date_ajout = new SimpleStringProperty(date_ajout);
         this.couleur = new SimpleStringProperty(couleur);
         this.localisation = new SimpleStringProperty(localisation);
-        this.Id_membre = new SimpleIntegerProperty(Id_membre);
+        this.idU = new SimpleIntegerProperty(idU);
     }
     public Photo( int id_photo,String titre, String theme,String couleur, String localisation) {
       this.id_photo = new SimpleIntegerProperty(id_photo);
@@ -65,10 +65,10 @@ public class Photo {
     }
     
     public int getid_membre() {
-        return Id_membre.get();
+        return idU.get();
     }
-    public void setid_membre(int Id_membre) {
-        this.Id_membre = new SimpleIntegerProperty(Id_membre);
+    public void setid_membre(int idU) {
+        this.idU = new SimpleIntegerProperty(idU);
     }
      public int getid_photo() {
         return id_photo.get();
@@ -118,7 +118,26 @@ public class Photo {
     public void setlocalisation(String localisation) {
         this.localisation = new SimpleStringProperty(localisation);
     }
-
+    
+    
+    public SimpleIntegerProperty getIdUProperty() {
+        return idU;
+    }
+ public SimpleStringProperty getTitreProperty(){
+        return titre;
+    }
+ public SimpleStringProperty getThemeProperty(){
+        return theme;
+    }
+    public SimpleStringProperty getcouleurProperty(){
+        return couleur;
+    }
+     public SimpleStringProperty getdateeProperty(){
+        return date_ajout;
+    }
+    public SimpleStringProperty getlocProperty(){
+        return localisation;
+    }
 
 
 @Override

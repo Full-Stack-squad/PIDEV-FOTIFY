@@ -19,9 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import utils.DataSource;
 
 /**
@@ -36,12 +34,10 @@ public class PIDEV extends Application {
        
         
        Parent root;
-        root = FXMLLoader.load(getClass().getResource("ProfileView.fxml"));
+        root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
         
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root,1020,620);
         
-        
-
         primaryStage.setTitle("Fotify");
         primaryStage.setScene(scene);
         primaryStage.show();

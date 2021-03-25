@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailReclamationController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutY="-22.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="titleLB" alignment="CENTER" text="Detail Reclamation" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT" spacing="150.0">
+               <children>
+                  <HBox spacing="10.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="52.0" text="photo" />
+                        <Text fx:id="photoT" strokeType="OUTSIDE" strokeWidth="0.0" text="photo" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="10.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="89.0" text="etat" />
+                        <Text fx:id="etatT" strokeType="OUTSIDE" strokeWidth="0.0" text="etat" wrappingWidth="131.99999976158142" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <HBox spacing="10.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="54.0" text="sujet" />
+                        <AnchorPane>
+                           <children>
+                              <Text fx:id="sujetT" layoutY="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sujet" wrappingWidth="62.41357421875" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <VBox fx:id="sujetVB" layoutX="22.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ComboBox fx:id="sujetCB" onAction="#sucjetCBClick" prefWidth="150.0" promptText="choirir une option" />
+                                    <TextField fx:id="sujetTF" promptText="autre" visible="false" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+                  <HBox spacing="10.0">
+                     <children>
+                        <Label text="date creation" />
+                        <Text fx:id="dateT" strokeType="OUTSIDE" strokeWidth="0.0" text="date" wrappingWidth="144.39208984375" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <VBox>
+               <children>
+                  <Label text="description" />
+                  <TextArea fx:id="descriptionTA" editable="false" prefHeight="162.0" prefWidth="350.0" />
+               </children>
+            </VBox>
+            <AnchorPane>
+               <children>
+                  <HBox fx:id="editOptionHB" alignment="CENTER_RIGHT" layoutY="43.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="saugarderBT" mnemonicParsing="false" onAction="#sauvgarderClick" text="Sauvgarder" />
+                        <Button fx:id="annulerBT" mnemonicParsing="false" onAction="#annulerClick" text="Annuler" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="showEditHB" alignment="CENTER_RIGHT" layoutX="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="modifierBT" disable="true" mnemonicParsing="false" onAction="#modifierClick" prefHeight="31.0" prefWidth="86.0" text="Modifier" />
+                        <Button fx:id="retourBT" mnemonicParsing="false" onAction="#retourClick" text="Retour" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

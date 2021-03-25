@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -18,4 +19,11 @@ public interface Idao<T> {
     public T displayById(int id);
     
     public boolean update(T os);
+    
+    void ajouter(T t) throws SQLException;
+    boolean delete(int id) throws SQLException;
+    boolean chercher(int id) throws SQLException;
+    boolean chercher_ajout(T t)throws SQLException;
+    boolean update(T t,int id) throws SQLException;
+    List<T> readAll() throws SQLException;
 }

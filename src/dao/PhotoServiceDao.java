@@ -47,7 +47,7 @@ public class PhotoServiceDao implements Idao<Photo> {
 
     @Override
     public void insert(Photo o) {
-        String req="insert into photo (url,titre,theme,date_ajout,couleur,localisation,Id_membre) values ('"+o.geturl()+"','"+o.gettitre()+"','"+o.gettheme()+"','"+o.getdate_ajout()+"','"+o.getcouleur()+"','"+o.getlocalisation()+"','"+o.getid_membre()+"')";
+        String req="insert into photo (url,titre,theme,date_ajout,couleur,localisation,idU) values ('"+o.geturl()+"','"+o.gettitre()+"','"+o.gettheme()+"','"+o.getdate_ajout()+"','"+o.getcouleur()+"','"+o.getlocalisation()+"','"+o.getid_membre()+"')";
         try {
             st.executeUpdate(req);
             System.out.println("photo inseré");
@@ -140,7 +140,7 @@ public class PhotoServiceDao implements Idao<Photo> {
     return p;
     }
     public List<Photo> displayByIdMembre(int Id_membre) {
-        String req="select * from photo where Id_membre ="+Id_membre;
+        String req="select * from photo where idU ="+Id_membre;
         List<Photo> list=new ArrayList<>();      
         
         try {
@@ -179,6 +179,36 @@ public class PhotoServiceDao implements Idao<Photo> {
             Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+
+    @Override
+    public void ajouter(Photo t) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean delete(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean chercher(int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean chercher_ajout(Photo t) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update(Photo t, int id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Photo> readAll() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

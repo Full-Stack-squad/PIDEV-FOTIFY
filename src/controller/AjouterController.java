@@ -7,6 +7,7 @@ package controller;
 
 import com.sun.javafx.iio.common.ImageTools;
 import dao.PhotoServiceDao;
+import dao.UserDao;
 import entity.Photo;
 import utils.Upload;
 import java.io.File;
@@ -22,8 +23,8 @@ import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.InvalidationListener;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,12 +35,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import org.controlsfx.control.Rating;
 
 /**
  * FXML Controller class
@@ -48,21 +52,13 @@ import javax.imageio.ImageIO;
  */
 public class AjouterController implements Initializable {
 
-    @FXML
     private ImageView phv;
-    @FXML
     private TextField tfTitre;
-    @FXML
     private TextField tfTheme;
-    @FXML
     private TextField tfCouleur;
-    @FXML
     private TextField tfLocalisation;
-    @FXML
     private Button addAll;
-    @FXML
     private Button addPH;
-    @FXML
     private Button btnProfil;
     
     private FileChooser filechooser = new FileChooser();
@@ -76,11 +72,55 @@ public class AjouterController implements Initializable {
     
     private File file;
     String pic;
+    @FXML
+    private Pane pane;
+    @FXML
+    private Button ab51;
+    @FXML
+    private Button ab3;
+    @FXML
+    private Button ab4;
+    @FXML
+    private Button ab2;
+    @FXML
+    private Button ab;
+    @FXML
+    private Button ab1;
+    @FXML
+    private Button feedback_window_btn;
+    @FXML
+    private Label fotify;
+    @FXML
+    private TextField feedback_description;
+    @FXML
+    private Button btn_ajouterFeedback;
+    @FXML
+    private Button btn_listerfeedback;
+    @FXML
+    private Rating feedback_rating;
+    @FXML
+    private Button btn_ProfileMembre;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+         fotify.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/firstView.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
         
     //fonction du bouton d'ajout des photos     
     addAll.setOnAction(e->{
@@ -98,8 +138,20 @@ public class AjouterController implements Initializable {
                   SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
                   Date date = new Date(System.currentTimeMillis());
                   PhotoServiceDao ps1 = new PhotoServiceDao();
-                  Photo p1 = new Photo(this.url,tfTitre.getText(),tfTheme.getText(),date.toString(),tfCouleur.getText(),tfLocalisation.getText(),Id_membre);
-                  ps1.insert(p1);}
+                  Photo p1 = new Photo(this.url,tfTitre.getText(),tfTheme.getText(),date.toString(),tfCouleur.getText(),tfLocalisation.getText(),UserDao.connectedUser.getUserId());
+                  ps1.insert(p1);
+              try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
     });
      
     
@@ -123,7 +175,7 @@ public class AjouterController implements Initializable {
             System.out.println(pic);
    //   image= new Image("http://localhost/uimg/"+pic);
             
-           this.url= "http://localhost/image/"+pic;
+           this.url= "http://localhost/doc/"+pic;
   }
         
     );
@@ -142,7 +194,119 @@ public class AjouterController implements Initializable {
             }
     });
     
-    
     }    
+
+
+    @FXML
+    private void gererprofile() {
+          ab51.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/displayUsers.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void abonnementt(ActionEvent event) {
+    }
+
+    @FXML
+    private void gerercours() {
+        ab4.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/home.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void gererevenement() {
+        ab2.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/AfficherEvenement.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void gerergalerie() {
+        ab.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void gererreclamation() {
+          ab1.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void gererFeedback() {
+        feedback_window_btn.setOnMouseClicked(event -> {
+            System.out.println("hey");
+           try {
+                Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                System.out.println("hey");
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        });
+    }
     
 }

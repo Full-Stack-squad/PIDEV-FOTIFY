@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author YACINE
  */
 public class DataSource {
-    private String url="jdbc:mysql://127.0.0.1:3306/pidevdb";
+    private String url="jdbc:mysql://localhost:3306/library";
     private String login="root";
     private String pwd="";
     

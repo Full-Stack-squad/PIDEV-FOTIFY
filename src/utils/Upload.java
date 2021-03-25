@@ -23,7 +23,7 @@ public class Upload {
     public String upload(File file,String dossier) throws FileNotFoundException, IOException {
      BufferedOutputStream stream = null;
       
-        String globalPath="C:\\xampp\\htdocs\\image\\"+ dossier;
+        String globalPath="C:\\wamp\\www\\doc"+ dossier;
         //String localPath="localhost:8000/u/";
         String fileName = file.getName();
         
