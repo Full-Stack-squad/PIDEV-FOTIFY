@@ -5,8 +5,10 @@
  */
 package controller;
 
+import dao.AbonnementDAO;
 import dao.PhotoServiceDao;
 import dao.UserDao;
+import entity.Abonnement;
 import entity.Photo;
 import entity.User;
 import java.io.IOException;
@@ -67,6 +69,7 @@ public class ShowuserController implements Initializable {
     private GridPane gp;
     
     public ArrayList<String> imagess = new ArrayList<>();
+     public ArrayList<Abonnement> myabs = new ArrayList<>();
     public ArrayList<Image> ima = new ArrayList<>();
     public ArrayList<Label> imaa =new ArrayList<>();
     public ArrayList<Integer> imaaa =new ArrayList<>();
@@ -86,6 +89,10 @@ public class ShowuserController implements Initializable {
     private Label fotify;
     @FXML
     private Button showfb;
+    @FXML
+    private Button btnab;
+    @FXML
+    private Button btndes;
 
     /**
      * Initializes the controller class.
@@ -226,6 +233,50 @@ public class ShowuserController implements Initializable {
     }
 
     void setIdd(Integer userId) {
+        btndes.setDisable(true);
+        AbonnementDAO abonnementdao= new AbonnementDAO();
+        
+        
+            if(abonnementdao.dislayAll(userId).isEmpty()){
+                System.out.println(myabs);
+                 String nom=UserDao.connectedUser.getUserNom()+" "+UserDao.connectedUser.getUserPrenom();
+
+       btnab.setOnAction(e->{
+            
+        Abonnement a = new Abonnement(nom,UserDao.connectedUser.getUserId(),userId);
+        abonnementdao.insert(a);
+         btnab.setDisable(true);
+         btndes.setDisable(false);
+         try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/firstView.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        });
+                 btnab.setDisable(false);
+                 
+            }
+            else{btnab.setDisable(true); btnab.setText("abonné");System.out.println("Non abonneé");
+            btndes.setDisable(false);
+            btndes.setOnAction(e->{
+            abonnementdao.deletea(userId); btnab.setDisable(false);
+         btndes.setDisable(true);});
+            
+            
+            
+            
+            }
+        
+        
+                        
+        
         showfb.setOnAction(e-> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ShowUserFeeds.fxml"));
