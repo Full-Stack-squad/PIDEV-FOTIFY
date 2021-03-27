@@ -2,6 +2,7 @@ package controller;
 
 import dao.CommentaireServiceDao;
 import dao.PhotoServiceDao;
+import dao.UserDao;
 import entity.commentaire;
 import entity.Photo;
 import java.io.IOException;
@@ -115,7 +116,7 @@ imaa.clear();
     CommentaireServiceDao ccc = new CommentaireServiceDao();
      
 comms.clear();
-    for (commentaire c : ccc.owndisplaycomms(iidd, idU)){
+    for (commentaire c : ccc.owndisplaycomms(iidd, UserDao.connectedUser.getUserId())){//////jddiiiiiid
                
                comms.add(new Label("  "+c.getnom_user()+" :    "+c.getcomm()));
                VBox vB=new VBox();
@@ -211,7 +212,7 @@ public int setIdd(int id){
                     dialog.setContentText("ajoutez votre commentaire:");
                     Optional<String> result = dialog.showAndWait();
                     if (result.isPresent()){
-                    commentaire c1 = new commentaire(result.get(),"user",id,idU);
+                    commentaire c1 = new commentaire(result.get(),UserDao.connectedUser.getUserNom()+" "+UserDao.connectedUser.getUserPrenom(),id,UserDao.connectedUser.getUserId());
                     ccc.insert(c1);
                     sp.setContent(null);
                     getcomms(id);

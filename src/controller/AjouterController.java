@@ -52,13 +52,21 @@ import org.controlsfx.control.Rating;
  */
 public class AjouterController implements Initializable {
 
+    @FXML
     private ImageView phv;
+    @FXML
     private TextField tfTitre;
+    @FXML
     private TextField tfTheme;
+    @FXML
     private TextField tfCouleur;
+    @FXML
     private TextField tfLocalisation;
+    @FXML
     private Button addAll;
+    @FXML
     private Button addPH;
+    @FXML
     private Button btnProfil;
     
     private FileChooser filechooser = new FileChooser();
@@ -90,16 +98,6 @@ public class AjouterController implements Initializable {
     private Button feedback_window_btn;
     @FXML
     private Label fotify;
-    @FXML
-    private TextField feedback_description;
-    @FXML
-    private Button btn_ajouterFeedback;
-    @FXML
-    private Button btn_listerfeedback;
-    @FXML
-    private Rating feedback_rating;
-    @FXML
-    private Button btn_ProfileMembre;
     /**
      * Initializes the controller class.
      */

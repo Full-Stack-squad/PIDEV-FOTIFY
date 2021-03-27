@@ -116,7 +116,7 @@ public class ProfileController implements Initializable {
          phProfil.setFitHeight(80);
          
    
-      
+      ////////jddiiiiid
     for(Photo j : ps1.displayByIdMembre(UserDao.connectedUser.getUserId())){//extrarire les photo apparartenant a un seul utilisateur
             ima.add(new Image(j.geturl()));//Arraylist avec les urls des photo
             imaa.add(new Label(j.gettitre()));//ArrayList avec les titres des photos

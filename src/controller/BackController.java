@@ -64,15 +64,30 @@ public class BackController implements Initializable {
 
         });
          
+          ab512.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/evenement.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                 stage.setTitle("Fotify"); 
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+         
          
          
          
        
          
-          gal.setOnMouseClicked(event -> {
+          profile.setOnMouseClicked(event -> {
             try {
 
-                Parent type = FXMLLoader.load(getClass().getResource("/view/backGall.fxml"));
+                Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileAdmin.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

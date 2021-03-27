@@ -91,7 +91,17 @@
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Button>
-                        <Button fx:id="showfb" layoutX="400.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-radius: 10; -fx-border-width: 3; -fx-background-radius: 12;" text="Afficher Feedback" textFill="WHITE">
+                        <Button fx:id="showfb" layoutX="391.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-radius: 10; -fx-border-width: 3; -fx-background-radius: 12;" text="Afficher Feedback" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnab" layoutX="539.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-radius: 10; -fx-border-width: 3; -fx-background-radius: 12;" text="S'abonner" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btndes" layoutX="539.0" layoutY="517.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-radius: 10; -fx-border-width: 3; -fx-background-radius: 12;" text="Désabonner" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

@@ -6,6 +6,7 @@
 package controller;
 
 import dao.CommentaireServiceDao;
+import dao.UserDao;
 import entity.commentaire;
 import java.io.IOException;
 import java.net.URL;
@@ -99,7 +100,7 @@ public class GererCommController implements Initializable {
     void comms (int id,int idU){
         comms.clear();
         CommentaireServiceDao ccc =CommentaireServiceDao.getInstance();
-         for (commentaire c : ccc.owndisplaycomms(id, idU)){
+         for (commentaire c : ccc.owndisplaycomms(id,UserDao.connectedUser.getUserId())){/////jdiiiiid
              Label l =new Label();
              l.setText("  "+c.getcomm());
              comms.add(l);

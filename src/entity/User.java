@@ -5,6 +5,9 @@
  */
 package entity;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author hp
@@ -121,6 +124,12 @@ public class User {
     public void setUserType(String userType) {
         this.userType = userType;
     }
+    
+    
+    
+       
+       
+     
 
     @Override
     public String toString() {

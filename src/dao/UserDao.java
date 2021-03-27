@@ -255,6 +255,7 @@ String req="select * from membre where id ="+idM;
         }
     return p;
     }
+   
 
     public Integer starsCount(int nb) {
         String req = "select count(*) as total from feedback where id_membre = " + UserDao.connectedUser.getUserId() + " AND rating = " + nb;

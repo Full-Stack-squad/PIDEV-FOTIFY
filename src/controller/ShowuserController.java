@@ -5,8 +5,10 @@
  */
 package controller;
 
+import dao.AbonnementDAO;
 import dao.PhotoServiceDao;
 import dao.UserDao;
+import entity.Abonnement;
 import entity.Photo;
 import entity.User;
 import java.io.IOException;
@@ -65,8 +67,10 @@ public class ShowuserController implements Initializable {
     private ScrollPane sp;
     @FXML
     private GridPane gp;
+    public String nomaccount;
     
     public ArrayList<String> imagess = new ArrayList<>();
+     public ArrayList<Abonnement> myabs = new ArrayList<>();
     public ArrayList<Image> ima = new ArrayList<>();
     public ArrayList<Label> imaa =new ArrayList<>();
     public ArrayList<Integer> imaaa =new ArrayList<>();
@@ -86,6 +90,10 @@ public class ShowuserController implements Initializable {
     private Label fotify;
     @FXML
     private Button showfb;
+    @FXML
+    private Button btnab;
+    @FXML
+    private Button btndes;
 
     /**
      * Initializes the controller class.
@@ -224,8 +232,26 @@ public class ShowuserController implements Initializable {
 
         });
     }
+public boolean desab(int id){
+AbonnementDAO abonnementdao= new AbonnementDAO();
+if(abonnementdao.dislayAll(id).isEmpty()){
+                return false ;  
+        }
+        else return true;    
+        }
 
+public boolean abb(int id){
+    AbonnementDAO abonnementdao= new AbonnementDAO();
+if(abonnementdao.dislayAll(id).isEmpty()){
+                return false ;  
+        }
+        else return true;    
+        }
     void setIdd(Integer userId) {
+       
+        
+                        
+        
         showfb.setOnAction(e-> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ShowUserFeeds.fxml"));
@@ -273,6 +299,23 @@ public class ShowuserController implements Initializable {
             imaa.get(i).setMinHeight(20);
             imaa.get(i).setMinWidth(250);
             BorderPane.setAlignment(imaa.get(i),Pos.TOP_CENTER);
+            int nn=imaaa.get(i);
+            borderPane.setOnMouseClicked(e->{
+       ////////jdiiiiiiiddddddd   
+    try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ShowPhoto.fxml"));
+                Region root = (Region) loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                ShowPhotoController spc = loader.getController();
+                spc.setIdd(nn);  
+                stage.setScene(scene);
+                stage.show();}
+    catch (IOException ex) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+  
+});
 
             String s =imaa.get(i).getText();
             int n = imaaa.get(i);
@@ -300,12 +343,33 @@ public class ShowuserController implements Initializable {
             User uu=new User();
             uu=ud.displayByIdM(userId);
             System.out.println(uu);
+            nomaccount=uu.getUserNom()+"  "+uu.getUserPrenom();
             noml.setText(uu.getUserNom()+"  "+uu.getUserPrenom());
            biol.setText(""+uu.getUserEmail());
            tell.setText(uu.getUserBio());
         } catch (SQLException ex) {
             Logger.getLogger(ShowuserController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        AbonnementDAO abonnementdao= new AbonnementDAO();
+        
+if(desab(userId)==false){btndes.setDisable(true);}
+else{btndes.setDisable(false);}
+
+if(abb(userId)==false){btnab.setDisable(false);}
+else{btnab.setDisable(true);}
+       
+       String nom=UserDao.connectedUser.getUserNom()+" "+UserDao.connectedUser.getUserPrenom();
+        btnab.setOnAction(e->{    
+                Abonnement a = new Abonnement(nom,UserDao.connectedUser.getUserId(),userId,nomaccount);
+                abonnementdao.insert(a);
+                btnab.setDisable(true);
+                 btndes.setDisable(false);
+        }); 
+        btndes.setOnAction(e->{
+            abonnementdao.deletea(userId);
+            btndes.setDisable(true);
+            btnab.setDisable(false);
+       });
     }
    
     
