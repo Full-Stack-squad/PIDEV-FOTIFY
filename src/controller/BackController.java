@@ -108,17 +108,7 @@ public class BackController implements Initializable {
         });
 
         feedback.setOnMouseClicked(event -> {
-            try {
-
-                Parent type = FXMLLoader.load(getClass().getResource("/view/ModifierFeedback.fxml"));
-                Scene scene = new Scene(type);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.setTitle("Fotify");
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           
 
         });
     }

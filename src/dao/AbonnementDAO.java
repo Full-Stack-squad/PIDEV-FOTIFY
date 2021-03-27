@@ -45,7 +45,7 @@ public class AbonnementDAO implements Idao<Abonnement>{
     @Override
     public void insert(Abonnement o) {
        
-          String req="insert into abonnement (Anom,idA,idU) values ('"+o.getAnomProperty().get()+"','"+o.getIdA()+"','"+o.getIdU()+"')";
+          String req="insert into abonnement (Anom,idA,idU,nomA) values ('"+o.getAnomProperty().get()+"','"+o.getIdA()+"','"+o.getIdU()+"','"+o.getnomAProperty().get()+"')";
         try {
             st.executeUpdate(req);
             System.out.println("abonnement inseré");
@@ -72,6 +72,7 @@ public class AbonnementDAO implements Idao<Abonnement>{
                 p.setIdA(rs.getInt(1));
                 p.setAnom(rs.getString(2));
                 p.setIdU(rs.getInt(3));
+                 p.setnomA(rs.getString(4));
                list.add(p);
             }
             
@@ -90,6 +91,48 @@ public List<Abonnement> dislayAll(int id) {
                 p.setIdA(rs.getInt(1));
                 p.setAnom(rs.getString(2));
                 p.setIdU(rs.getInt(3));
+                p.setnomA(rs.getString(4));
+               list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;}
+
+public List<Abonnement> Mesabbs() {//les abonnées mte3i 
+         String req="select * from abonnement where idU= "+UserDao.connectedUser.getUserId();
+        List<Abonnement> list=new ArrayList<>();
+        
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+                Abonnement p=new Abonnement();
+                p.setId(rs.getInt(1));
+                p.setAnom(rs.getString(2));
+                 p.setIdU(rs.getInt(3));
+                p.setIdA(rs.getInt(4));
+                p.setnomA(rs.getString(5));
+               list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;}
+public List<Abonnement> otherabbs() {//elli 3amlili abonnées
+        String req="select * from abonnement where idA= "+UserDao.connectedUser.getUserId();
+        List<Abonnement> list=new ArrayList<>();
+        
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+                Abonnement p=new Abonnement();
+               p.setId(rs.getInt(1));
+                p.setAnom(rs.getString(2));
+                 p.setIdU(rs.getInt(3));
+                p.setIdA(rs.getInt(4));
+                p.setnomA(rs.getString(5));
                list.add(p);
             }
             
@@ -108,6 +151,7 @@ public Abonnement dislay(int id) {
                 p.setIdA(rs.getInt(1));
                 p.setAnom(rs.getString(2));
                 p.setIdU(rs.getInt(3));
+                p.setnomA(rs.getString(4));
                
             }
             

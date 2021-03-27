@@ -18,21 +18,24 @@ public class Abonnement {
     private SimpleStringProperty Anom;
     private SimpleIntegerProperty idU;
     private SimpleIntegerProperty idA;
+    private SimpleStringProperty nomA;
 
     public Abonnement() {
     }
 
-    public Abonnement(SimpleIntegerProperty id, SimpleStringProperty Anom, SimpleIntegerProperty idU, SimpleIntegerProperty idA) {
+    public Abonnement(SimpleIntegerProperty id, SimpleStringProperty Anom, SimpleIntegerProperty idU, SimpleIntegerProperty idA,SimpleStringProperty nomA) {
         this.id = id;
         this.Anom = Anom;
         this.idU = idU;
         this.idA = idA;
+        this.Anom = nomA;
     }
 
-    public Abonnement(String Anom, int idU, int idA) {
+    public Abonnement(String Anom, int idU, int idA,String nomA) {
         this.Anom = new SimpleStringProperty(Anom);
         this.idU =new SimpleIntegerProperty(idU);
         this.idA = new SimpleIntegerProperty(idA );
+         this.nomA = new SimpleStringProperty(nomA);
     }
 
     public int getId() {
@@ -49,6 +52,13 @@ public class Abonnement {
 
     public void setAnom(String Anom) {
         this.Anom = new SimpleStringProperty(Anom);
+    }
+     public String getnomA() {
+        return nomA.get();
+    }
+
+    public void setnomA(String nomA) {
+        this.nomA = new SimpleStringProperty(nomA);
     }
 
     public int getIdU() {
@@ -78,6 +88,9 @@ public SimpleIntegerProperty getIdAProperty() {
 
 public SimpleStringProperty getAnomProperty() {
         return Anom;
+    }
+public SimpleStringProperty getnomAProperty() {
+        return nomA;
     }
 
 public SimpleIntegerProperty getIdProperty() {
