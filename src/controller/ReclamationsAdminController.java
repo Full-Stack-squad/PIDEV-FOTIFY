@@ -7,12 +7,14 @@ package controller;
 
 import dao.PhotoServiceDao;
 import dao.ReclamationDao;
+import dao.UserDao;
 import enums.Etat;
 
 import entity.Reclamation;
 import utils.EmailService;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,8 +78,9 @@ public class ReclamationsAdminController implements Initializable {
     @FXML
     private Label fotify;
 
-    public void getData() {
+    public void getData() throws SQLException {
         ReclamationDao rdao = new ReclamationDao();
+        UserDao rda = new UserDao();
         PhotoServiceDao ps1 = new PhotoServiceDao();
         this.reclamations = FXCollections.observableArrayList(rdao.playById());
 
@@ -101,7 +104,7 @@ public class ReclamationsAdminController implements Initializable {
             Reclamation reclamation = event.getTableView().getItems().get(row);
             reclamation.setEtat(newEtat);
             rdao.update(reclamation);
-            EmailService.sendMailFunc("jlassi.med.yacine@gmail.com", "Reclamation: " + reclamation.getSujet(), "Votre Reclamation est " + reclamation.getEtat());
+            EmailService.sendMailFunc(rda.displayByIdM(reclamation.getUser_id()).getUserEmail(), "Reclamation: " + reclamation.getSujet(), "Votre Reclamation est " + reclamation.getEtat());
 
         });
 
@@ -233,10 +236,13 @@ public class ReclamationsAdminController implements Initializable {
 
         });
         // TODO
+        try {
+            getData();
 
-        getData();
-
-        //membreTC.setCellFactory(new TreeItemPropertyValueFactory<Reclamation, String>("membre"));
+            //membreTC.setCellFactory(new TreeItemPropertyValueFactory<Reclamation, String>("membre"));
+        } catch (SQLException ex) {
+            Logger.getLogger(ReclamationsAdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private boolean checkRechercheCB(Reclamation rec, String value) {

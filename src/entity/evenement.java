@@ -5,28 +5,24 @@
  */
 package entity;
 
-
 import java.sql.Date;
 import java.util.Objects;
 import javafx.scene.image.ImageView;
-
-
-
 
 /**
  *
  * @author asus
  */
 public class evenement {
-    public int id ;
-   public String titre ;
-    public String contenu ;
- public String image ;
- public Date dateajout ; 
- public Date datemodif ; 
- private ImageView photo;
- 
- 
+
+    public int id;
+    public String titre;
+    public String contenu;
+    public String image;
+    public Date dateajout;
+    public Date datemodif;
+    private ImageView photo;
+
     public evenement(int id, String titre, String contenu, String image, Date dateajout, Date datemodif) {
         this.id = id;
         this.titre = titre;
@@ -34,7 +30,7 @@ public class evenement {
         this.image = image;
         this.dateajout = dateajout;
         this.datemodif = datemodif;
-        
+
     }
 
     public evenement(String titre, String contenu, String image, Date dateajout, Date datemodif) {
@@ -170,14 +166,5 @@ public class evenement {
     public String toString() {
         return "actualite{" + "id=" + id + ", titre=" + titre + ", contenu=" + contenu + ", image=" + image + ", dateajout=" + dateajout + ", datemodif=" + datemodif + ", photo=" + photo + '}';
     }
-    
-    
-    
-    
 
-  
- 
- 
- 
-    
 }

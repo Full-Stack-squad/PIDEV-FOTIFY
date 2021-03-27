@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,6 +48,8 @@ public class SignInController implements Initializable {
     private Button forget;
     @FXML
     private Hyperlink pass;
+    @FXML
+    private Button cancel;
 
     /**
      * Initializes the controller class.
@@ -56,6 +59,11 @@ public class SignInController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        cancel.setOnMouseClicked(event -> {
+            Platform.exit();
+
+        });
 
         btn_signIn.setOnAction((ActionEvent event) -> {
 

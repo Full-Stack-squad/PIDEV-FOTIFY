@@ -5,9 +5,6 @@
  */
 package entity;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 /**
  *
  * @author hp
@@ -35,19 +32,20 @@ public class User {
         this.userPassword = userPassword;
         this.userType = userType;
     }
+
     public User(Integer userId, String userNom, String userPrenom, String userBio) {
         this.userId = userId;
         this.userNom = userNom;
         this.userPrenom = userPrenom;
         this.userBio = userBio;
     }
-    
-     public User(String userNom, String userPrenom, String userBio, Integer userTel) {
-       
+
+    public User(String userNom, String userPrenom, String userBio, Integer userTel) {
+
         this.userNom = userNom;
         this.userPrenom = userPrenom;
         this.userBio = userBio;
-           this.userTel = userTel;
+        this.userTel = userTel;
     }
 
     public User() {
@@ -124,12 +122,6 @@ public class User {
     public void setUserType(String userType) {
         this.userType = userType;
     }
-    
-    
-    
-       
-       
-     
 
     @Override
     public String toString() {

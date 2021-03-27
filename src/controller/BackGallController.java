@@ -50,26 +50,25 @@ public class BackGallController implements Initializable {
     private Button btnsupp;
     @FXML
     private ImageView imgv;
-    private  ListPhoto listPhoto = new ListPhoto();
-      private ObservableList<Photo> phs=FXCollections.observableArrayList(); 
+    private ListPhoto listPhoto = new ListPhoto();
+    private ObservableList<Photo> phs = FXCollections.observableArrayList();
     @FXML
     private Label fotify;
     @FXML
     private Button retour;
-    
 
     /**
      * Initializes the controller class.
      */
-   public void clear(){
-       tvphoto.getItems().clear();
-   }
-      public void remplir(){
-           PhotoServiceDao pdao = PhotoServiceDao.getInstance();
-           
+    public void clear() {
+        tvphoto.getItems().clear();
+    }
+
+    public void remplir() {
+        PhotoServiceDao pdao = PhotoServiceDao.getInstance();
+
         tvphoto.setItems(listPhoto.getPhoto());
-        
-       
+
         coltitre.setCellValueFactory(cell -> cell.
                 getValue().getTitreProperty());
         coltheme.setCellValueFactory(cell -> cell.
@@ -78,13 +77,13 @@ public class BackGallController implements Initializable {
                 getValue().getcouleurProperty());
         coldate.setCellValueFactory(cell -> cell.
                 getValue().getdateeProperty());
-        
-      }
-   
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-          retour.setOnAction(e -> {
+
+        retour.setOnAction(e -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/Back.fxml"));
@@ -103,46 +102,42 @@ public class BackGallController implements Initializable {
             }
 
         });
-        
-         fotify.setOnMouseClicked(event -> {
+
+        fotify.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/Back.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-      
+
         PhotoServiceDao pdao = PhotoServiceDao.getInstance();
-       
+
         remplir();
-        
+
         // TODO
-    
-    
-    
-    tvphoto.setOnMouseClicked(e->{
-    ObservableList<Photo> photo = (ObservableList<Photo>) tvphoto.getSelectionModel().getSelectedItems();
-    for(int i=0;i<photo.size();i++){
-    imgv.setImage(new Image(photo.get(i).geturl()));}
-    
-    
-    });
-    
-    btnsupp.setOnAction(e->{
-    ObservableList<Photo> photo = (ObservableList<Photo>) tvphoto.getSelectionModel().getSelectedItems();
-    pdao.delete(photo.get(0));
-        tvphoto.getItems().removeAll((ObservableList<Photo>) tvphoto.getSelectionModel().getSelectedItems()
-        );
-    });
-    
-    
-    }    
-    
+        tvphoto.setOnMouseClicked(e -> {
+            ObservableList<Photo> photo = (ObservableList<Photo>) tvphoto.getSelectionModel().getSelectedItems();
+            for (int i = 0; i < photo.size(); i++) {
+                imgv.setImage(new Image(photo.get(i).geturl()));
+            }
+
+        });
+
+        btnsupp.setOnAction(e -> {
+            ObservableList<Photo> photo = (ObservableList<Photo>) tvphoto.getSelectionModel().getSelectedItems();
+            pdao.delete(photo.get(0));
+            tvphoto.getItems().removeAll((ObservableList<Photo>) tvphoto.getSelectionModel().getSelectedItems()
+            );
+        });
+
+    }
+
 }

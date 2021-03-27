@@ -13,164 +13,170 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="614.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreeReclamationController">
-   <children>
-      <BorderPane prefHeight="614.0" prefWidth="1077.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-            <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="734.0" style="-fx-background-color: #1f1f22;">
-               <children>
-                  <HBox layoutX="111.0" layoutY="177.0" prefHeight="390.0" prefWidth="513.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="177.0">
-                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="360.0" prefWidth="481.0" spacing="30.0">
-                           <children>
-                              <HBox prefHeight="46.0" prefWidth="481.0" spacing="15.0">
-                                 <children>
-                                    <Label prefHeight="21.0" prefWidth="102.0" text="Photo" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="kk" prefHeight="14.0" prefWidth="105.0" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font></Label>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="62.0" prefWidth="449.0">
-                                 <children>
-                                    <Label prefHeight="34.0" prefWidth="103.0" text="Sujet" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <VBox prefHeight="72.0" prefWidth="173.0" spacing="10.0">
-                                       <children>
-                                          <ComboBox fx:id="sujetCB" onAction="#sujetCBClick" prefHeight="31.0" prefWidth="200.0" promptText="Select " />
-                                          <TextField fx:id="sujetTF" prefHeight="31.0" prefWidth="200.0" promptText="Write here" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <VBox alignment="CENTER_LEFT" spacing="15.0">
-                                 <children>
-                                    <Label text="Description" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextArea fx:id="descriptionTA" prefHeight="150.0" />
-                                 </children>
-                              </VBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="481.0" spacing="20.0">
-                                 <children>
-                                    <Button fx:id="envoyerBT" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-background-radius: 12; -fx-border-radius: 10; -fx-border-width: 3;" text="Envoyer" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="annulerBT" mnemonicParsing="false" onAction="#annulerClick" prefHeight="25.0" prefWidth="104.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-background-radius: 12; -fx-border-radius: 10; -fx-border-width: 3;" text="Annuler" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="76.0" layoutY="53.0" prefHeight="50.0" prefWidth="297.0">
-                     <children>
-                        <Label alignment="TOP_LEFT" prefHeight="50.0" prefWidth="132.0" text="Ajouter" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="29.0" />
-                           </font>
-                           <graphic>
-                              <Line endX="-102.00001525878906" endY="70.29289245605469" fill="#fabe2e" startX="-101.99999237060547" startY="30.201005935668945" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
-                           </graphic>
-                        </Label>
-                        <Label prefHeight="50.0" prefWidth="173.0" text="Reclamation" textFill="WHITE">
-                           <font>
-                              <Font size="29.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </AnchorPane>
-         </center>
-         <left>
-            <Pane fx:id="pane" prefHeight="614.0" prefWidth="323.0" style="-fx-background-color: #1f1f22;" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane layoutY="131.0" prefHeight="150.0" prefWidth="327.0">
-                     <children>
-                        <Label alignment="CENTER" layoutX="-7.0" layoutY="14.0" prefHeight="37.0" prefWidth="320.0" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <VBox alignment="CENTER" layoutX="36.0" layoutY="206.0" prefHeight="376.0" prefWidth="252.0" spacing="10.0">
-                     <children>
-                        <Button fx:id="feedback_window_btn" mnemonicParsing="false" onAction="#gererFeedback" prefHeight="34.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Feedaback" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="ab51" alignment="CENTER" mnemonicParsing="false" onAction="#gererprofile" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Profile" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="ab3" mnemonicParsing="false" onAction="#abonnementt" prefHeight="53.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Abonnements" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="ab4" mnemonicParsing="false" onAction="#gerercours" prefHeight="44.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Cours" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="ab2" mnemonicParsing="false" onAction="#gererevenement" prefHeight="42.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Evenements " textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="ab" mnemonicParsing="false" onAction="#gerergalerie" prefHeight="52.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Galerie" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="ab1" mnemonicParsing="false" onAction="#gererreclamation" prefHeight="47.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Reclamation" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="-20.0" layoutY="14.0" prefHeight="132.0" prefWidth="347.0">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="104.0" prefWidth="326.0">
-                           <children>
-                              <Label fx:id="fotify" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="92.0" prefWidth="242.0" style="-fx-background-color: #fabe2e; -fx-background-radius: 10;" text="Fotify" textFill="#1f1f22">
-                                 <font>
-                                    <Font name="Bauhaus 93" size="60.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" fillWidth="false" layoutX="314.5" layoutY="85.5" maxHeight="1.7976931348623157E308">
-                     <children>
-                        <Line endX="-12.0" endY="522.0" startX="-12.0" startY="8.0" stroke="#fabe1e" VBox.vgrow="ALWAYS" />
-                     </children>
-                  </VBox>
-               </children>
-            </Pane>
-         </left>
-      </BorderPane>
-   </children>
+
+<AnchorPane style="-fx-background-color: #fabe2e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreeReclamationController">
+    <children>
+        <AnchorPane layoutX="20.0" prefHeight="614.0" prefWidth="1056.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <BorderPane prefHeight="614.0" prefWidth="1077.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <center>
+                        <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="734.0" style="-fx-background-color: #1f1f22;">
+                            <children>
+                                <HBox layoutX="111.0" layoutY="177.0" prefHeight="390.0" prefWidth="513.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="177.0">
+                                    <children>
+                                        <VBox alignment="TOP_CENTER" prefHeight="360.0" prefWidth="481.0" spacing="30.0">
+                                            <children>
+                                                <HBox prefHeight="46.0" prefWidth="481.0" spacing="15.0">
+                                                    <children>
+                                                        <Label prefHeight="21.0" prefWidth="102.0" text="Photo" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="System Bold" size="15.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="kk" prefHeight="14.0" prefWidth="105.0" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="System Bold" size="15.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <HBox prefHeight="62.0" prefWidth="449.0">
+                                                    <children>
+                                                        <Label prefHeight="34.0" prefWidth="103.0" text="Sujet" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="System Bold" size="15.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <VBox prefHeight="72.0" prefWidth="173.0" spacing="10.0">
+                                                            <children>
+                                                                <ComboBox fx:id="sujetCB" onAction="#sujetCBClick" prefHeight="31.0" prefWidth="200.0" promptText="Select " />
+                                                                <TextField fx:id="sujetTF" prefHeight="31.0" prefWidth="200.0" promptText="Write here" />
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </HBox>
+                                                <VBox alignment="CENTER_LEFT" spacing="15.0">
+                                                    <children>
+                                                        <Label text="Description" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="System Bold" size="15.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <TextArea fx:id="descriptionTA" prefHeight="150.0" />
+                                                    </children>
+                                                </VBox>
+                                                <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="481.0" spacing="20.0">
+                                                    <children>
+                                                        <Button fx:id="envoyerBT" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-background-radius: 12; -fx-border-radius: 10; -fx-border-width: 3;" text="Envoyer" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="System Bold" size="13.0" />
+                                                            </font>
+                                                        </Button>
+                                                        <Button fx:id="annulerBT" mnemonicParsing="false" onAction="#annulerClick" prefHeight="25.0" prefWidth="104.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-background-radius: 12; -fx-border-radius: 10; -fx-border-width: 3;" text="Annuler" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="System Bold" size="13.0" />
+                                                            </font>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <HBox layoutX="76.0" layoutY="53.0" prefHeight="50.0" prefWidth="297.0">
+                                    <children>
+                                        <Label alignment="TOP_LEFT" prefHeight="50.0" prefWidth="132.0" text="Ajouter" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="29.0" />
+                                            </font>
+                                            <graphic>
+                                                <Line endX="-102.00001525878906" endY="70.29289245605469" fill="#fabe2e" startX="-101.99999237060547" startY="30.201005935668945" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
+                                            </graphic>
+                                        </Label>
+                                        <Label prefHeight="50.0" prefWidth="173.0" text="Reclamation" textFill="WHITE">
+                                            <font>
+                                                <Font size="29.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </center>
+                    <left>
+                        <Pane fx:id="pane" prefHeight="614.0" prefWidth="323.0" style="-fx-background-color: #1f1f22;" BorderPane.alignment="CENTER">
+                            <children>
+                                <AnchorPane layoutY="131.0" prefHeight="150.0" prefWidth="327.0">
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="-7.0" layoutY="14.0" prefHeight="37.0" prefWidth="320.0" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </AnchorPane>
+                                <VBox alignment="CENTER" layoutX="36.0" layoutY="206.0" prefHeight="376.0" prefWidth="252.0" spacing="10.0">
+                                    <children>
+                                        <Button fx:id="feedback_window_btn" mnemonicParsing="false" onAction="#gererFeedback" prefHeight="34.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Feedaback" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab51" alignment="CENTER" mnemonicParsing="false" onAction="#gererprofile" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Profile" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab3" mnemonicParsing="false" onAction="#abonnementt" prefHeight="53.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Abonnements" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab4" mnemonicParsing="false" onAction="#gerercours" prefHeight="44.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Cours" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab2" mnemonicParsing="false" onAction="#gererevenement" prefHeight="42.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Evenements " textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab" mnemonicParsing="false" onAction="#gerergalerie" prefHeight="52.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Galerie" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab1" mnemonicParsing="false" onAction="#gererreclamation" prefHeight="47.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Reclamation" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" layoutX="-20.0" layoutY="14.0" prefHeight="132.0" prefWidth="347.0">
+                                    <children>
+                                        <HBox alignment="CENTER" prefHeight="104.0" prefWidth="326.0">
+                                            <children>
+                                                <Label id="lb" fx:id="fotify" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="92.0" prefWidth="242.0" style="-fx-background-color: #fabe2e; -fx-background-radius: 10;" stylesheets="@../utils/labelS.css" text="Fotify" textFill="#1f1f22">
+                                                    <font>
+                                                        <Font name="Bauhaus 93" size="60.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" fillWidth="false" layoutX="314.5" layoutY="85.5" maxHeight="1.7976931348623157E308">
+                                    <children>
+                                        <Line endX="-12.0" endY="522.0" startX="-12.0" startY="8.0" stroke="#fabe1e" VBox.vgrow="ALWAYS" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </Pane>
+                    </left>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

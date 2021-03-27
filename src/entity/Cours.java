@@ -13,8 +13,8 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author Amine
  */
-public class  Cours {
-    
+public class Cours {
+
     private SimpleIntegerProperty id;
     private SimpleStringProperty title;
     private SimpleStringProperty author;
@@ -27,25 +27,17 @@ public class  Cours {
 
     public Cours() {
     }
-    
-    
-     public Cours(String title, String author,String description,String date,String category) {
+
+    public Cours(String title, String author, String description, String date, String category) {
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.description = new SimpleStringProperty(description);
         this.date = new SimpleStringProperty(date);
         this.category = new SimpleStringProperty(category);
-        
+
     }
 
-   
-    
-    
-
-    
-    
-
-    public Cours(String title, String author,String description,String date,String category,String url,String image,int idU) {
+    public Cours(String title, String author, String description, String date, String category, String url, String image, int idU) {
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.description = new SimpleStringProperty(description);
@@ -55,8 +47,8 @@ public class  Cours {
         this.image = new SimpleStringProperty(image);
         this.idU = new SimpleIntegerProperty(idU);
     }
-    
-    public Cours(String title, String author,String description,String date,String category,String url,String image) {
+
+    public Cours(String title, String author, String description, String date, String category, String url, String image) {
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.description = new SimpleStringProperty(description);
@@ -64,91 +56,87 @@ public class  Cours {
         this.category = new SimpleStringProperty(category);
         this.url = new SimpleStringProperty(url);
         this.image = new SimpleStringProperty(image);
-       
+
     }
-    public Cours(int id,String title, String author,String description,String date,String category,String url,String image,int idU) {
+
+    public Cours(int id, String title, String author, String description, String date, String category, String url, String image, int idU) {
         this.id = new SimpleIntegerProperty(id);
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.description = new SimpleStringProperty(description);
         this.date = new SimpleStringProperty(date);
         this.category = new SimpleStringProperty(category);
-        
+
         this.url = new SimpleStringProperty(url);
         this.image = new SimpleStringProperty(image);
         this.idU = new SimpleIntegerProperty(idU);
     }
-    
-      public Cours(int id,String title, String author,String description,String date,String category,String url,String image) {
+
+    public Cours(int id, String title, String author, String description, String date, String category, String url, String image) {
         this.id = new SimpleIntegerProperty(id);
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.description = new SimpleStringProperty(description);
         this.date = new SimpleStringProperty(date);
         this.category = new SimpleStringProperty(category);
-        
+
         this.url = new SimpleStringProperty(url);
         this.image = new SimpleStringProperty(image);
-        
+
     }
-    
-    public Cours(int id,String title, String author,String description,String date,String category) {
+
+    public Cours(int id, String title, String author, String description, String date, String category) {
         this.id = new SimpleIntegerProperty(id);
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.description = new SimpleStringProperty(description);
         this.date = new SimpleStringProperty(date);
         this.category = new SimpleStringProperty(category);
-        
+
     }
-    
-    
-    
-     public String getImage(){
+
+    public String getImage() {
         return image.get();
-        
+
     }
-     public void setImage(String image){
+
+    public void setImage(String image) {
         this.image = new SimpleStringProperty(image);
     }
-     
-    public String getUrl(){
+
+    public String getUrl() {
         return url.get();
-        
+
     }
-    public void setUrl(String url){
+
+    public void setUrl(String url) {
         this.url = new SimpleStringProperty(url);
     }
-    public String getCategory(){
+
+    public String getCategory() {
         return category.get();
     }
-    
-    public void setCategory(String category){
+
+    public void setCategory(String category) {
         this.category = new SimpleStringProperty(category);
     }
 
-    public String getDate(){
+    public String getDate() {
         return date.get();
     }
-    
-public void setDate(String date){
+
+    public void setDate(String date) {
         this.date = new SimpleStringProperty(date);
     }
-    
-    
-    
 
-    
-
-    public String getDescription(){
+    public String getDescription() {
         return description.get();
     }
-    public void setDescription(String description){
+
+    public void setDescription(String description) {
         this.description = new SimpleStringProperty(description);
     }
-    
-    
-    
+
     public int getId() {
         return id.get();
     }
@@ -156,7 +144,7 @@ public void setDate(String date){
     public void setId(int id) {
         this.id = new SimpleIntegerProperty(id);
     }
-    
+
     public int getIdU() {
         return idU.get();
     }
@@ -170,12 +158,8 @@ public void setDate(String date){
     }
 
     public void setTitle(String title) {
-        this.title =new SimpleStringProperty (title);
+        this.title = new SimpleStringProperty(title);
     }
-    
-    
-    
-    
 
     public void setAuthor(String author) {
         this.author = new SimpleStringProperty(author);
@@ -185,52 +169,47 @@ public void setDate(String date){
         return author.get();
     }
 
-   
-    
-    
-    
-    
     public SimpleIntegerProperty getIdProperty() {
         return id;
     }
-    
-     public SimpleIntegerProperty getIdUProperty() {
+
+    public SimpleIntegerProperty getIdUProperty() {
         return idU;
     }
-    
-    public SimpleStringProperty getTitleProperty(){
+
+    public SimpleStringProperty getTitleProperty() {
         return title;
     }
-    public SimpleStringProperty getAuthorProperty(){
+
+    public SimpleStringProperty getAuthorProperty() {
         return author;
     }
-    public SimpleStringProperty getDescriptionProperty(){
+
+    public SimpleStringProperty getDescriptionProperty() {
         return description;
     }
-    
-     public SimpleStringProperty getDateProperty(){
+
+    public SimpleStringProperty getDateProperty() {
         return date;
     }
-     
-     public SimpleStringProperty getCategoryProperty(){
+
+    public SimpleStringProperty getCategoryProperty() {
         return category;
     }
-     
-     public SimpleStringProperty getUrlProperty(){
+
+    public SimpleStringProperty getUrlProperty() {
         return url;
     }
-     
-      public SimpleStringProperty getImageProperty(){
+
+    public SimpleStringProperty getImageProperty() {
         return image;
     }
-    
 
     @Override
     public String toString() {
-        return "Cours{" + "id=" + id.get() + ", title=" + title.get() + ", author=" + author.get() + ", description=" + description.get() +", date=" + date.get() +", category=" + category.get() + '}';
+        return "Cours{" + "id=" + id.get() + ", title=" + title.get() + ", author=" + author.get() + ", description=" + description.get() + ", date=" + date.get() + ", category=" + category.get() + '}';
     }
 
-    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -253,7 +232,4 @@ public void setDate(String date){
         return true;
     }
 
-    
-    
-    
 }

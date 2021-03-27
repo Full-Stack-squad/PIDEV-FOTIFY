@@ -95,6 +95,13 @@ public class SignUpController implements Initializable {
         return generatedPassword;
     }
 
+    public static boolean isValid(String email) {
+        if (email != null && email.trim().length() > 0) {
+            return email.matches("^[a-zA-Z0-9\\.\\-\\_]+@([a-zA-Z0-9\\-\\_\\.]+\\.)+([a-zA-Z]{2,4})$");
+        }
+        return false;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -117,21 +124,39 @@ public class SignUpController implements Initializable {
 
         btn_signup.setOnAction(
                 (ActionEvent event) -> {
-                    try {
-                        UserDao udao = UserDao.getInstance();
-                        String pwd = encrypt(TF_password.getText());
-                        udao.SignUp(new User(1, TF_nom.getText(), TF_presnom.getText(), str, Integer.parseInt(TF_age.getText()), Integer.parseInt(TF_tel.getText()), TF_email.getText(), pwd, "Membre"));
-                        JOptionPane.showMessageDialog(null, "Account created successfuly");
-                        Parent type = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
-                        Scene scene = new Scene(type);
-                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        stage.setScene(scene);
-                        stage.setTitle("Fotify");
-                        stage.show();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (Exception ex) {
-                        Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+                    if (!TF_nom.getText().isEmpty()) {
+                        if (isValid(TF_email.getText())) {
+                            if (TF_password.getText().length() > 8) {
+
+                                try {
+                                    UserDao udao = UserDao.getInstance();
+                                    String pwd = encrypt(TF_password.getText());
+                                    udao.SignUp(new User(1, TF_nom.getText(), TF_presnom.getText(), str, Integer.parseInt(TF_age.getText()), Integer.parseInt(TF_tel.getText()), TF_email.getText(), pwd, "Membre"));
+                                    JOptionPane.showMessageDialog(null, "Account created successfuly");
+                                    Parent type = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
+                                    Scene scene = new Scene(type);
+                                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                    stage.setScene(scene);
+                                    stage.setTitle("Fotify");
+                                    stage.show();
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+                                } catch (NumberFormatException exception) {
+                                    JOptionPane.showMessageDialog(null, "Camps age ou telephone invalide");
+                                } catch (Exception ex) {
+                                    Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "mot de passe trop faible");
+                            }
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "format mail incorrect");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "vide");
                     }
 
                 }

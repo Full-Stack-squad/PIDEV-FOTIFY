@@ -5,7 +5,6 @@
  */
 package dao;
 
-import java.util.List;
 import javafx.collections.ObservableList;
 
 /**
@@ -14,9 +13,14 @@ import javafx.collections.ObservableList;
  * @param <T>
  */
 public interface IFeedbackDAO<T> {
-   void add(T f);
-   void delete(int id);
-   boolean update(int id, T f);
-   ObservableList<T> list();
-   ObservableList<T> feedbackMembre();
+
+    void add(T f);
+
+    void delete(int id);
+
+    boolean update(int id, T f);
+
+    ObservableList<T> list();
+
+    ObservableList<T> feedbackMembre();
 }

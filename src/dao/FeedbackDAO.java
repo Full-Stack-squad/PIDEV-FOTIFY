@@ -77,7 +77,7 @@ public class FeedbackDAO implements IFeedbackDAO<Feedback> {
 
     @Override
     public boolean update(int id, Feedback f) {
-        String req = "UPDATE feedback SET date = '" + String.valueOf(f.getDateAjoutFeedBack()) + "', description = '" + f.getContenuFeedBack() + "', rating = '" + f.getRating() + "' WHERE id_feedback = " +id;
+        String req = "UPDATE feedback SET date = '" + String.valueOf(f.getDateAjoutFeedBack()) + "', description = '" + f.getContenuFeedBack() + "', rating = '" + f.getRating() + "' WHERE id_feedback = " + id;
 
         try {
             if (ste.executeUpdate(req) > 0) {
@@ -114,7 +114,7 @@ public class FeedbackDAO implements IFeedbackDAO<Feedback> {
         }
         return list;
     }
-    
+
     @Override
     public ObservableList<Feedback> feedbackMembre() {
         String req = "select * from feedback where id_membre = " + UserDao.connectedUser.getUserId();
@@ -138,10 +138,9 @@ public class FeedbackDAO implements IFeedbackDAO<Feedback> {
         }
         return list;
     }
-    
-    
+
     public ObservableList<Feedback> feedMembre(int idc) {
-        String req = "select * from feedback where id_abonne = " +idc;
+        String req = "select * from feedback where id_abonne = " + idc;
         ObservableList<Feedback> list = FXCollections.observableArrayList();
         try {
             ResultSet rs = ste.executeQuery(req);
@@ -162,12 +161,6 @@ public class FeedbackDAO implements IFeedbackDAO<Feedback> {
         }
         return list;
     }
-    
-    
-    
-    
-    
-    
 
     public Feedback displayById(int id) {
         String req = "select * from feedback where id_feedback =" + id;
@@ -186,9 +179,9 @@ public class FeedbackDAO implements IFeedbackDAO<Feedback> {
         }
         return f;
     }
-    
+
     public Feedback findFeedback() {
-        String req = "select * from feedback where id_membre =" + UserDao.connectedUser.getUserId() + " AND id_abonne =" + 2 ;
+        String req = "select * from feedback where id_membre =" + UserDao.connectedUser.getUserId() + " AND id_abonne =" + 2;
         Feedback f = new Feedback();
         try {
             ResultSet rs = ste.executeQuery(req);

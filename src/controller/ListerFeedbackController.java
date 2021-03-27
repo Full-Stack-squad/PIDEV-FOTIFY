@@ -245,7 +245,7 @@ public class ListerFeedbackController implements Initializable {
                 UserDao ud = new UserDao();
                 imaaa.add(feedbacks.get(i));
 
-                Label label_user = new Label("" + ud.displayByIdM(feedbacks.get(i).getIdMembre()).getUserNom());
+                Label label_user = new Label("" + ud.displayByIdM(feedbacks.get(i).getIdMembreAbonne()).getUserNom());
                 label_user.setMinWidth(100);
                 label_user.setMaxWidth(100);
                 label_user.setAlignment(Pos.BASELINE_LEFT);

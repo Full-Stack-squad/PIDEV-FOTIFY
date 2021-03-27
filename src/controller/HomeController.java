@@ -37,7 +37,6 @@ import javafx.stage.Stage;
 import entity.Cours;
 import dao.coursService;
 import java.util.List;
-import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -89,21 +88,8 @@ public class HomeController implements Initializable {
     /**
      * Initializes the controller class.
      */
-
     @FXML
     void search() {
-
-        search.setOnKeyReleased(event -> {
-            coursService pdao = new coursService();
-            listt = pdao.displayAll();
-            search.textProperty().addListener((observableValue, oldValue, newValue) -> {
-
-                list = listt.stream().filter(e -> e.getTitle().contains(newValue)).distinct().collect(Collectors.toList());
-                System.out.println(list);
-
-            });
-
-        });
 
     }
 

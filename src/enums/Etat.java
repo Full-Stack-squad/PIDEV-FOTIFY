@@ -10,5 +10,5 @@ package enums;
  * @author fares
  */
 public enum Etat {
-    TRAITE,EN_ATTENTE,REFUSE
+    TRAITE, EN_ATTENTE, REFUSE
 }

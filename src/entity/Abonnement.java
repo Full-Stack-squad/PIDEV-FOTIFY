@@ -13,7 +13,7 @@ import javafx.beans.property.SimpleStringProperty;
  * @author Amine
  */
 public class Abonnement {
-    
+
     private SimpleIntegerProperty id;
     private SimpleStringProperty Anom;
     private SimpleIntegerProperty idU;
@@ -23,7 +23,7 @@ public class Abonnement {
     public Abonnement() {
     }
 
-    public Abonnement(SimpleIntegerProperty id, SimpleStringProperty Anom, SimpleIntegerProperty idU, SimpleIntegerProperty idA,SimpleStringProperty nomA) {
+    public Abonnement(SimpleIntegerProperty id, SimpleStringProperty Anom, SimpleIntegerProperty idU, SimpleIntegerProperty idA, SimpleStringProperty nomA) {
         this.id = id;
         this.Anom = Anom;
         this.idU = idU;
@@ -31,11 +31,11 @@ public class Abonnement {
         this.Anom = nomA;
     }
 
-    public Abonnement(String Anom, int idU, int idA,String nomA) {
+    public Abonnement(String Anom, int idU, int idA, String nomA) {
         this.Anom = new SimpleStringProperty(Anom);
-        this.idU =new SimpleIntegerProperty(idU);
-        this.idA = new SimpleIntegerProperty(idA );
-         this.nomA = new SimpleStringProperty(nomA);
+        this.idU = new SimpleIntegerProperty(idU);
+        this.idA = new SimpleIntegerProperty(idA);
+        this.nomA = new SimpleStringProperty(nomA);
     }
 
     public int getId() {
@@ -53,7 +53,8 @@ public class Abonnement {
     public void setAnom(String Anom) {
         this.Anom = new SimpleStringProperty(Anom);
     }
-     public String getnomA() {
+
+    public String getnomA() {
         return nomA.get();
     }
 
@@ -77,50 +78,24 @@ public class Abonnement {
         this.idA = new SimpleIntegerProperty(idA);
     }
 
-
-public SimpleIntegerProperty getIdUProperty() {
+    public SimpleIntegerProperty getIdUProperty() {
         return idU;
     }
 
-public SimpleIntegerProperty getIdAProperty() {
+    public SimpleIntegerProperty getIdAProperty() {
         return idA;
     }
 
-public SimpleStringProperty getAnomProperty() {
+    public SimpleStringProperty getAnomProperty() {
         return Anom;
     }
-public SimpleStringProperty getnomAProperty() {
+
+    public SimpleStringProperty getnomAProperty() {
         return nomA;
     }
 
-public SimpleIntegerProperty getIdProperty() {
+    public SimpleIntegerProperty getIdProperty() {
         return id;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-

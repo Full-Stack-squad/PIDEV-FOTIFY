@@ -10,6 +10,7 @@ package entity;
  * @author repalce by your name
  */
 public class Feedback {
+
     private int id;
     private String dateAjoutFeedBack;
     private String contenuFeedBack;
@@ -25,21 +26,22 @@ public class Feedback {
         this.idMembreAbonne = idMembreAbonne;
         this.idMembre = idMembre;
     }
-    
+
     public Feedback(String dateAjoutFeedBack, String contenuFeedBack, int rating, int idMembreAbonne, int idMembre) {
-        
+
         this.dateAjoutFeedBack = dateAjoutFeedBack;
         this.contenuFeedBack = contenuFeedBack;
         this.rating = rating;
         this.idMembreAbonne = idMembreAbonne;
         this.idMembre = idMembre;
     }
-    public Feedback(int id,String dateAjoutFeedBack, String contenuFeedBack, int rating) {
-         this.id = id;
+
+    public Feedback(int id, String dateAjoutFeedBack, String contenuFeedBack, int rating) {
+        this.id = id;
         this.dateAjoutFeedBack = dateAjoutFeedBack;
         this.contenuFeedBack = contenuFeedBack;
         this.rating = rating;
-       
+
     }
 
     public int getId() {
@@ -78,7 +80,8 @@ public class Feedback {
         return idMembreAbonne;
     }
 
-    public Feedback() {}
+    public Feedback() {
+    }
 
     public void setIdMembreAbonne(int idMembreAbonne) {
         this.idMembreAbonne = idMembreAbonne;
@@ -96,5 +99,5 @@ public class Feedback {
     public String toString() {
         return "FeedBackDAO{" + "id=" + id + ", dateAjoutFeedBack=" + dateAjoutFeedBack + ", contenuFeedBack=" + contenuFeedBack + ", rating=" + rating + ", idMembreAbonne=" + idMembreAbonne + ", idMembre=" + idMembre + '}';
     }
-    
+
 }

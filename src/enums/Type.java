@@ -10,5 +10,5 @@ package enums;
  * @author fares
  */
 public enum Type {
-    MEMBRE,ADMINISTRATEUR
+    MEMBRE, ADMINISTRATEUR
 }

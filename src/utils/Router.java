@@ -10,10 +10,11 @@ package utils;
  * @author fares
  */
 public class Router {
-    
-    private static String viewPath = "/com/esprit/view/";
-    public static String getView(String folder,String name){
-        return viewPath+folder+"/"+name+".fxml";
-    } 
-    
+
+    private static String viewPath = "/view/";
+
+    public static String getView(String folder, String name) {
+        return viewPath + folder + "/" + name + ".fxml";
+    }
+
 }

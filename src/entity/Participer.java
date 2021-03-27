@@ -6,13 +6,13 @@
 package entity;
 
 import java.util.Date;
-import java.util.Objects;
 
 /**
  *
  * @author walid
  */
 public class Participer {
+
     private int id_participer;
     private int id_evenement;
     private int id_user;
@@ -68,5 +68,4 @@ public class Participer {
         return "Participer{" + "id_participer=" + id_participer + ", id_evenement=" + id_evenement + ", id_user=" + id_user + ", date=" + date + '}';
     }
 
-   
 }

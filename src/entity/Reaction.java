@@ -12,6 +12,7 @@ import java.util.Date;
  * @author ayoub
  */
 public class Reaction {
+
     private int id;
     private Date dateAjoutReaction;
     private String contenuReaction;
@@ -74,6 +75,5 @@ public class Reaction {
     public String toString() {
         return "Reaction{" + "id=" + id + ", dateAjoutReaction=" + dateAjoutReaction + ", contenuReaction=" + contenuReaction + ", rating=" + rating + ", idImage=" + idImage + '}';
     }
-    
-    
+
 }

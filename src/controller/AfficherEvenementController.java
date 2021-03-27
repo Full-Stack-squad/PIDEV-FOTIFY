@@ -5,8 +5,6 @@
  */
 package controller;
 
-
-
 import com.itextpdf.text.DocumentException;
 import utils.DataSource;
 import entity.Participer;
@@ -60,7 +58,7 @@ public class AfficherEvenementController implements Initializable {
     private TextField search;
     @FXML
     private ScrollPane scroll;
-    int n=1;
+    int n = 1;
     @FXML
     private Button trier;
     @FXML
@@ -81,13 +79,13 @@ public class AfficherEvenementController implements Initializable {
     private Button feedback_window_btn;
     @FXML
     private Label fotify;
-    String cLayout = "-fx-text-fill:white;\n" ;
-    
-    String cssLayout = "-fx-background-color: #1f1f22;\n" +
-                   "-fx-border-color: #fabe2e;\n" +
-                   "-fx-border-width: 2;\n" +
-                  "-fx-text-fill:white;\n" +
-                   "-fx-border-radius: 10;\n";
+    String cLayout = "-fx-text-fill:white;\n";
+
+    String cssLayout = "-fx-background-color: #1f1f22;\n"
+            + "-fx-border-color: #fabe2e;\n"
+            + "-fx-border-width: 2;\n"
+            + "-fx-text-fill:white;\n"
+            + "-fx-border-radius: 10;\n";
 
     public AfficherEvenementController() {
         con = DataSource.getInstance().getCnx();
@@ -101,7 +99,7 @@ public class AfficherEvenementController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         fotify.setOnMouseClicked(event -> {
             try {
 
@@ -109,31 +107,26 @@ public class AfficherEvenementController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-        
-        
-          
-            actualitecontainer.setSpacing(5);
-            try {
-                displayActualite();
-            } catch (SQLException ex) {
-                Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-             
-            
-        
+
+        actualitecontainer.setSpacing(5);
+        try {
+            displayActualite();
+        } catch (SQLException ex) {
+            Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     private void displayActualite() throws SQLException {
         ServiceEvenement pa = new ServiceEvenement();
-        ServiceParticiper oo=new ServiceParticiper();
+        ServiceParticiper oo = new ServiceParticiper();
         String req = "select * from evenement  ";
         List<VBox> list = new ArrayList<>();
         ste = con.createStatement();
@@ -143,17 +136,17 @@ public class AfficherEvenementController implements Initializable {
             java.sql.Date d2 = new java.sql.Date(rs.getDate(6).getTime());
 
             evenement a1 = new evenement(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), d1, d2);
-            ImageView va = new ImageView(new Image("http://127.0.0.1/doc/"+rs.getString(4)));
+            ImageView va = new ImageView(new Image("http://127.0.0.1/doc/" + rs.getString(4)));
             va.setFitHeight(170);
             va.setFitWidth(200);
             Label nom = new Label("Titre : " + a1.getTitre());
             Label contenu = new Label("Le contenu : " + a1.getContenu());
             Label dateajout = new Label("Cette evenement est ajouté le : " + a1.getDateajout());
             Label datemodif = new Label("Cette evenement est modifé le : " + a1.getDatemodif());
-nom.setStyle(cLayout);
-contenu.setStyle(cLayout);
-dateajout.setStyle(cLayout);
-datemodif.setStyle(cLayout);
+            nom.setStyle(cLayout);
+            contenu.setStyle(cLayout);
+            dateajout.setStyle(cLayout);
+            datemodif.setStyle(cLayout);
             HBox h1 = new HBox();
             h1.setSpacing(10);
             h1.setAlignment(Pos.CENTER);
@@ -170,65 +163,65 @@ datemodif.setStyle(cLayout);
             h4.setSpacing(10);
             h4.setAlignment(Pos.CENTER);
             h4.getChildren().addAll(datemodif);
-            Button bt2=new Button("participer" ) ;
-              bt2.setStyle(cssLayout);
+            Button bt2 = new Button("Participer");
+            bt2.setStyle(cssLayout);
             java.util.Date dd = new java.util.Date();
-        if (oo.chercher_ajout(new Participer(a1.getId(),1,dd)))
-                         {
-                   bt2.setDisable(true);
-                 
-              }
-             bt2.setOnAction(new EventHandler<ActionEvent>() {
-                 @Override
-                 public void handle(ActionEvent event) { //bitha heki chas
-                     
-                        try {
-            if (!oo.chercher_ajout(new Participer(a1.getId(),1,d1))){
-                
-                try {
-                    oo.ajouter(new Participer(a1.getId(),1,d1));
-                     
-                    String SQL1 = "UPDATE library.evenement SET  nb_participer=nb_participer+1 WHERE id ='"+a1.getId()+"'";
-                               int rs1 = ste.executeUpdate(SQL1);
-                               
-                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            if (oo.chercher_ajout(new Participer(a1.getId(), 1, dd))) {
                 bt2.setDisable(true);
-            }else System.out.println("evenement DEJA participer");
-        } catch (SQLException ex) {
-            Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-                      
-                 }
-             });
-             Button bt3=new Button("imprimer" ) ;
-             bt3.setStyle(cssLayout);
-             bt3.setOnAction(new EventHandler<ActionEvent>() {
-                 @Override
-                 public void handle(ActionEvent event) {                     
-                        
-                      PDF pdf = new PDF();
-                     
-                     try {
-                         pdf.pdf(a1);
-                     } catch (SQLException ex) {
-                         Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-                     } catch (DocumentException ex) {
-                         Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-                     } catch (IOException ex) {
-                         Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                     
-                               bt2.setDisable(true); 
-                      
-                 }
-             });
+
+            }
+            bt2.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) { //bitha heki chas
+
+                    try {
+                        if (!oo.chercher_ajout(new Participer(a1.getId(), 1, d1))) {
+
+                            try {
+                                oo.ajouter(new Participer(a1.getId(), 1, d1));
+
+                                String SQL1 = "UPDATE library.evenement SET  nb_participer=nb_participer+1 WHERE id ='" + a1.getId() + "'";
+                                int rs1 = ste.executeUpdate(SQL1);
+
+                            } catch (SQLException ex) {
+                                Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            bt2.setDisable(true);
+                        } else {
+                            System.out.println("evenement DEJA participer");
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            });
+            Button bt3 = new Button("Imprimer");
+            bt3.setStyle(cssLayout);
+            bt3.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+
+                    PDF pdf = new PDF();
+
+                    try {
+                        pdf.pdf(a1);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (DocumentException ex) {
+                        Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    bt2.setDisable(true);
+
+                }
+            });
             VBox v = new VBox();
             v.setAlignment(Pos.CENTER);
             v.setSpacing(10);
-            v.getChildren().addAll(h1, h2,h3,h4,bt2,bt3);
+            v.getChildren().addAll(h1, h2, h3, h4, bt2, bt3);
 
             VBox vv = new VBox();
             vv.setAlignment(Pos.CENTER);
@@ -247,11 +240,12 @@ datemodif.setStyle(cLayout);
 
         }
         actualitecontainer.getChildren().addAll(list);
-        
+
     }
+
     private void displayActualiteAvancee(String req) throws SQLException {
         ServiceEvenement pa = new ServiceEvenement();
-       ServiceParticiper oo=new ServiceParticiper();
+        ServiceParticiper oo = new ServiceParticiper();
         List<VBox> list = new ArrayList<>();
         ste = con.createStatement();
         ResultSet rs = ste.executeQuery(req);
@@ -260,14 +254,17 @@ datemodif.setStyle(cLayout);
             java.sql.Date d2 = new java.sql.Date(rs.getDate(6).getTime());
 
             evenement a1 = new evenement(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), d1, d2);
-            ImageView va = new ImageView(new Image("http://127.0.0.1/doc/"+rs.getString(4)));
+            ImageView va = new ImageView(new Image("http://127.0.0.1/doc/" + rs.getString(4)));
             va.setFitHeight(170);
             va.setFitWidth(200);
             Label nom = new Label("Titre : " + a1.getTitre());
             Label contenu = new Label("Le contenu : " + a1.getContenu());
             Label dateajout = new Label("Cette annonce est ajouté le : " + a1.getDateajout());
             Label datemodif = new Label("Cette annonce est modifé le : " + a1.getDatemodif());
-
+            nom.setStyle(cLayout);
+            contenu.setStyle(cLayout);
+            dateajout.setStyle(cLayout);
+            datemodif.setStyle(cLayout);
             HBox h1 = new HBox();
             h1.setSpacing(10);
             h1.setAlignment(Pos.CENTER);
@@ -284,63 +281,64 @@ datemodif.setStyle(cLayout);
             h4.setSpacing(10);
             h4.setAlignment(Pos.CENTER);
             h4.getChildren().addAll(datemodif);
-             Button bt2=new Button("participer" ) ;
-             bt2.setStyle(cssLayout);
+            Button bt2 = new Button("Participer");
+            bt2.setStyle(cssLayout);
             java.util.Date dd = new java.util.Date();
-        if (oo.chercher_ajout(new Participer(a1.getId(),1,dd)))
-                         {
-                   bt2.setDisable(true);
-              }
-             bt2.setOnAction(new EventHandler<ActionEvent>() {
-                 @Override
-                 public void handle(ActionEvent event) { //bitha heki chas
-                     
-                        try {
-            if (!oo.chercher_ajout(new Participer(a1.getId(),1,d1))){
-                
-                try {
-                    oo.ajouter(new Participer(a1.getId(),1,d1));
-                     
-                    String SQL1 = "UPDATE library.evenement SET  nb_participer=nb_participer+1 WHERE id ='"+a1.getId()+"'";
-                               int rs1 = ste.executeUpdate(SQL1);
-                               
-                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            if (oo.chercher_ajout(new Participer(a1.getId(), 1, dd))) {
                 bt2.setDisable(true);
-            }else System.out.println("evenement DEJA participer");
-        } catch (SQLException ex) {
-            Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-                      
-                 }
-             });
-             Button bt3=new Button("imprimer" ) ;
-             bt3.setOnAction(new EventHandler<ActionEvent>() {
-                 @Override
-                 public void handle(ActionEvent event) {                     
-                        
-                      PDF pdf = new PDF();
-                     
-                     try {
-                         pdf.pdf(a1);
-                     } catch (SQLException ex) {
-                         Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-                     } catch (DocumentException ex) {
-                         Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-                     } catch (IOException ex) {
-                         Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                     
-                               bt2.setDisable(true); 
-                      
-                 }
-             });
+            }
+            bt2.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) { //bitha heki chas
+
+                    try {
+                        if (!oo.chercher_ajout(new Participer(a1.getId(), 1, d1))) {
+
+                            try {
+                                oo.ajouter(new Participer(a1.getId(), 1, d1));
+
+                                String SQL1 = "UPDATE library.evenement SET  nb_participer=nb_participer+1 WHERE id ='" + a1.getId() + "'";
+                                int rs1 = ste.executeUpdate(SQL1);
+
+                            } catch (SQLException ex) {
+                                Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            bt2.setDisable(true);
+                        } else {
+                            System.out.println("evenement DEJA participer");
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            });
+            Button bt3 = new Button("Imprimer");
+            bt3.setStyle(cssLayout);
+            bt3.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+
+                    PDF pdf = new PDF();
+
+                    try {
+                        pdf.pdf(a1);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (DocumentException ex) {
+                        Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AfficherEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    bt2.setDisable(true);
+
+                }
+            });
             VBox v = new VBox();
             v.setAlignment(Pos.CENTER);
             v.setSpacing(10);
-            v.getChildren().addAll(h1, h2,h3,h4,bt2,bt3);
+            v.getChildren().addAll(h1, h2, h3, h4, bt2, bt3);
 
             VBox vv = new VBox();
             vv.setAlignment(Pos.CENTER);
@@ -364,15 +362,15 @@ datemodif.setStyle(cLayout);
     @FXML
     private void recherche(ActionEvent event) throws SQLException {
         actualitecontainer.getChildren().removeAll(actualitecontainer.getChildren());
-      String search11 = search.getText();
-      String req ="select * from evenement where titre = '"+search11+"' or contenu = '"+search11+"'";
+        String search11 = search.getText();
+        String req = "select * from evenement where titre = '" + search11 + "' or contenu = '" + search11 + "'";
         displayActualiteAvancee(req);
-        if(search11.equals("")){
-             req ="select * from evenement";
-        displayActualiteAvancee(req);
-            
+        if (search11.equals("")) {
+            req = "select * from evenement";
+            displayActualiteAvancee(req);
+
         }
-      
+
     }
 
     @FXML
@@ -382,17 +380,16 @@ datemodif.setStyle(cLayout);
         displayActualiteAvancee(req);
     }
 
-
     @FXML
     private void gererprofile() {
-          ab51.setOnMouseClicked(event -> {
+        ab51.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/displayUsers.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle(""); 
+                stage.setTitle("");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -414,7 +411,7 @@ datemodif.setStyle(cLayout);
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -425,14 +422,14 @@ datemodif.setStyle(cLayout);
 
     @FXML
     private void gererevenement() {
-          ab2.setOnMouseClicked(event -> {
+        ab2.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/AfficherEvenement.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -443,15 +440,15 @@ datemodif.setStyle(cLayout);
 
     @FXML
     private void gerergalerie() {
-        
-         ab.setOnMouseClicked(event -> {
+
+        ab.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -462,14 +459,14 @@ datemodif.setStyle(cLayout);
 
     @FXML
     private void gererreclamation() {
-          ab1.setOnMouseClicked(event -> {
+        ab1.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -482,24 +479,18 @@ datemodif.setStyle(cLayout);
     private void gererFeedback() {
         feedback_window_btn.setOnMouseClicked(event -> {
             System.out.println("hey");
-           try {
+            try {
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 System.out.println("hey");
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         });
     }
-    
-      
-
-    
-        
-       
 
 }

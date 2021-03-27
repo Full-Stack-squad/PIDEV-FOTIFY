@@ -5,13 +5,9 @@
  */
 package controller;
 
-import dao.UserDao;
 import entity.User;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -52,46 +48,13 @@ public class ProfileAdminController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
-    
-    
-   
-            
-   
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-            
-           
-            
-     
-       
-            
-            
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }    
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    }
+
 }
