@@ -75,15 +75,16 @@ public class AjouterFeedbackController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //SpinnerValueFactory<Integer> rating = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 5, 3);
         //this.feedback_rating.setValueFactory(rating);
-        
-         fotify.setOnMouseClicked(event -> {
+
+        fotify.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/firstView.fxml"));
                 Scene scene = new Scene(type);
+
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,8 +106,6 @@ public class AjouterFeedbackController implements Initializable {
             }
 
         });
-
-       
 
         btn_listerfeedback.setOnAction(event -> {
             Parent listFeedbackPage;
@@ -156,22 +155,22 @@ public class AjouterFeedbackController implements Initializable {
         });
     }
 
-  @FXML
+    @FXML
     private void gererFeedback() {
-       
+
         feedback_window_btn.setOnMouseClicked(event -> {
             System.out.println("hey");
-           try {
+            try {
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 System.out.println("hey");
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         });
     }
 
@@ -184,7 +183,7 @@ public class AjouterFeedbackController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -206,7 +205,7 @@ public class AjouterFeedbackController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -224,7 +223,7 @@ public class AjouterFeedbackController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -235,14 +234,14 @@ public class AjouterFeedbackController implements Initializable {
 
     @FXML
     private void gerergalerie() {
-         ab.setOnMouseClicked(event -> {
+        ab.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -253,14 +252,14 @@ public class AjouterFeedbackController implements Initializable {
 
     @FXML
     private void gererreclamation() {
-         ab1.setOnMouseClicked(event -> {
+        ab1.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);

@@ -5,7 +5,6 @@
  */
 package controller;
 
-
 import dao.UserDao;
 import java.awt.Desktop;
 import java.io.File;
@@ -61,9 +60,9 @@ import dao.coursService;
  * @author Amine
  */
 public class CoursController implements Initializable {
-    
-    int u =2;
-    
+
+    int u = 2;
+
     @FXML
     private AnchorPane an;
 
@@ -77,14 +76,13 @@ public class CoursController implements Initializable {
     private TextArea txtdesc;
     @FXML
     private TextField s;
-    
+
     @FXML
     private TextField txtsearch;
-    
+
     @FXML
     private Hyperlink ref;
 
-    
     @FXML
     private Hyperlink my;
 
@@ -99,7 +97,7 @@ public class CoursController implements Initializable {
 
     @FXML
     private Button btnchoose;
-    
+
     @FXML
     private Button btnbrowse;
 
@@ -108,7 +106,6 @@ public class CoursController implements Initializable {
 
     @FXML
     private TableView<Cours> tvCours;
-
 
     @FXML
     private TableColumn<Cours, String> colTitle;
@@ -123,34 +120,33 @@ public class CoursController implements Initializable {
     private TableColumn<Cours, String> coldate;
     @FXML
     private TableColumn<Cours, String> colcategory;
-    
-     @FXML
+
+    @FXML
     private TableColumn<Cours, String> colfile;
-     
-     @FXML
+
+    @FXML
     private TableColumn<Cours, String> colimage;
-     
-     @FXML
+
+    @FXML
     private ImageView imgview;
-    
-    private  ListData listdata = new ListData();
+
+    private ListData listdata = new ListData();
     private final Desktop desktop = Desktop.getDesktop();
-    private ObservableList<Cours> list=FXCollections.observableArrayList();
+    private ObservableList<Cours> list = FXCollections.observableArrayList();
     private FileChooser filechooser = new FileChooser();
-    
+
     public String path;
     public String url;
     public String image;
     public String doc;
 
-    
     @FXML
     private Label photo;
-    
-     @FXML
+
+    @FXML
     private Label lblfile;
 
-      @FXML
+    @FXML
     private TextField lbl;
 
     @FXML
@@ -169,18 +165,15 @@ public class CoursController implements Initializable {
     @FXML
     private Label lbldescription;
 
-    
-
     @FXML
     private DatePicker d;
 
     @FXML
     private ComboBox<String> c;
 
-    
     @FXML
     private Hyperlink allcours;
-    
+
     @FXML
     private Hyperlink logout;
 
@@ -188,7 +181,6 @@ public class CoursController implements Initializable {
     private void event(javafx.scene.input.MouseEvent event) {
 
         ObservableList<Cours> cours = tvCours.getSelectionModel().getSelectedItems();
-        
 
         tftitle.setText(cours.get(0).getTitle());
         tfauthor.setText(cours.get(0).getAuthor());
@@ -198,7 +190,6 @@ public class CoursController implements Initializable {
         lbl.setText(cours.get(0).getUrl());
         photo.setText(cours.get(0).getImage());
         imgview.setImage(new Image(cours.get(0).getImage()));
-        
 
     }
 
@@ -210,7 +201,7 @@ public class CoursController implements Initializable {
             pdao.delete(cours.get(0));
             tvCours.getItems().removeAll(tvCours.getSelectionModel().getSelectedItem());
             JOptionPane.showMessageDialog(null, "Cours delete success");
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please select item to delete");
 
@@ -220,47 +211,41 @@ public class CoursController implements Initializable {
 
     @FXML
     void Insert(ActionEvent event) {
-        
-         
 
-        if (tftitle.getText().isEmpty() || tfauthor.getText().isEmpty() || s.getText().isEmpty() ) {
-            
+        if (tftitle.getText().isEmpty() || tfauthor.getText().isEmpty() || s.getText().isEmpty()) {
+
             JOptionPane.showMessageDialog(null, "Please fill in the fields");
         } else {
             try {
 
-                Cours C = new Cours(tftitle.getText(), tfauthor.getText(), txtdesc.getText(), s.getText(), n.getText(),this.path,photo.getText(),UserDao.connectedUser.getUserId());
-                
+                Cours C = new Cours(tftitle.getText(), tfauthor.getText(), txtdesc.getText(), s.getText(), n.getText(), this.path, photo.getText(), UserDao.connectedUser.getUserId());
 
                 coursService pdao = coursService.getInstance();
                 pdao.insert(C);
                 tvCours.getItems().add(C);
-                
+
                 JOptionPane.showMessageDialog(null, "Cours add success");
-                
-                
-                
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Please fill in the fields");
 
             }
 
         }
-        
+
     }
 
     @FXML
     void Update(ActionEvent event) {
-        
+
         try {
             ObservableList<Cours> cours = tvCours.getSelectionModel().getSelectedItems();
             coursService pdao = coursService.getInstance();
-            Cours cours1= new Cours(cours.get(0).getId(),tftitle.getText(),tfauthor.getText(),txtdesc.getText(),s.getText(),n.getText(),lbl.getText(),photo.getText());
-            
-            pdao.update(cours1);  
+            Cours cours1 = new Cours(cours.get(0).getId(), tftitle.getText(), tfauthor.getText(), txtdesc.getText(), s.getText(), n.getText(), lbl.getText(), photo.getText());
+
+            pdao.update(cours1);
             JOptionPane.showMessageDialog(null, "Cours updated with success");
-            
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please select item to update");
 
@@ -268,71 +253,63 @@ public class CoursController implements Initializable {
 
     }
 
-    
     @FXML
     void browse() {
-        btnbrowse.setOnMouseClicked(e->{
+        btnbrowse.setOnMouseClicked(e -> {
             try {
-               
-              FileChooser v = new FileChooser();
-              v.setTitle("Open IMAGE file...");
-              v.getExtensionFilters().add(new FileChooser.ExtensionFilter("IMAGE Files", "*.jpg","*.jpeg"));
-              
-                        File infile = v.showOpenDialog(null);
-                        
-                        Image img = SwingFXUtils.toFXImage(ImageIO.read(infile), null); 
-                        imgview.setImage(img);
-                        doc="http://localhost/doc/"+infile.getName() ;
-                        Path from = Paths.get(infile.toURI());
-                        Path to = Paths.get("C:\\wamp\\www\\doc"+infile.getName());
-                        CopyOption[] options = new CopyOption[]{
-                               StandardCopyOption.REPLACE_EXISTING,
-                               StandardCopyOption.COPY_ATTRIBUTES};
-                        Path temp = Files.copy(from,to,options);
-                        this.image=doc;
-                        photo.setText(doc);
-            }
-            catch (IOException ex) {
-               
-                         } ;
-        
-    });
+
+                FileChooser v = new FileChooser();
+                v.setTitle("Open IMAGE file...");
+                v.getExtensionFilters().add(new FileChooser.ExtensionFilter("IMAGE Files", "*.jpg", "*.jpeg"));
+
+                File infile = v.showOpenDialog(null);
+
+                Image img = SwingFXUtils.toFXImage(ImageIO.read(infile), null);
+                imgview.setImage(img);
+                doc = "http://localhost/doc/" + infile.getName();
+                Path from = Paths.get(infile.toURI());
+                Path to = Paths.get("C:\\wamp\\www\\doc" + infile.getName());
+                CopyOption[] options = new CopyOption[]{
+                    StandardCopyOption.REPLACE_EXISTING,
+                    StandardCopyOption.COPY_ATTRIBUTES};
+                Path temp = Files.copy(from, to, options);
+                this.image = doc;
+                photo.setText(doc);
+            } catch (IOException ex) {
+
+            };
+
+        });
 
     }
-    
-    
-    
-    
+
     @FXML
     void choose(ActionEvent event) {
         try {
-            
-       FileChooser r = new FileChooser();
-        r.setTitle("Open file...");
-       r.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
-       r.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML Files", "*.html"));
-       r.getExtensionFilters().add(new FileChooser.ExtensionFilter("TEXT Files", "*.txt"));
-       File h = r.showOpenDialog(null);
-       path= "http://localhost/doc/"+h.getName();
-       Path from=  Paths.get(h.toURI());
-       Path to =   Paths.get("C:\\wamp\\www\\doc"+h.getName());  
-       CopyOption[] options = new CopyOption[] {
-           StandardCopyOption.REPLACE_EXISTING,
-           StandardCopyOption.COPY_ATTRIBUTES};
-       Path temp = Files.copy(from, to, options);
-       this.url=path;
-        
-       lbl.setText(path);
-       
-       
-       
+
+            FileChooser r = new FileChooser();
+            r.setTitle("Open file...");
+            r.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+            r.getExtensionFilters().add(new FileChooser.ExtensionFilter("HTML Files", "*.html"));
+            r.getExtensionFilters().add(new FileChooser.ExtensionFilter("TEXT Files", "*.txt"));
+            File h = r.showOpenDialog(null);
+            path = "http://localhost/doc/" + h.getName();
+            Path from = Paths.get(h.toURI());
+            Path to = Paths.get("C:\\wamp\\www\\doc" + h.getName());
+            CopyOption[] options = new CopyOption[]{
+                StandardCopyOption.REPLACE_EXISTING,
+                StandardCopyOption.COPY_ATTRIBUTES};
+            Path temp = Files.copy(from, to, options);
+            this.url = path;
+
+            lbl.setText(path);
+
         } catch (Exception ex) {
-            
+
         }
-        
-      
+
         // For multiple selection :)
-       /* List <File> fileList = r.showOpenMultipleDialog(null);
+        /* List <File> fileList = r.showOpenMultipleDialog(null);
         if (fileList!=null){
            fileList.stream().forEach(selectedFile -> {
         try {
@@ -342,7 +319,6 @@ public class CoursController implements Initializable {
            }
         });
         }*/
-
     }
 
     @FXML
@@ -358,72 +334,68 @@ public class CoursController implements Initializable {
         n.setText(y);
 
     }
-    
+
     @FXML
     void refresh() {
-             ref.setOnMouseClicked(event -> {
-                 tfauthor.setText("");
-                 tftitle.setText("");
-                 n.setText("");
-                 s.setText("");
-                 txtdesc.setText("");
-                 imgview.setImage(null);
-                 lbl.setText("");
+        ref.setOnMouseClicked(event -> {
+            tfauthor.setText("");
+            tftitle.setText("");
+            n.setText("");
+            s.setText("");
+            txtdesc.setText("");
+            imgview.setImage(null);
+            lbl.setText("");
 
         });
     }
-    
-    
-     @FXML
+
+    @FXML
     void my() {
         coursService pdao = coursService.getInstance();
-          my.setOnMouseClicked(e->{
-           
+        my.setOnMouseClicked(e -> {
+
             tvCours.setItems(pdao.displayByAu(UserDao.connectedUser.getUserId()));
-       
-        colTitle.setCellValueFactory(cell -> cell.
-                getValue().getTitleProperty());
-        colAuthor.setCellValueFactory(cell -> cell.
-                getValue().getAuthorProperty());
-        coldesc.setCellValueFactory(cell -> cell.
-                getValue().getDescriptionProperty());
-        coldate.setCellValueFactory(cell -> cell.
-                getValue().getDateProperty());
-        colcategory.setCellValueFactory(cell -> cell.
-                getValue().getCategoryProperty());
-        colfile.setCellValueFactory(cell -> cell.
-                getValue().getUrlProperty());
-        colimage.setCellValueFactory(cell -> cell.
-                getValue().getImageProperty());
+
+            colTitle.setCellValueFactory(cell -> cell.
+                    getValue().getTitleProperty());
+            colAuthor.setCellValueFactory(cell -> cell.
+                    getValue().getAuthorProperty());
+            coldesc.setCellValueFactory(cell -> cell.
+                    getValue().getDescriptionProperty());
+            coldate.setCellValueFactory(cell -> cell.
+                    getValue().getDateProperty());
+            colcategory.setCellValueFactory(cell -> cell.
+                    getValue().getCategoryProperty());
+            colfile.setCellValueFactory(cell -> cell.
+                    getValue().getUrlProperty());
+            colimage.setCellValueFactory(cell -> cell.
+                    getValue().getImageProperty());
 
         });
-          
-         
+
     }
-    
-    
-     @FXML
+
+    @FXML
     void all() {
-         allcours.setOnMouseClicked(event -> {
+        allcours.setOnMouseClicked(event -> {
             tvCours.setItems(listdata.getCours());
-       
-        colTitle.setCellValueFactory(cell -> cell.
-                getValue().getTitleProperty());
-        colAuthor.setCellValueFactory(cell -> cell.
-                getValue().getAuthorProperty());
-        coldesc.setCellValueFactory(cell -> cell.
-                getValue().getDescriptionProperty());
-        coldate.setCellValueFactory(cell -> cell.
-                getValue().getDateProperty());
-        colcategory.setCellValueFactory(cell -> cell.
-                getValue().getCategoryProperty());
-        colfile.setCellValueFactory(cell -> cell.
-                getValue().getUrlProperty());
-        colimage.setCellValueFactory(cell -> cell.
-                getValue().getImageProperty());
+
+            colTitle.setCellValueFactory(cell -> cell.
+                    getValue().getTitleProperty());
+            colAuthor.setCellValueFactory(cell -> cell.
+                    getValue().getAuthorProperty());
+            coldesc.setCellValueFactory(cell -> cell.
+                    getValue().getDescriptionProperty());
+            coldate.setCellValueFactory(cell -> cell.
+                    getValue().getDateProperty());
+            colcategory.setCellValueFactory(cell -> cell.
+                    getValue().getCategoryProperty());
+            colfile.setCellValueFactory(cell -> cell.
+                    getValue().getUrlProperty());
+            colimage.setCellValueFactory(cell -> cell.
+                    getValue().getImageProperty());
 
         });
-
 
     }
 
@@ -436,7 +408,7 @@ public class CoursController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -445,60 +417,50 @@ public class CoursController implements Initializable {
         });
 
     }
-    
+
     @FXML
     void serach() {
-        
+
         FilteredList<Cours> filteredData = new FilteredList<>(listdata.getCours(), e -> true);
         txtsearch.setOnKeyReleased(event -> {
-        txtsearch.textProperty().addListener(( observableValue,oldValue,newValue) -> {
-            filteredData.setPredicate((Predicate <? super Cours>) cours -> {
-                
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
-                if (cours.getTitle().toLowerCase().contains(newValue)) {
-                    return true;
-                } else if (cours.getDescription().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (cours.getAuthor().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-            } else if (cours.getCategory().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-            } else if (cours.getDate().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; 
-            } else if (cours.getUrl().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; }
-            else if (cours.getImage().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; }
-              return false;      
-        });
-    });
-        SortedList<Cours> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(tvCours.comparatorProperty());
-        tvCours.setItems(sortedData);
-        
-        
+            txtsearch.textProperty().addListener((observableValue, oldValue, newValue) -> {
+                filteredData.setPredicate((Predicate<? super Cours>) cours -> {
 
-    });
-        
-     
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (cours.getTitle().toLowerCase().contains(newValue)) {
+                        return true;
+                    } else if (cours.getDescription().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    } else if (cours.getAuthor().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    } else if (cours.getCategory().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    } else if (cours.getDate().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    } else if (cours.getUrl().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    } else if (cours.getImage().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Cours> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(tvCours.comparatorProperty());
+            tvCours.setItems(sortedData);
+
+        });
 
     }
-    
-    
-    
-    
-    
-    
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         tvCours.setItems(listdata.getCours());
-       
+
         colTitle.setCellValueFactory(cell -> cell.
                 getValue().getTitleProperty());
         colAuthor.setCellValueFactory(cell -> cell.
@@ -513,22 +475,11 @@ public class CoursController implements Initializable {
                 getValue().getUrlProperty());
         colimage.setCellValueFactory(cell -> cell.
                 getValue().getImageProperty());
-        
-      
-        
-        
+
         coursService pdao = coursService.getInstance();
         ArrayList<Cours> c33 = new ArrayList<>();
-        c33= (ArrayList<Cours>) pdao.displayByA(u);
-        tfauthor.setText(UserDao.connectedUser.getUserNom()+" "+UserDao.connectedUser.getUserPrenom());
-        
-        
-        
-        
-         
-
-
-       
+        c33 = (ArrayList<Cours>) pdao.displayByA(u);
+        tfauthor.setText(UserDao.connectedUser.getUserNom() + " " + UserDao.connectedUser.getUserPrenom());
 
         ObservableList<String> combo = FXCollections.observableArrayList("Basic", "Portraits", "Lightroom", "Photoshop", "Numérique", "Commercial");
         c.setItems(combo);
@@ -547,9 +498,6 @@ public class CoursController implements Initializable {
         btninsert.setTooltip(new Tooltip("Click to insert"));
         btndelete.setTooltip(new Tooltip("Click to delete"));
         btnupdate.setTooltip(new Tooltip("Click to update"));
-        
-        
-       
 
     }
 }

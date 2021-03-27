@@ -16,13 +16,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: #fabe2e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
+<AnchorPane prefHeight="623.0" prefWidth="1030.0" style="-fx-background-color: #fabe2e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
    <children>
       <BorderPane layoutX="31.0" layoutY="11.0" prefHeight="603.0" prefWidth="1003.0" style="-fx-border-radius: 20;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <center>
             <AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="710.0" style="-fx-background-color: #1f1f22;">
                <children>
-                  <VBox alignment="CENTER" layoutX="43.0" layoutY="14.0" prefHeight="408.0" prefWidth="197.0" spacing="25.0">
+                  <VBox alignment="CENTER" layoutX="47.0" layoutY="10.0" prefHeight="408.0" prefWidth="197.0" spacing="25.0">
                      <children>
                         <HBox alignment="CENTER" spacing="5.0">
                            <VBox.margin>
@@ -40,20 +40,20 @@
                               </Label>
                            </children>
                         </HBox>
-                        <ImageView fx:id="phProfil" fitHeight="127.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" style="-fx-borde-radius: 20 20 10 10;" />
-                        <VBox prefHeight="130.0" prefWidth="197.0">
+                        <ImageView fx:id="phProfil" fitHeight="133.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true" style="-fx-borde-radius: 20 20 10 10;" />
+                        <VBox prefHeight="164.0" prefWidth="197.0">
                            <children>
-                              <Label fx:id="noml" prefHeight="31.0" prefWidth="180.0" textFill="WHITE">
+                              <Label fx:id="noml" prefHeight="32.0" prefWidth="205.0" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="tell" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="180.0" textFill="WHITE">
+                              <Label fx:id="tell" layoutX="10.0" layoutY="10.0" prefHeight="32.0" prefWidth="211.0" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="biol" layoutX="10.0" layoutY="42.0" prefHeight="31.0" prefWidth="180.0" textFill="WHITE">
+                              <Label fx:id="biol" layoutX="10.0" layoutY="42.0" prefHeight="32.0" prefWidth="208.0" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -76,7 +76,7 @@
                         </Button>
                      </children>
                   </VBox>
-                  <Label layoutX="294.0" layoutY="44.0" prefHeight="45.0" prefWidth="144.0" text="Gallerie" textFill="WHITE">
+                  <Label layoutX="291.0" layoutY="48.0" prefHeight="45.0" prefWidth="144.0" text="Gallerie" textFill="WHITE">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -84,7 +84,7 @@
                         <Line endX="-102.00001525878906" endY="70.29289245605469" fill="#fabe2e" startX="-101.99999237060547" startY="30.201005935668945" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
                      </graphic>
                   </Label>
-                  <ScrollPane fx:id="sp" fitToHeight="true" fitToWidth="true" layoutX="219.0" layoutY="103.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="315.0" prefWidth="468.0" style="-fx-background-color: transparent; -fx-border-color: #fabe2e; -fx-scale-x: white; -fx-border-radius: 10;" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="23.0">
+                  <ScrollPane fx:id="sp" fitToHeight="true" fitToWidth="true" layoutX="291.0" layoutY="103.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="315.0" prefWidth="387.0" style="-fx-background-color: transparent; -fx-border-color: #fabe2e; -fx-scale-x: white; -fx-border-radius: 10;" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="9.0">
                      <content>
                         <GridPane fx:id="gp" alignment="BASELINE_CENTER" hgap="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="284.0" prefWidth="345.0" style="-fx-background-color: #1f1f22; -fx-border-width: 3;">
                           <columnConstraints>

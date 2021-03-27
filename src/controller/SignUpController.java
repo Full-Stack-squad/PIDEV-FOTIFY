@@ -11,21 +11,22 @@ import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -56,18 +57,19 @@ public class SignUpController implements Initializable {
     private RadioButton femme_rb;
 
     private String str = "Homme";
-  private static final String ALGORITHM = "md5";
+    private static final String ALGORITHM = "md5";
     private static final String DIGEST_STRING = "HG58YZ3CR9";
     private static final String CHARSET_UTF_8 = "utf-8";
     private static final String SECRET_KEY_ALGORITHM = "DESede";
-    private static final String TRANSFORMATION_PADDING = "DESede/CBC/PKCS5Padding"; 
+    private static final String TRANSFORMATION_PADDING = "DESede/CBC/PKCS5Padding";
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
-     public String encrypt(String message) throws Exception
-    {
+    public String encrypt(String message) throws Exception {
         String passwordToHash = TF_password.getText();
         String generatedPassword = null;
         try {
@@ -80,25 +82,22 @@ public class SignUpController implements Initializable {
             //This bytes[] has bytes in decimal format;
             //Convert it to hexadecimal format
             StringBuilder sb = new StringBuilder();
-            for(int i=0; i< bytes.length ;i++)
-            {
+            for (int i = 0; i < bytes.length; i++) {
                 sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
             //Get complete hashed password in hex format
             generatedPassword = sb.toString();
-        } 
-        catch (NoSuchAlgorithmException e) 
-        {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         System.out.println(generatedPassword);
- 
+
         return generatedPassword;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-      
+
         homme_rb.setSelected(true);
 
         femme_rb.setOnAction((ActionEvent arg0) -> {
@@ -115,18 +114,25 @@ public class SignUpController implements Initializable {
                 femme_rb.setSelected(false);
             }
         });
-        
+
         btn_signup.setOnAction(
                 (ActionEvent event) -> {
                     try {
                         UserDao udao = UserDao.getInstance();
-                        String pwd=encrypt(TF_password.getText());
-                                udao.SignUp(new User(1,TF_nom.getText(), TF_presnom.getText(), str, Integer.parseInt(TF_age.getText()), Integer.parseInt(TF_tel.getText()), TF_email.getText(),pwd, "Membre"));
+                        String pwd = encrypt(TF_password.getText());
+                        udao.SignUp(new User(1, TF_nom.getText(), TF_presnom.getText(), str, Integer.parseInt(TF_age.getText()), Integer.parseInt(TF_tel.getText()), TF_email.getText(), pwd, "Membre"));
+                        JOptionPane.showMessageDialog(null, "Account created successfuly");
+                        Parent type = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
+                        Scene scene = new Scene(type);
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage.setScene(scene);
+                        stage.setTitle("Fotify");
+                        stage.show();
                     } catch (SQLException ex) {
                         Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (Exception ex) {
-                Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                        Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                 }
         );

@@ -43,17 +43,17 @@ public class GererCommController implements Initializable {
     @FXML
     private TextArea tfcomm;
     public ArrayList<Label> comms = new ArrayList<>();
-    public int idcommentaire=0;
+    public int idcommentaire = 0;
     @FXML
     private Button btnmodif;
     @FXML
     private Button btnsupp;
-     String cssLayout = "-fx-background-color: #2d424a;\n" +
-                   "-fx-border-insets: 2;\n" +
-                   "-fx-border-width: 2;\n" +
-                  "-fx-text-fill:white;\n" +
-                   "-fx-border-radius: 10;\n";
-                String cLayout = "-fx-background-color:#1f1f22;\n" ;
+    String cssLayout = "-fx-background-color: #2d424a;\n"
+            + "-fx-border-insets: 2;\n"
+            + "-fx-border-width: 2;\n"
+            + "-fx-text-fill:white;\n"
+            + "-fx-border-radius: 10;\n";
+    String cLayout = "-fx-background-color:#1f1f22;\n";
     @FXML
     private Pane pane;
     @FXML
@@ -78,14 +78,14 @@ public class GererCommController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         fotify.setOnMouseClicked(event -> {
+        fotify.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/firstView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,82 +93,74 @@ public class GererCommController implements Initializable {
 
         });
         // TODO
-    }   
-    
-    
-    void comms (int id,int idU){
-        comms.clear();
-        CommentaireServiceDao ccc =CommentaireServiceDao.getInstance();
-         for (commentaire c : ccc.owndisplaycomms(id, idU)){
-             Label l =new Label();
-             l.setText("  "+c.getcomm());
-             comms.add(l);
-             l.setOnMouseClicked(e->{
-             tfcomm.setText(c.getcomm());
-             idcommentaire=c.getid_comm();
-             System.out.println(idcommentaire);
-            });
-             
-             
-            
-             VBox vB=new VBox();
-             vB.getChildren().clear();
-             vB.setSpacing(8);
-             comms.forEach( e-> vB.getChildren().add(e));
-             comms.forEach(e->e.setMinHeight(50));
-             
-             comms.forEach(e->e.setMaxWidth(Double.MAX_VALUE));
-             comms.forEach(e->e.setStyle(cssLayout));
-             vB.setStyle(cLayout);
-             sp.setContent(vB);   
-               
-    
-               
-    }
-    }
-     void setIdd(int id, int idU) {
-         comms(id,idU);
-         
-         btnmodif.setOnAction(e->{
-             if(idcommentaire==0){ 
-                 Alert alert = new Alert(AlertType.NONE, "Erreur de champs", ButtonType.OK);
-                 alert.setTitle("Erreur");
-                 alert.setContentText("Veuillez sélectionner un commentaire à supprimer"); 
-                 alert.showAndWait();     }
-             else{
-                 CommentaireServiceDao cc =new CommentaireServiceDao();
-                 commentaire cNew= new commentaire(idcommentaire, tfcomm.getText());
-                 cc.update(cNew);
-                 sp.setContent(null);
-                 comms(id,idU);}
-         
-             
-             
-         
-         });
-         
-         btnsupp.setOnAction(e->{
-             if(idcommentaire==0){ 
-                 Alert alert = new Alert(AlertType.NONE, "Erreur de champs", ButtonType.OK);
-                 alert.setTitle("Erreur");
-                 alert.setContentText("Veuillez sélectionner un commentaire à supprimer"); 
-                 alert.showAndWait();     }
-             else{
-                 CommentaireServiceDao cc =new CommentaireServiceDao();
-                 commentaire cNew= cc.displayById(idcommentaire);
-                 cc.delete(cNew);
-                 sp.setContent(null);
-                 comms(id,idU);
-             }
-         });
-         
-         
     }
 
+    void comms(int id, int idU) {
+        comms.clear();
+        CommentaireServiceDao ccc = CommentaireServiceDao.getInstance();
+        for (commentaire c : ccc.owndisplaycomms(id, idU)) {
+            Label l = new Label();
+            l.setText("  " + c.getcomm());
+            comms.add(l);
+            l.setOnMouseClicked(e -> {
+                tfcomm.setText(c.getcomm());
+                idcommentaire = c.getid_comm();
+                System.out.println(idcommentaire);
+            });
+
+            VBox vB = new VBox();
+            vB.getChildren().clear();
+            vB.setSpacing(8);
+            comms.forEach(e -> vB.getChildren().add(e));
+            comms.forEach(e -> e.setMinHeight(50));
+
+            comms.forEach(e -> e.setMaxWidth(Double.MAX_VALUE));
+            comms.forEach(e -> e.setStyle(cssLayout));
+            vB.setStyle(cLayout);
+            sp.setContent(vB);
+
+        }
+    }
+
+    void setIdd(int id, int idU) {
+        comms(id, idU);
+
+        btnmodif.setOnAction(e -> {
+            if (idcommentaire == 0) {
+                Alert alert = new Alert(AlertType.NONE, "Erreur de champs", ButtonType.OK);
+                alert.setTitle("Erreur");
+                alert.setContentText("Veuillez sélectionner un commentaire à supprimer");
+                alert.showAndWait();
+            } else {
+                CommentaireServiceDao cc = new CommentaireServiceDao();
+                commentaire cNew = new commentaire(idcommentaire, tfcomm.getText());
+                cc.update(cNew);
+                sp.setContent(null);
+                comms(id, idU);
+            }
+
+        });
+
+        btnsupp.setOnAction(e -> {
+            if (idcommentaire == 0) {
+                Alert alert = new Alert(AlertType.NONE, "Erreur de champs", ButtonType.OK);
+                alert.setTitle("Erreur");
+                alert.setContentText("Veuillez sélectionner un commentaire à supprimer");
+                alert.showAndWait();
+            } else {
+                CommentaireServiceDao cc = new CommentaireServiceDao();
+                commentaire cNew = cc.displayById(idcommentaire);
+                cc.delete(cNew);
+                sp.setContent(null);
+                comms(id, idU);
+            }
+        });
+
+    }
 
     @FXML
     private void gererprofile() {
-        
+
         ab51.setOnMouseClicked(event -> {
             try {
 
@@ -176,7 +168,7 @@ public class GererCommController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -198,7 +190,7 @@ public class GererCommController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -216,7 +208,7 @@ public class GererCommController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -227,14 +219,14 @@ public class GererCommController implements Initializable {
 
     @FXML
     private void gerergalerie() {
-           ab.setOnMouseClicked(event -> {
+        ab.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -245,14 +237,14 @@ public class GererCommController implements Initializable {
 
     @FXML
     private void gererreclamation() {
-          ab1.setOnMouseClicked(event -> {
+        ab1.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -265,20 +257,18 @@ public class GererCommController implements Initializable {
     private void gererFeedback() {
         feedback_window_btn.setOnMouseClicked(event -> {
             System.out.println("hey");
-           try {
+            try {
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 System.out.println("hey");
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         });
     }
-     
-     
-    
+
 }

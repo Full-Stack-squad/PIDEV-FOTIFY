@@ -79,7 +79,7 @@ public class UpdatePhotoViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         fotify.setOnMouseClicked(event -> {
             try {
 
@@ -87,50 +87,45 @@ public class UpdatePhotoViewController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle(""); 
+                stage.setTitle("");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-       
-        btnprofil.setOnAction(e->{
-    try {
+
+        btnprofil.setOnAction(e -> {
+            try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                stage.show();}
-    catch (IOException ex) {
+                stage.show();
+            } catch (IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
-         });
-        
-    
-btnmodif.setOnAction(e->{
-  
-   PhotoServiceDao ps1 = PhotoServiceDao.getInstance();
-   Photo updated = new Photo(g,tftitre.getText(),tftheme.getText(),tfcouleur.getText(),tfloc.getText());
-   ps1.update(updated);
-           
-   
-         });
-        
-        
-        
-    }    
-    
-    
-    public int setIdd(int id){
+        });
 
-PhotoServiceDao ps1 = new PhotoServiceDao();
+        btnmodif.setOnAction(e -> {
+
+            PhotoServiceDao ps1 = PhotoServiceDao.getInstance();
+            Photo updated = new Photo(g, tftitre.getText(), tftheme.getText(), tfcouleur.getText(), tfloc.getText());
+            ps1.update(updated);
+
+        });
+
+    }
+
+    public int setIdd(int id) {
+
+        PhotoServiceDao ps1 = new PhotoServiceDao();
         Photo photo1 = new Photo();
-        p=photo1;
-        photo1=ps1.displayById(id);
-        
-        g=id;
-        
+        p = photo1;
+        photo1 = ps1.displayById(id);
+
+        g = id;
+
         Image image = new Image(photo1.geturl());
         tftitre.setText(photo1.gettitre());
         tfcouleur.setText(photo1.getcouleur());
@@ -140,8 +135,10 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
         img.setFitHeight(200);
         img.setFitWidth(200);
         return id;
-        
-};
+
+    }
+
+    ;
 
 
     @FXML
@@ -153,7 +150,7 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -168,7 +165,7 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
 
     @FXML
     private void gerercours() {
-        
+
         ab4.setOnMouseClicked(event -> {
             try {
 
@@ -176,7 +173,7 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -194,7 +191,7 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -205,14 +202,14 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
 
     @FXML
     private void gerergalerie() {
-          ab.setOnMouseClicked(event -> {
+        ab.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -223,14 +220,14 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
 
     @FXML
     private void gererreclamation() {
-          ab1.setOnMouseClicked(event -> {
+        ab1.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -243,17 +240,17 @@ PhotoServiceDao ps1 = new PhotoServiceDao();
     private void gererFeedback() {
         feedback_window_btn.setOnMouseClicked(event -> {
             System.out.println("hey");
-           try {
+            try {
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 System.out.println("hey");
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         });
     }
 }

@@ -12,12 +12,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -54,6 +54,8 @@ public class BackGallController implements Initializable {
       private ObservableList<Photo> phs=FXCollections.observableArrayList(); 
     @FXML
     private Label fotify;
+    @FXML
+    private Button retour;
     
 
     /**
@@ -81,6 +83,26 @@ public class BackGallController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+          retour.setOnAction(e -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/Back.fxml"));
+                Scene scene = new Scene(type);
+                Image image = new Image("/img/pik.gif");
+                scene.setCursor(new ImageCursor(image,
+                        image.getWidth() / 2,
+                        image.getHeight() / 2));
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                new animatefx.animation.Pulse(type).play();
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
         
          fotify.setOnMouseClicked(event -> {
             try {

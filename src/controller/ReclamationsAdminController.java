@@ -13,12 +13,9 @@ import entity.Reclamation;
 import utils.EmailService;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -29,7 +26,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -43,18 +39,11 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -86,26 +75,25 @@ public class ReclamationsAdminController implements Initializable {
     private ComboBox<String> rechercheCB;
     @FXML
     private Label fotify;
-  
 
     public void getData() {
         ReclamationDao rdao = new ReclamationDao();
-          PhotoServiceDao ps1 = new PhotoServiceDao();
+        PhotoServiceDao ps1 = new PhotoServiceDao();
         this.reclamations = FXCollections.observableArrayList(rdao.playById());
 
         sujetTC.setCellValueFactory(new PropertyValueFactory<>("sujet"));
         date_creationTC.setCellValueFactory(new PropertyValueFactory<>("date_creation"));
-          etatTC.setCellValueFactory((CellDataFeatures<Reclamation, Etat> param) -> {
+        etatTC.setCellValueFactory((CellDataFeatures<Reclamation, Etat> param) -> {
             Reclamation reclamation = param.getValue();
             Etat etat = reclamation.getEtat();
             return new SimpleObjectProperty<Etat>(etat);
         });
-          
-          etatTC.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(Etat.values())));
+
+        etatTC.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(Etat.values())));
         membreTC.setCellValueFactory((CellDataFeatures<Reclamation, String> p) -> {
             return new SimpleStringProperty(p.getValue().getDescription());
         });
-      
+
         etatTC.setOnEditCommit((CellEditEvent<Reclamation, Etat> event) -> {
             TablePosition<Reclamation, Etat> pos = event.getTablePosition();
             Etat newEtat = event.getNewValue();
@@ -151,10 +139,10 @@ public class ReclamationsAdminController implements Initializable {
 
                     supprimerbtn.setOnAction((ActionEvent event) -> {
                         System.out.println(getIndex());
-                        getTableView().getSelectionModel().select(getIndex()); 
+                        getTableView().getSelectionModel().select(getIndex());
                         Reclamation reclamation = reclamationTV.getSelectionModel().getSelectedItem();
                         System.out.println(reclamation);
-                        
+
                         if (reclamation != null) {
                             reclamations.remove(reclamation);
                             rdao.delete(reclamation);
@@ -181,15 +169,15 @@ public class ReclamationsAdminController implements Initializable {
         rechercheTF.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredReclamation.setPredicate((rec) -> {
                 if (newValue == null || newValue.isEmpty()) {
- 
-                    return this.checkRechercheCB(rec, rechercheCB.getSelectionModel().getSelectedItem()) &&true;
-                }            
-String lowerCaseFilter = newValue.toLowerCase();
-                 if (rec.getSujet().toLowerCase().contains(lowerCaseFilter)) {
-                    return this.checkRechercheCB(rec, rechercheCB.getSelectionModel().getSelectedItem()) &&true;// Filter matches last name.
-                } 
-                else
-                return false; // Does not match.
+
+                    return this.checkRechercheCB(rec, rechercheCB.getSelectionModel().getSelectedItem()) && true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (rec.getSujet().toLowerCase().contains(lowerCaseFilter)) {
+                    return this.checkRechercheCB(rec, rechercheCB.getSelectionModel().getSelectedItem()) && true;// Filter matches last name.
+                } else {
+                    return false; // Does not match.
+                }
             });
 
         });
@@ -229,15 +217,15 @@ String lowerCaseFilter = newValue.toLowerCase();
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-         fotify.setOnMouseClicked(event -> {
+
+        fotify.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/Back.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);

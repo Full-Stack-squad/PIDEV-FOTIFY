@@ -80,7 +80,7 @@ public class CreeReclamationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         fotify.setOnMouseClicked(event -> {
             try {
 
@@ -88,7 +88,7 @@ public class CreeReclamationController implements Initializable {
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -116,8 +116,6 @@ public class CreeReclamationController implements Initializable {
         }
     }
 
-    
-
     @FXML
     private void annulerClick(ActionEvent event) {
 
@@ -129,59 +127,55 @@ public class CreeReclamationController implements Initializable {
     }
 
     int setIdd(int id) {
-           PhotoServiceDao ps1 = new PhotoServiceDao();
+        PhotoServiceDao ps1 = new PhotoServiceDao();
         Photo photo1 = new Photo();
-        photo1=ps1.displayById(id);//recuperer la photo avec son id
-        
+        photo1 = ps1.displayById(id);//recuperer la photo avec son id
+
         kk.setText(photo1.gettitre());
-       envoyerBT.setOnAction(e->{
-           
-        ReclamationDao rdao = new ReclamationDao();
-        String sujett;
-        if (sujetCB.getValue() == "autre") {
-            sujett = sujetTF.getText();
-        } else {
-            sujett = sujetCB.getValue();
-        }
+        envoyerBT.setOnAction(e -> {
 
-        rdao.insert(new Reclamation(sujett, descriptionTA.getText(), Etat.EN_ATTENTE, "",UserDao.connectedUser.getUserId(), id, null, null));
-        
-        EmailService.sendMailFunc("jlassi.med.yacine@gmail.com", "Reclamation: " + sujett, "Votre Reclamation est en attente "+ descriptionTA.getText() );
+            ReclamationDao rdao = new ReclamationDao();
+            String sujett;
+            if (sujetCB.getValue() == "autre") {
+                sujett = sujetTF.getText();
+            } else {
+                sujett = sujetCB.getValue();
+            }
 
-         try {
+            rdao.insert(new Reclamation(sujett, descriptionTA.getText(), Etat.EN_ATTENTE, "", UserDao.connectedUser.getUserId(), id, null, null));
+
+            EmailService.sendMailFunc("jlassi.med.yacine@gmail.com", "Reclamation: " + sujett, "Votre Reclamation est en attente " + descriptionTA.getText());
+
+            try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                stage.show();}
-    catch (IOException ex) {
+                stage.show();
+            } catch (IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
-       });
+        });
 
-    
-        
-return id;
+        return id;
     }
 
-   
-
-     @FXML
+    @FXML
     private void gererFeedback() {
-       
+
         feedback_window_btn.setOnMouseClicked(event -> {
             System.out.println("hey");
-           try {
+            try {
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 System.out.println("hey");
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         });
     }
 
@@ -194,7 +188,7 @@ return id;
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -216,7 +210,7 @@ return id;
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -234,7 +228,7 @@ return id;
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -245,14 +239,14 @@ return id;
 
     @FXML
     private void gerergalerie() {
-         ab.setOnMouseClicked(event -> {
+        ab.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -263,14 +257,14 @@ return id;
 
     @FXML
     private void gererreclamation() {
-         ab1.setOnMouseClicked(event -> {
+        ab1.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
