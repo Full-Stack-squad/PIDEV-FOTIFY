@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -167,7 +166,21 @@ public class MesReclamationsController implements Initializable {
     }
 
     @FXML
-    private void abonnementt(ActionEvent event) {
+    private void abonnementt() {
+        ab3.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/Myabbs.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
     }
 
     @FXML

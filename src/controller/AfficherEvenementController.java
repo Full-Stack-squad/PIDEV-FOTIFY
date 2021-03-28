@@ -127,6 +127,7 @@ public class AfficherEvenementController implements Initializable {
     private void displayActualite() throws SQLException {
         ServiceEvenement pa = new ServiceEvenement();
         ServiceParticiper oo = new ServiceParticiper();
+        
         String req = "select * from evenement  ";
         List<VBox> list = new ArrayList<>();
         ste = con.createStatement();
@@ -399,7 +400,22 @@ public class AfficherEvenementController implements Initializable {
     }
 
     @FXML
-    private void abonnementt(ActionEvent event) {
+    private void abonnementt() {
+
+        ab3.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/Myabbs.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
     }
 
     @FXML

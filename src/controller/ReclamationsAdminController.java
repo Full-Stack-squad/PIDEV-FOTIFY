@@ -28,6 +28,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -43,6 +44,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -77,6 +79,8 @@ public class ReclamationsAdminController implements Initializable {
     private ComboBox<String> rechercheCB;
     @FXML
     private Label fotify;
+    @FXML
+    private Button retour;
 
     public void getData() throws SQLException {
         ReclamationDao rdao = new ReclamationDao();
@@ -232,6 +236,25 @@ public class ReclamationsAdminController implements Initializable {
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+        
+         retour.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/Back.fxml"));
+                Scene scene = new Scene(type);
+                Image image = new Image("/img/pik.gif");
+                scene.setCursor(new ImageCursor(image,
+                        image.getWidth() / 2,
+                        image.getHeight() / 2));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });

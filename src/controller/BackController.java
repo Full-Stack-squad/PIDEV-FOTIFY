@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -40,6 +41,8 @@ public class BackController implements Initializable {
     private Button feedback;
     @FXML
     private Button rec;
+    @FXML
+    private Hyperlink logout;
 
     /**
      * Initializes the controller class.
@@ -108,6 +111,21 @@ public class BackController implements Initializable {
         });
 
         feedback.setOnMouseClicked(event -> {
+
+        });
+
+        logout.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         });
     }

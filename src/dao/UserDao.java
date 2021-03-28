@@ -301,7 +301,31 @@ String req="select * from membre where id ="+idM;
 
     @Override
     public ObservableList<User> displayAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     String req = "select * from userr";
+        ObservableList<User> list = FXCollections.observableArrayList();
+
+        try {
+            rs = ste.executeQuery(req);
+            while (rs.next()) {
+                User p = new User();
+                p.setUserId(rs.getInt(1));
+                p.setUserNom(rs.getString(2));
+                p.setUserPrenom(rs.getString(3));
+                p.setUserBio(rs.getString(4));
+                p.setUserAge(rs.getInt(5));
+                p.setUserTel(rs.getInt(6));
+                p.setUserEmail(rs.getString(7));
+
+                p.setUserPassword(rs.getString(8));
+                p.setUserType(rs.getString(9));
+
+                list.add(p);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
 }

@@ -499,5 +499,20 @@ public class CoursController implements Initializable {
         btndelete.setTooltip(new Tooltip("Click to delete"));
         btnupdate.setTooltip(new Tooltip("Click to update"));
 
+        logout.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+
     }
 }
