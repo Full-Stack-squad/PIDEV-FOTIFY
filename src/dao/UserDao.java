@@ -74,6 +74,9 @@ public class UserDao implements IUserDao<User> {
         }
         return instance;
     }
+    
+    
+    
 
     @Override
     public Object SignIn(String email, String password) {
@@ -186,9 +189,22 @@ String req="select * from membre where id ="+idM;
             Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     return m;    }*/
-    @Override
-    public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   
+    public void delete(User u) {
+     String req = "delete from cours where id=" + u.getUserId();
+        User p = displayByIdM(u.getUserId());
+
+        if (p != null) {
+            try {
+
+                ste.executeUpdate(req);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            System.out.println("n'existe pas");
+        }
     }
 
     public ObservableList<User> displayAlll() {
@@ -326,6 +342,11 @@ String req="select * from membre where id ="+idM;
             Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+
+    @Override
+    public void delete(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -41,9 +41,9 @@ public class PDF {
             document.open();
             Image img = Image.getInstance("http://127.0.0.1/doc/" + p.getImage());
             img.setWidthPercentage(20);
-            Paragraph adrr = new Paragraph(new Phrase("l titre  : " + p.getTitre(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
-            Paragraph adrr1 = new Paragraph(new Phrase("l contenu  : " + p.getContenu(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
-            Paragraph par = new Paragraph(" votre evenement  ", FontFactory.getFont(FontFactory.TIMES));
+            Paragraph adrr = new Paragraph(new Phrase("l Titre  : " + p.getTitre(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
+            Paragraph adrr1 = new Paragraph(new Phrase("l Contenu  : " + p.getContenu(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
+            Paragraph par = new Paragraph(" Votre Evenement  ", FontFactory.getFont(FontFactory.TIMES));
             par.setAlignment(Element.ALIGN_CENTER);
             document.add(par);
 
@@ -51,8 +51,8 @@ public class PDF {
 
             document.add(adrr);
             document.add(adrr1);
-            document.add(new Paragraph("date dajout de l'evenement  : " + p.getDateajout(), FontFactory.getFont(FontFactory.TIMES)));
-            document.add(new Paragraph("date modification de l l'evenement : " + p.getDatemodif(), FontFactory.getFont(FontFactory.TIMES)));
+            document.add(new Paragraph("Date dajout de l'evenement  : " + p.getDateajout(), FontFactory.getFont(FontFactory.TIMES)));
+            document.add(new Paragraph("Date modification de l l'evenement : " + p.getDatemodif(), FontFactory.getFont(FontFactory.TIMES)));
 
             document.close();
 

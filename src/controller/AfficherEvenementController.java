@@ -36,12 +36,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import dao.ServiceParticiper;
+import dao.UserDao;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -127,7 +133,7 @@ public class AfficherEvenementController implements Initializable {
     private void displayActualite() throws SQLException {
         ServiceEvenement pa = new ServiceEvenement();
         ServiceParticiper oo = new ServiceParticiper();
-        
+
         String req = "select * from evenement  ";
         List<VBox> list = new ArrayList<>();
         ste = con.createStatement();
@@ -167,7 +173,8 @@ public class AfficherEvenementController implements Initializable {
             Button bt2 = new Button("Participer");
             bt2.setStyle(cssLayout);
             java.util.Date dd = new java.util.Date();
-            if (oo.chercher_ajout(new Participer(a1.getId(), 1, dd))) {
+            if (oo.chercher_ajout(new Participer(a1.getId(),  UserDao.connectedUser.getUserId(), dd))) {
+
                 bt2.setDisable(true);
 
             }
@@ -176,10 +183,20 @@ public class AfficherEvenementController implements Initializable {
                 public void handle(ActionEvent event) { //bitha heki chas
 
                     try {
-                        if (!oo.chercher_ajout(new Participer(a1.getId(), 1, d1))) {
+                        if (!oo.chercher_ajout(new Participer(a1.getId(), UserDao.connectedUser.getUserId(), d1))) {
 
                             try {
-                                oo.ajouter(new Participer(a1.getId(), 1, d1));
+                                oo.ajouter(new Participer(a1.getId(), UserDao.connectedUser.getUserId(), d1));
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.getButtonTypes().setAll(ButtonType.OK);
+                                alert.setContentText("Participation effectuée avec succés");
+                                alert.show();
+                                String tit = "Participation effectuée avec succés";
+                                String message = "Profitez votre evennement ";
+                                NotificationType notification = NotificationType.SUCCESS;
+                                TrayNotification tray = new TrayNotification(tit, message, notification);
+                                tray.setAnimationType(AnimationType.POPUP);
+                                tray.showAndDismiss(javafx.util.Duration.seconds(2));
 
                                 String SQL1 = "UPDATE library.evenement SET  nb_participer=nb_participer+1 WHERE id ='" + a1.getId() + "'";
                                 int rs1 = ste.executeUpdate(SQL1);
@@ -285,7 +302,7 @@ public class AfficherEvenementController implements Initializable {
             Button bt2 = new Button("Participer");
             bt2.setStyle(cssLayout);
             java.util.Date dd = new java.util.Date();
-            if (oo.chercher_ajout(new Participer(a1.getId(), 1, dd))) {
+            if (oo.chercher_ajout(new Participer(a1.getId(),  UserDao.connectedUser.getUserId(), dd))) {
                 bt2.setDisable(true);
             }
             bt2.setOnAction(new EventHandler<ActionEvent>() {
@@ -293,10 +310,10 @@ public class AfficherEvenementController implements Initializable {
                 public void handle(ActionEvent event) { //bitha heki chas
 
                     try {
-                        if (!oo.chercher_ajout(new Participer(a1.getId(), 1, d1))) {
+                        if (!oo.chercher_ajout(new Participer(a1.getId(), UserDao.connectedUser.getUserId(), d1))) {
 
                             try {
-                                oo.ajouter(new Participer(a1.getId(), 1, d1));
+                                oo.ajouter(new Participer(a1.getId(),  UserDao.connectedUser.getUserId(), d1));
 
                                 String SQL1 = "UPDATE library.evenement SET  nb_participer=nb_participer+1 WHERE id ='" + a1.getId() + "'";
                                 int rs1 = ste.executeUpdate(SQL1);

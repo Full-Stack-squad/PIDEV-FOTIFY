@@ -13,11 +13,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" style="-fx-background-color: #1f1f22;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReclamationsAdminController">
+<AnchorPane id="AnchorPane" prefHeight="642.0" prefWidth="962.0" style="-fx-background-color: #1f1f22;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReclamationsAdminController">
     <children>
         <HBox layoutX="37.0" layoutY="177.0" prefHeight="464.0" prefWidth="886.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="177.0">
             <children>
-                <VBox alignment="TOP_CENTER" prefHeight="449.0" prefWidth="882.0">
+                <VBox alignment="TOP_CENTER" prefHeight="464.0" prefWidth="897.0">
                     <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="871.0" spacing="10.0">
                             <children>
@@ -38,7 +38,7 @@
                                 <Insets bottom="20.0" left="15.0" right="15.0" top="20.0" />
                             </VBox.margin>
                         </HBox>
-                        <TableView fx:id="reclamationTV" editable="true" prefHeight="375.0" prefWidth="851.0">
+                        <TableView fx:id="reclamationTV" editable="true" prefHeight="375.0" prefWidth="895.0">
                             <columns>
                                 <TableColumn fx:id="sujetTC" editable="false" minWidth="150.0" prefWidth="-1.0" text="Sujet" />
                                 <TableColumn fx:id="membreTC" editable="false" minWidth="150.0" prefWidth="-1.0" text="Membre" />

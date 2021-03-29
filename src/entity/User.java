@@ -30,7 +30,7 @@ public class User {
         this.userPrenom = new SimpleStringProperty(userPrenom);
         this.userBio = new SimpleStringProperty(userBio);
         this.userAge = new SimpleIntegerProperty(userAge);
-        this.userTel = new  SimpleIntegerProperty(userTel);
+        this.userTel = new SimpleIntegerProperty(userTel);
         this.userEmail = new SimpleStringProperty(userEmail);
         this.userPassword = userPassword;
         this.userType = new SimpleStringProperty(userType);
@@ -125,32 +125,32 @@ public class User {
     public void setUserType(String userType) {
         this.userType = new SimpleStringProperty(userType);
     }
-    
+
     public SimpleStringProperty getUserNomProperty() {
         return userNom;
     }
-    
+
     public SimpleStringProperty getUserPrenomProperty() {
         return userPrenom;
     }
-    
+
     public SimpleStringProperty getUserBioProperty() {
         return userBio;
     }
-    
+
     public SimpleIntegerProperty getUserAgeProperty() {
         return userAge;
     }
-    
-     public SimpleIntegerProperty getUserTelProperty() {
+
+    public SimpleIntegerProperty getUserTelProperty() {
         return userTel;
     }
-     
-     public SimpleStringProperty getUserEmailProperty() {
+
+    public SimpleStringProperty getUserEmailProperty() {
         return userEmail;
     }
-     
-     public SimpleStringProperty getUserTypeProperty() {
+
+    public SimpleStringProperty getUserTypeProperty() {
         return userType;
     }
 
