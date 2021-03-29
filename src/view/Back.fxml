@@ -28,9 +28,9 @@
                                         </Label>
                                     </children>
                                 </HBox>
-                                <VBox prefHeight="54.0" prefWidth="301.0">
+                                <VBox prefHeight="78.0" prefWidth="396.0">
                                     <children>
-                                        <Label prefHeight="40.0" prefWidth="354.0" text="Welcome Mr Admin" textFill="WHITE">
+                                        <Label prefHeight="40.0" prefWidth="354.0" text="Bienvenue Mr Admin" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="24.0" />
                                             </font>
@@ -38,7 +38,7 @@
                                                 <Line endX="-102.00001525878906" endY="70.29289245605469" fill="#fabe2e" startX="-101.99999237060547" startY="30.201005935668945" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
                                             </graphic>
                                         </Label>
-                                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="320.0" text="Enjoy Managing Your App" textFill="#db0f21">
+                                        <Label alignment="TOP_RIGHT" prefHeight="28.0" prefWidth="377.0" text="Profitez de la gestion de votre application" textFill="#db0f21">
                                             <font>
                                                 <Font size="19.0" />
                                             </font>
@@ -84,14 +84,14 @@
                                 </Button>
                             </children>
                         </HBox>
-                  <HBox layoutX="972.0" layoutY="42.0" AnchorPane.rightAnchor="40.0">
+                  <HBox layoutX="972.0" layoutY="42.0" prefHeight="32.0" prefWidth="112.0" AnchorPane.rightAnchor="21.0">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/user.png" />
                            </image>
                         </ImageView>
-                        <Hyperlink fx:id="logout" prefHeight="23.0" prefWidth="61.0" text="LogOut" textFill="#fabe1e" underline="true" />
+                        <Hyperlink fx:id="logout" prefHeight="23.0" prefWidth="81.0" text="Déconnexion" textFill="#fabe1e" underline="true" />
                      </children>
                   </HBox>
                     </children>

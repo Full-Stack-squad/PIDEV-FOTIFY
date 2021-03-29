@@ -9,6 +9,7 @@ import dao.PhotoServiceDao;
 import entity.Photo;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -97,6 +99,27 @@ public class UpdatePhotoViewController implements Initializable {
 
         btnprofil.setOnAction(e -> {
             try {
+                
+                Parent page1 = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+         btnsupprim.setOnAction(e -> {
+            
+             
+             PhotoServiceDao ps1 = PhotoServiceDao.getInstance();
+             ps1.deleteph(ps1.displayById(g));
+             
+             
+             try {
+                
+                JOptionPane.showMessageDialog(null, "Photo delete success");
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

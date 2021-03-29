@@ -90,14 +90,14 @@
                 </HBox>
             </children>
         </AnchorPane>
-      <HBox layoutX="962.0" layoutY="32.0" AnchorPane.rightAnchor="40.0">
+      <HBox layoutX="962.0" layoutY="32.0" prefHeight="32.0" prefWidth="111.0" AnchorPane.rightAnchor="40.0">
          <children>
             <ImageView fitHeight="32.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/user.png" />
                </image>
             </ImageView>
-            <Hyperlink fx:id="logout" prefHeight="23.0" prefWidth="61.0" text="LogOut" textFill="#fabe1e" underline="true" />
+            <Hyperlink fx:id="logout" prefHeight="23.0" prefWidth="87.0" text="Déconnexion" textFill="#fabe1e" underline="true" />
          </children>
       </HBox>
     </children>

@@ -109,7 +109,7 @@ public class DetailReclamationController implements Initializable {
 
     public void initData(Reclamation r) {
         this.r = r;
-        photoT.setText(r.getPhoto().gettitre());
+
         descriptionTA.setText(r.getDescription());
         sujetT.setText(r.getSujet());
         if (sujetoption.contains(r.getSujet())) {

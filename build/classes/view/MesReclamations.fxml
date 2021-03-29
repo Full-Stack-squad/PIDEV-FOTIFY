@@ -11,7 +11,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane style="-fx-background-color: #fabe2e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MesReclamationsController">
     <children>
         <AnchorPane layoutX="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -35,7 +34,7 @@
                                                 <Line endX="-102.00001525878906" endY="70.29289245605469" fill="#fabe2e" startX="-101.99999237060547" startY="30.201005935668945" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
                                             </graphic>
                                         </Label>
-                                        <Label prefHeight="50.0" prefWidth="95.0" text="List" textFill="WHITE">
+                                        <Label prefHeight="50.0" prefWidth="95.0" text="Liste" textFill="WHITE">
                                             <font>
                                                 <Font size="29.0" />
                                             </font>

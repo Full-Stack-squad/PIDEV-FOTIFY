@@ -29,7 +29,7 @@
                                 <VBox alignment="CENTER" fillWidth="false" prefHeight="534.0" prefWidth="383.0" spacing="30.0" style="-fx-background-color: #1f1f22;">
                                     <children>
                                         <HBox alignment="CENTER" prefHeight="93.0" prefWidth="383.0" />
-                                        <Label alignment="TOP_RIGHT" prefHeight="53.0" prefWidth="371.0" text="Gérer  les evenements" textAlignment="CENTER" textFill="WHITE">
+                                        <Label alignment="TOP_RIGHT" prefHeight="53.0" prefWidth="371.0" text="Gérer  les évènements" textAlignment="CENTER" textFill="WHITE">
                                             <font>
                                                 <Font size="33.0" />
                                             </font>
@@ -68,7 +68,7 @@
                                         <VBox alignment="CENTER" prefHeight="210.0" prefWidth="319.0" spacing="30.0">
                                             <children>
                                                 <ImageView fx:id="importeimage" fitHeight="136.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Button fx:id="imagee" alignment="CENTER" mnemonicParsing="false" onAction="#importimage" prefHeight="37.0" prefWidth="117.0" style="-fx-background-color: #B15837;" text="Import Image" textAlignment="CENTER" textFill="WHITE" />
+                                                <Button fx:id="imagee" alignment="CENTER" mnemonicParsing="false" onAction="#importimage" prefHeight="37.0" prefWidth="117.0" style="-fx-background-color: #B15837;" text="Importer Image" textAlignment="CENTER" textFill="WHITE" />
                                             </children>
                                         </VBox>
                                         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="200.0">
@@ -107,11 +107,11 @@
                                 </VBox>
                                 <TableView fx:id="table1" layoutX="442.0" layoutY="38.0" prefHeight="532.0" prefWidth="640.0" AnchorPane.rightAnchor="20.0">
                                     <columns>
-                                        <TableColumn fx:id="tabletitre" prefWidth="107.0" text="titre" />
-                                        <TableColumn fx:id="tablecontenu" prefWidth="122.0" text="contenu" />
-                                        <TableColumn fx:id="tableimage" prefWidth="137.0" text="image" />
-                                        <TableColumn fx:id="tabledajout" prefWidth="133.0" text="date d'ajout" />
-                                        <TableColumn fx:id="tabledmodif" prefWidth="157.0" text="date de limite" />
+                                        <TableColumn fx:id="tabletitre" prefWidth="107.0" text="Titre" />
+                                        <TableColumn fx:id="tablecontenu" prefWidth="122.0" text="Contenu" />
+                                        <TableColumn fx:id="tableimage" prefWidth="137.0" text="Image" />
+                                        <TableColumn fx:id="tabledajout" prefWidth="133.0" text="Date d'ajout" />
+                                        <TableColumn fx:id="tabledmodif" prefWidth="157.0" text="Date limite" />
                                     </columns>
                                 </TableView>
                                 <Button fx:id="retour" layoutX="879.0" layoutY="597.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="103.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe2e; -fx-border-width: 2; -fx-border-radius: 3;" text="Retour" textFill="WHITE" AnchorPane.rightAnchor="72.0">
@@ -123,7 +123,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="participation">
+                <Tab text="Participation">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -166,7 +166,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="statistique">
+                <Tab text="Statistique">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>

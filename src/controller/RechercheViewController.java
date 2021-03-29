@@ -42,8 +42,6 @@ public class RechercheViewController implements Initializable {
 
     @FXML
     private TextField tfRech;
-    @FXML
-    private ChoiceBox<?> ch;
     private GridPane gr;
     public ArrayList<Image> ima = new ArrayList<>();
     public ArrayList<Label> imaa = new ArrayList<>();
@@ -53,8 +51,6 @@ public class RechercheViewController implements Initializable {
     @FXML
     private FlowPane fp;
     public List<Photo> f = new ArrayList<>();
-    @FXML
-    private Button btnrech;
     BorderPane borderPane;
 
     public String cssLayout = "-fx-background-color:#fabe2e;\n"
@@ -84,6 +80,8 @@ public class RechercheViewController implements Initializable {
     private ChoiceBox<String> cb;
     @FXML
     private Label fotify;
+    @FXML
+    private Button btnprofil;
 
     /**
      * Initializes the controller class.
@@ -130,6 +128,21 @@ public class RechercheViewController implements Initializable {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/firstView.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+        
+         btnprofil.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

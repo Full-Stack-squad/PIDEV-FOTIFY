@@ -26,13 +26,13 @@
                                         <FlowPane fx:id="fp" alignment="CENTER" columnHalignment="CENTER" hgap="50.0" prefHeight="282.0" prefWidth="710.0" style="-fx-background-color: #1f1f22;" vgap="50.0" />
                                     </content>
                                 </ScrollPane>
-                                <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="94.0" layoutY="56.0" prefHeight="40.0" prefWidth="281.0" text="Consult Our Course" textFill="WHITE">
+                                <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="94.0" layoutY="56.0" prefHeight="40.0" prefWidth="281.0" text="Consulter Nos Cours" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="28.0" />
                                     </font>
                                 </Label>
-                                <TextField fx:id="search" layoutX="509.0" layoutY="159.0" onAction="#search" prefHeight="23.0" prefWidth="182.0" promptText="Search" AnchorPane.rightAnchor="21.0" />
-                                <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="130.0" layoutY="92.0" prefHeight="40.0" prefWidth="470.0" text="Master your camera and go from beginner to pro level" textFill="#db0f21">
+                                <TextField fx:id="search" layoutX="509.0" layoutY="159.0" onAction="#search" prefHeight="23.0" prefWidth="182.0" promptText="Rechercher" AnchorPane.rightAnchor="21.0" />
+                                <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="130.0" layoutY="92.0" prefHeight="74.0" prefWidth="454.0" text="Maîtrisez votre appareil photo et passez du niveau débutant au niveau professionnel" textFill="#db0f21" wrapText="true">
                                     <font>
                                         <Font size="16.0" />
                                     </font>

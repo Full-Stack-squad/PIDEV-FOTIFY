@@ -54,7 +54,7 @@
                                 <Line endX="-12.207106590270996" endY="379.29290771484375" startX="-12.0" startY="8.0" stroke="#fabe1e" />
                                 <AnchorPane focusTraversable="true" prefHeight="373.0" prefWidth="343.0">
                                     <children>
-                                        <Label layoutX="104.0" layoutY="14.0" prefHeight="50.0" prefWidth="165.0" text="Sign In" textAlignment="CENTER" textFill="#f2f2f2">
+                                        <Label layoutX="104.0" layoutY="14.0" prefHeight="50.0" prefWidth="165.0" text="S'inscrire" textAlignment="CENTER" textFill="#f2f2f2">
                                             <font>
                                                 <Font name="Calibri" size="34.0" />
                                             </font>
@@ -62,7 +62,7 @@
                                                 <Line endX="-102.00001525878906" endY="70.29289245605469" fill="#fabe2e" startX="-101.99999237060547" startY="44.60301971435547" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
                                             </graphic>
                                         </Label>
-                                        <TextField fx:id="email" layoutX="100.0" layoutY="99.0" prefHeight="25.0" prefWidth="184.0" promptText="UserName/email" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
+                                        <TextField fx:id="email" layoutX="100.0" layoutY="99.0" prefHeight="25.0" prefWidth="184.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                                             <effect>
                                                 <Glow />
                                             </effect>
@@ -70,10 +70,10 @@
                                                 <Font size="14.0" />
                                             </font>
                                         </TextField>
-                                        <PasswordField fx:id="password" layoutX="100.0" layoutY="168.0" prefHeight="27.0" prefWidth="184.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;" />
+                                        <PasswordField fx:id="password" layoutX="100.0" layoutY="168.0" prefHeight="27.0" prefWidth="184.0" promptText="Mot de passe" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;" />
                                         <VBox layoutX="100.0" layoutY="223.0" spacing="15.0">
                                             <children>
-                                                <Button fx:id="btn_signIn" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="Login" textFill="WHITE" textOverrun="CLIP">
+                                                <Button fx:id="btn_signIn" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="S'authentifier" textFill="WHITE" textOverrun="CLIP">
                                                     <effect>
                                                         <Glow />
                                                     </effect>
@@ -81,7 +81,7 @@
                                                         <Font name="System Bold" size="12.0" />
                                                     </font>
                                                 </Button>
-                                                <Button fx:id="forget" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="Create new account" textFill="WHITE" textOverrun="CLIP">
+                                                <Button fx:id="forget" mnemonicParsing="false" prefHeight="31.0" prefWidth="185.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="Créer nouveau compte" textFill="WHITE" textOverrun="CLIP">
                                                     <effect>
                                                         <Glow />
                                                     </effect>
@@ -91,7 +91,7 @@
                                                 </Button>
                                             </children>
                                         </VBox>
-                                        <Hyperlink fx:id="pass" layoutX="125.0" layoutY="320.0" text="Forget your password ?" textAlignment="CENTER" textFill="#fabe1e" />
+                                        <Hyperlink fx:id="pass" layoutX="125.0" layoutY="320.0" text="Mot de passe oublié ?" textAlignment="CENTER" textFill="#fabe1e" />
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -100,7 +100,7 @@
                 </HBox>
                 <HBox layoutX="531.0" layoutY="25.0" AnchorPane.rightAnchor="43.0">
                     <children>
-                        <Button fx:id="cancel" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="Exit" textFill="WHITE" textOverrun="CLIP">
+                        <Button fx:id="cancel" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="Quitter" textFill="WHITE" textOverrun="CLIP">
                             <effect>
                                 <Glow />
                             </effect>

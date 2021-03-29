@@ -141,7 +141,7 @@
                                                         <Text fx:id="sujetT" fill="WHITE" layoutY="5.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="62.41357421875" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                         <VBox fx:id="sujetVB" layoutX="22.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                             <children>
-                                                                <ComboBox fx:id="sujetCB" onAction="#sucjetCBClick" prefWidth="150.0" promptText="choirir une option" />
+                                                                <ComboBox fx:id="sujetCB" onAction="#sucjetCBClick" prefWidth="150.0" promptText="choirir une option" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe2e; -fx-border-width: 3; -fx-text-fill: white; -fx-border-radius: 10;" />
                                                                 <TextField fx:id="sujetTF" promptText="autre" visible="false" />
                                                             </children>
                                                         </VBox>
@@ -149,7 +149,7 @@
                                                 </AnchorPane>
                                             </children>
                                         </HBox>
-                                        <HBox spacing="10.0">
+                                        <HBox prefHeight="50.0" prefWidth="231.0" spacing="10.0">
                                             <children>
                                                 <Label text="Date creation" textFill="WHITE">
                                                     <font>
@@ -175,8 +175,14 @@
                                     <children>
                                         <HBox fx:id="editOptionHB" alignment="CENTER_RIGHT" layoutY="43.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
-                                                <Button fx:id="saugarderBT" mnemonicParsing="false" onAction="#sauvgarderClick" text="Sauvgarder" />
-                                                <Button fx:id="annulerBT" mnemonicParsing="false" onAction="#annulerClick" text="Annuler" />
+                                                <Button fx:id="saugarderBT" mnemonicParsing="false" onAction="#sauvgarderClick" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe2e; -fx-border-width: 3; -fx-border-radius: 10;" text="Sauvgarder" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                                <Button fx:id="annulerBT" mnemonicParsing="false" onAction="#annulerClick" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe2e; -fx-border-width: 3; -fx-border-radius: 10;" text="Annuler" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
                                             </children>
                                         </HBox>
                                         <HBox fx:id="showEditHB" alignment="CENTER_RIGHT" layoutX="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

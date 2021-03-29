@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.PhotoServiceDao;
 import dao.ReclamationDao;
 import entity.Reclamation;
 import java.io.IOException;
@@ -22,6 +23,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -53,6 +56,8 @@ public class DetailReclamationAdminController implements Initializable {
     private Reclamation reclamation;
     @FXML
     private Label fotify;
+    @FXML
+    private ImageView img;
 
     /**
      * Initializes the controller class.
@@ -96,11 +101,12 @@ public class DetailReclamationAdminController implements Initializable {
     }
 
     public void initData(Reclamation r) {
+        PhotoServiceDao ps1 = PhotoServiceDao.getInstance();
         this.reclamation = r;
-//        photoT.setText(r.getPhoto().gettitre());
+        img.setImage(new Image(ps1.displayById(r.getPhoto_id()).geturl()));
         descriptionTA.setText(r.getDescription());
         sujetT.setText(r.getSujet());
-
+       
         etatT.setText(r.getEtat().toString());
         dateT.setText(r.getDate_creation());
 

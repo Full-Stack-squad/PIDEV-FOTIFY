@@ -71,6 +71,24 @@ public class PhotoServiceDao implements Idao<Photo> {
             System.out.println("n'existe pas");
         }
     }
+    
+    
+    public void deleteph(Photo o) {
+        String req = "delete from photo where id_photo=" + o.getid_photo();
+        Photo p = displayById(o.getid_photo());
+
+        if (p != null) {
+            try {
+
+                st.executeUpdate(req);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            System.out.println("n'existe pas");
+        }
+    }
 
     @Override
     public List<Photo> displayAll() {

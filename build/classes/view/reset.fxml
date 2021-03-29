@@ -56,21 +56,21 @@
                                                 <Line endX="-12.207106590270996" endY="379.29290771484375" startX="-12.0" startY="8.0" stroke="#fabe1e" />
                                                 <AnchorPane focusTraversable="true" prefHeight="373.0" prefWidth="343.0">
                                                     <children>
-                                                        <Label layoutX="53.0" layoutY="14.0" prefHeight="50.0" prefWidth="242.0" text="Reset Password" textAlignment="CENTER" textFill="#f2f2f2">
+                                                        <Label layoutX="53.0" layoutY="14.0" prefHeight="75.0" prefWidth="242.0" text="Changer mot de passe" textAlignment="CENTER" textFill="#f2f2f2" wrapText="true">
                                                             <font>
-                                                                <Font name="Calibri" size="34.0" />
+                                                                <Font name="Calibri" size="28.0" />
                                                             </font>
                                                             <graphic>
-                                                                <Line endX="-102.00001525878906" endY="70.29289245605469" fill="#fabe2e" startX="-101.99999237060547" startY="44.60301971435547" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
+                                                                <Line endX="-102.00001525878906" endY="70.29289245605469" fill="#fabe2e" startX="-101.99999237060547" startY="12.105546951293945" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
                                                             </graphic>
                                                         </Label>
-                                                        <PasswordField fx:id="newpass" layoutX="71.0" layoutY="196.0" prefHeight="27.0" prefWidth="184.0" promptText="Verify New Password" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
+                                                        <PasswordField fx:id="newpass" layoutX="71.0" layoutY="196.0" prefHeight="27.0" prefWidth="184.0" promptText="Retaper le mot de passe" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                                                             <font>
                                                                 <Font size="13.0" />
                                                             </font>
                                                         </PasswordField>
                                                         <VBox layoutX="100.0" layoutY="223.0" spacing="15.0" />
-                                                        <Button fx:id="res" layoutX="72.0" layoutY="284.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="Reset" textFill="WHITE" textOverrun="CLIP">
+                                                        <Button fx:id="res" layoutX="72.0" layoutY="284.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="Changer" textFill="WHITE" textOverrun="CLIP">
                                                             <effect>
                                                                 <Glow />
                                                             </effect>
@@ -78,7 +78,7 @@
                                                                 <Font name="System Bold" size="12.0" />
                                                             </font>
                                                         </Button>
-                                                        <PasswordField fx:id="pass" layoutX="72.0" layoutY="126.0" prefHeight="27.0" prefWidth="184.0" promptText="Enter New Password" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
+                                                        <PasswordField fx:id="pass" layoutX="72.0" layoutY="126.0" prefHeight="27.0" prefWidth="184.0" promptText="Entrer nouveau mot de passe" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px; -fx-text-fill: white;">
                                                             <font>
                                                                 <Font size="13.0" />
                                                             </font>

@@ -7,6 +7,7 @@ package controller;
 
 import dao.UserDao;
 import entity.User;
+import java.io.IOException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -48,8 +49,6 @@ public class SignUpController implements Initializable {
     @FXML
     private Button btn_signup;
     @FXML
-    private Button btn_signin_google;
-    @FXML
     private TextField TF_tel;
     @FXML
     private RadioButton homme_rb;
@@ -62,6 +61,8 @@ public class SignUpController implements Initializable {
     private static final String CHARSET_UTF_8 = "utf-8";
     private static final String SECRET_KEY_ALGORITHM = "DESede";
     private static final String TRANSFORMATION_PADDING = "DESede/CBC/PKCS5Padding";
+    @FXML
+    private Button btndeja;
 
     /**
      * Initializes the controller class.
@@ -104,6 +105,22 @@ public class SignUpController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+         btndeja.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
 
         homme_rb.setSelected(true);
 

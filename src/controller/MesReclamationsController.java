@@ -25,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -112,15 +113,16 @@ public class MesReclamationsController implements Initializable {
 
             l.setOnMouseClicked(e -> {
                 try {
-
-                    Parent type = FXMLLoader.load(getClass().getResource("/view/DetailReclamation.fxml"));
-                    Scene scene = new Scene(type);
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailReclamation.fxml"));
+                    Region root = (Region) loader.load();
+                    Scene scene = new Scene(root);
                     Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    DetailReclamationController dialogController = loader.getController();
+                    dialogController.initData(r);
                     stage.setScene(scene);
-                    stage.setTitle("Fotify");
                     stage.show();
                 } catch (IOException ex) {
-                    Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
 

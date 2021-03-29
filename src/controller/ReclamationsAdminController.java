@@ -64,8 +64,6 @@ public class ReclamationsAdminController implements Initializable {
     @FXML
     private TableColumn<Reclamation, String> membreTC;
     @FXML
-    private TableColumn<Reclamation, ImageView> photoTC;
-    @FXML
     private TableColumn<Reclamation, String> sujetTC;
     @FXML
     private TableColumn<Reclamation, String> date_creationTC;
@@ -95,10 +93,10 @@ public class ReclamationsAdminController implements Initializable {
             Etat etat = reclamation.getEtat();
             return new SimpleObjectProperty<Etat>(etat);
         });
-
+        UserDao uda = UserDao.getInstance();
         etatTC.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableArrayList(Etat.values())));
         membreTC.setCellValueFactory((CellDataFeatures<Reclamation, String> p) -> {
-            return new SimpleStringProperty(p.getValue().getDescription());
+            return new SimpleStringProperty(uda.displayByIdM(p.getValue().getUser_id()).getUserNom()+" "+uda.displayByIdM(p.getValue().getUser_id()).getUserPrenom());
         });
 
         etatTC.setOnEditCommit((CellEditEvent<Reclamation, Etat> event) -> {

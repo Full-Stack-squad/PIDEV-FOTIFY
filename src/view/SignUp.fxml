@@ -13,7 +13,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane style="-fx-background-color: #fabe2e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
     <children>
         <AnchorPane id="AnchorPane" layoutY="-20.0" prefHeight="556.0" prefWidth="954.0" style="-fx-background-color: #1f1f22;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -58,7 +57,7 @@
                                     <children>
                                         <AnchorPane prefHeight="506.0" prefWidth="387.0">
                                             <children>
-                                                <Label layoutX="129.0" layoutY="34.0" prefHeight="47.0" prefWidth="167.0" text="SignUp" textFill="WHITE">
+                                                <Label layoutX="129.0" layoutY="34.0" prefHeight="47.0" prefWidth="167.0" text="S'inscrire" textFill="WHITE">
                                                     <font>
                                                         <Font name="Calibri Bold" size="39.0" />
                                                     </font>
@@ -98,15 +97,15 @@
                                                         </HBox>
                                                     </children>
                                                 </VBox>
-                                                <Button fx:id="btn_signup" layoutX="166.0" layoutY="373.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" style="-fx-border-color: #fabe1e; -fx-background-color: #1f1f22; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="SignUp" textFill="WHITE" />
+                                                <Button fx:id="btn_signup" layoutX="166.0" layoutY="373.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" style="-fx-border-color: #fabe1e; -fx-background-color: #1f1f22; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="S'inscrire" textFill="WHITE" />
                                                 <HBox alignment="CENTER" layoutX="26.0" layoutY="416.0" spacing="20.0">
                                                     <children>
                                                         <Separator prefHeight="4.0" prefWidth="158.0" />
-                                                        <Label alignment="TOP_CENTER" text="Or" textFill="#c9c4c4" />
+                                                        <Label alignment="TOP_CENTER" text="Ou" textFill="#c9c4c4" />
                                                         <Separator prefHeight="4.0" prefWidth="149.0" />
                                                     </children>
                                                 </HBox>
-                                                <Button fx:id="btn_signin_google" layoutX="108.0" layoutY="444.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" style="-fx-border-color: #fabe1e; -fx-background-color: #1f1f22; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="Sign In with Google " textFill="WHITE" />
+                                                <Button fx:id="btndeja" layoutX="132.0" layoutY="444.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="149.0" style="-fx-border-color: #fabe1e; -fx-background-color: #1f1f22; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 12;" text="Déja inscrit" textFill="WHITE" />
                                             </children>
                                         </AnchorPane>
                                     </children>
