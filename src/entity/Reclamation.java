@@ -6,9 +6,6 @@
 package entity;
 
 import enums.Etat;
-import java.text.SimpleDateFormat;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.*;
 
 /**
  *
@@ -21,7 +18,7 @@ public class Reclamation {
     private String description;
     private Etat etat;
     private String date_creation;
-    private int user_id;   
+    private int user_id;
     private int photo_id;
     private Photo photo;
     private User user;
@@ -40,8 +37,6 @@ public class Reclamation {
         this.user = user;
     }
 
-    
-    
     public Reclamation(int id, String sujet, String description, Etat etat, String date_creation, int user_id, int photo_id, Photo photo, User user) {
         this.id = id;
         this.sujet = sujet;
@@ -130,11 +125,5 @@ public class Reclamation {
     public String toString() {
         return "Reclamation{" + "id=" + id + ", sujet=" + sujet + ", description=" + description + ", etat=" + etat + ", date_creation=" + date_creation + ", user_id=" + user_id + ", photo_id=" + photo_id + '}';
     }
-    
-    
-
-    
-    
-
 
 }

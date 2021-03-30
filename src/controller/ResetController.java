@@ -5,7 +5,6 @@
  */
 package controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -18,15 +17,9 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,7 +29,7 @@ import javax.swing.JOptionPane;
  */
 public class ResetController implements Initializable {
 
-     @FXML
+    @FXML
     private PasswordField newpass;
 
     @FXML
@@ -44,22 +37,22 @@ public class ResetController implements Initializable {
 
     @FXML
     private PasswordField pass;
-    
-     private Statement st;
+
+    private Statement st;
     private ResultSet rs;
-     private  Connection cnx;
+    private Connection cnx;
     public String user;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-      
+
         // TODO
-    }    
-public String encrypt(String message) throws Exception
-    {
+    }
+
+    public String encrypt(String message) throws Exception {
         String passwordToHash = message;
         String generatedPassword = null;
         try {
@@ -72,49 +65,44 @@ public String encrypt(String message) throws Exception
             //This bytes[] has bytes in decimal format;
             //Convert it to hexadecimal format
             StringBuilder sb = new StringBuilder();
-            for(int i=0; i< bytes.length ;i++)
-            {
+            for (int i = 0; i < bytes.length; i++) {
                 sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
             //Get complete hashed password in hex format
             generatedPassword = sb.toString();
-        } 
-        catch (NoSuchAlgorithmException e) 
-        {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         System.out.println(generatedPassword);
- 
+
         return generatedPassword;
     }
+
     void setIdd(String text) {
-         res.setOnMouseClicked(event -> {
-             try {
-                 if (pass.getText().equals(newpass.getText())) {
-                     PreparedStatement pst;
-                     try {
-                         String updateQuery =" UPDATE userr SET password = ? WHERE email=?" ;
-                         cnx= DriverManager.getConnection("jdbc:mysql://localhost/library","root", "");
-                         pst=cnx.prepareStatement(updateQuery);
-                         pst.setString(1,encrypt(newpass.getText() ));
-                         pst.setString(2, text);
-                         pst.executeUpdate();
-                         JOptionPane.showMessageDialog(null, "Reset Successfully");
-                         
-                         
-                         
-                         
-                     } catch (Exception ex) {
-                         JOptionPane.showMessageDialog(null, ex);
-                     }
-                     
-                     
-                 } else {
-                     JOptionPane.showMessageDialog(null, "Password do not match");
-                 }  } catch (Exception ex) {
-                 Logger.getLogger(ResetController.class.getName()).log(Level.SEVERE, null, ex);
-             }
+        res.setOnMouseClicked(event -> {
+            try {
+                if (pass.getText().equals(newpass.getText())) {
+                    PreparedStatement pst;
+                    try {
+                        String updateQuery = " UPDATE userr SET password = ? WHERE email=?";
+                        cnx = DriverManager.getConnection("jdbc:mysql://localhost/library", "root", "");
+                        pst = cnx.prepareStatement(updateQuery);
+                        pst.setString(1, encrypt(newpass.getText()));
+                        pst.setString(2, text);
+                        pst.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Reset Successfully");
+
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Password do not match");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(ResetController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
-    
+
 }

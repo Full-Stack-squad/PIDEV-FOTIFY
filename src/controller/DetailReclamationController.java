@@ -20,14 +20,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -69,6 +74,24 @@ public class DetailReclamationController implements Initializable {
     private Button saugarderBT;
     @FXML
     private Button annulerBT;
+    @FXML
+    private Pane pane;
+    @FXML
+    private Button feedback_window_btn;
+    @FXML
+    private Button ab51;
+    @FXML
+    private Button ab3;
+    @FXML
+    private Button ab4;
+    @FXML
+    private Button ab2;
+    @FXML
+    private Button ab;
+    @FXML
+    private Button ab1;
+    @FXML
+    private Label fotify;
 
     /**
      * Initializes the controller class.
@@ -76,7 +99,6 @@ public class DetailReclamationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
 
         sujetoption.add("option1");
         sujetoption.add("option0");
@@ -87,12 +109,12 @@ public class DetailReclamationController implements Initializable {
 
     public void initData(Reclamation r) {
         this.r = r;
-        photoT.setText(r.getPhoto().gettitre());
+
         descriptionTA.setText(r.getDescription());
         sujetT.setText(r.getSujet());
-        if(sujetoption.contains(r.getSujet())){
+        if (sujetoption.contains(r.getSujet())) {
             sujetCB.setValue(r.getSujet());
-        }else{
+        } else {
             sujetCB.setValue("autre");
             sujetTF.setVisible(true);
             sujetTF.setText(r.getSujet());
@@ -166,11 +188,10 @@ public class DetailReclamationController implements Initializable {
     private void setVisibleEdit() {
         showEditHB.setVisible(false);
         editOptionHB.setVisible(true);
-        
+
         sujetVB.setVisible(true);
         sujetT.setVisible(false);
-        
-        
+
         descriptionTA.setEditable(true);
 
     }
@@ -182,6 +203,133 @@ public class DetailReclamationController implements Initializable {
         sujetT.setVisible(true);
         descriptionTA.setEditable(false);
 
+    }
+
+    @FXML
+    private void gererFeedback() {
+
+        feedback_window_btn.setOnMouseClicked(event -> {
+            System.out.println("hey");
+            try {
+                Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                System.out.println("hey");
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+
+    @FXML
+    private void gererprofile() {
+        ab51.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/displayUsers.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void abonnementt() {
+        ab3.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/Myabbs.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void gerercours() {
+        ab4.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/home.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void gererevenement() {
+        ab2.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/AfficherEvenement.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void gerergalerie() {
+        ab.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+    }
+
+    @FXML
+    private void gererreclamation() {
+        ab1.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
     }
 
 }

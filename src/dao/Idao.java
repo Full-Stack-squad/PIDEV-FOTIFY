@@ -13,17 +13,26 @@ import java.util.List;
  * @author YACINE
  */
 public interface Idao<T> {
+
     public void insert(T o);
+
     public void delete(T o);
+
     public List<T> displayAll();
+
     public T displayById(int id);
-    
+
     public boolean update(T os);
-    
+
     void ajouter(T t) throws SQLException;
+
     boolean delete(int id) throws SQLException;
+
     boolean chercher(int id) throws SQLException;
-    boolean chercher_ajout(T t)throws SQLException;
-    boolean update(T t,int id) throws SQLException;
+
+    boolean chercher_ajout(T t) throws SQLException;
+
+    boolean update(T t, int id) throws SQLException;
+
     List<T> readAll() throws SQLException;
 }

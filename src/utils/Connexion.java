@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author wiemhjiri
  */
 public class Connexion {
-    
+
     private static Connexion instance;
     private Connection cnx;
     String url = "jdbc:mysql://localhost:3306/library";
@@ -36,12 +36,9 @@ public class Connexion {
         }
         return instance;
     }
-    
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         return cnx;
     }
-    
-    
-    
-    
+
 }

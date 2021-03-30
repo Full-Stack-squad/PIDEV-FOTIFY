@@ -20,23 +20,25 @@ import java.util.logging.Logger;
  * @author YACINE
  */
 public class Upload {
-    public String upload(File file,String dossier) throws FileNotFoundException, IOException {
-     BufferedOutputStream stream = null;
-      
-        String globalPath="C:\\wamp\\www\\doc"+ dossier;
+
+    public String upload(File file, String dossier) throws FileNotFoundException, IOException {
+        BufferedOutputStream stream = null;
+
+        String globalPath = "C:\\wamp\\www\\doc" + dossier;
         //String localPath="localhost:8000/u/";
         String fileName = file.getName();
-        
+
         try {
             Path p = (Path) file.toPath();
-            
+
             byte[] bytes = Files.readAllBytes(p);
-    
+
             File dir = new File(globalPath);
-            if (!dir.exists())
+            if (!dir.exists()) {
                 dir.mkdirs();
+            }
             // Create the file on server
-            File serverFile = new File(dir.getAbsolutePath()+File.separator + fileName);
+            File serverFile = new File(dir.getAbsolutePath() + File.separator + fileName);
             stream = new BufferedOutputStream(new FileOutputStream(serverFile));
             stream.write(bytes);
             stream.close();
@@ -49,5 +51,5 @@ public class Upload {
             return "error2";
         }
     }
-    
+
 }

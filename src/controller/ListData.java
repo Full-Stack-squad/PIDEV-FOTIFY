@@ -10,30 +10,26 @@ import javafx.collections.ObservableList;
 import entity.Cours;
 import dao.coursService;
 
-
-
 /**
  *
  * @author Amine
  */
 public class ListData {
-    
-     /**
+
+    /**
      * The data as an observable list of Cours.
      */
-    
-    private ObservableList<Cours> cours=FXCollections.observableArrayList();
+    private ObservableList<Cours> cours = FXCollections.observableArrayList();
 
     public ListData() {
-        
-        coursService pdao=coursService.getInstance();
-        cours= pdao.displayAll();
+
+        coursService pdao = coursService.getInstance();
+        cours = pdao.displayAll();
         System.out.println(cours);
     }
-    
-    public ObservableList<Cours> getCours(){
+
+    public ObservableList<Cours> getCours() {
         return cours;
     }
-    
-   
+
 }

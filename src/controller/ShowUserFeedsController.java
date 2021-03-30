@@ -50,7 +50,7 @@ import javax.swing.JOptionPane;
  */
 public class ShowUserFeedsController implements Initializable {
 
-     private ObservableList<Feedback> feedbacks = FXCollections.observableArrayList();
+    private ObservableList<Feedback> feedbacks = FXCollections.observableArrayList();
     @FXML
     private Pane pane;
     @FXML
@@ -85,52 +85,52 @@ public class ShowUserFeedsController implements Initializable {
     private PieChart feedback_stats;
     @FXML
     private Button add_feedback_btn;
-public  String css ="-fx-text-fill:white;\n" ;
-public  String ccss ="-fx-text-fill:#fabe2e;\n" ;
-public  String cs ="-fx-background-color: #1f1f22;\n" +
-                   "-fx-border-insets: 2;\n"+"-fx-font-weight: bold;\n"+
-                   "-fx-border-width: 2;\n" +
-        "-fx-border-color: #fabe2e;\n" +"-fx-min-height:50;\n"+
-                  "-fx-text-fill:#fabe2e;\n" +
-                   "-fx-border-radius: 10;\n";
-public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n" +"-fx-font-weight: bold;\n";
+    public String css = "-fx-text-fill:white;\n";
+    public String ccss = "-fx-text-fill:#fabe2e;\n";
+    public String cs = "-fx-background-color: #1f1f22;\n"
+            + "-fx-border-insets: 2;\n" + "-fx-font-weight: bold;\n"
+            + "-fx-border-width: 2;\n"
+            + "-fx-border-color: #fabe2e;\n" + "-fx-min-height:50;\n"
+            + "-fx-text-fill:#fabe2e;\n"
+            + "-fx-border-radius: 10;\n";
+    public String csss = "-fx-text-fill:white;\n" + "-fx-background-color:#1f1f22;\n" + "-fx-font-weight: bold;\n";
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      
-        
+
     }
 
     @FXML
     private void gererFeedback() {
-          feedback_window_btn.setOnMouseClicked(event -> {
+        feedback_window_btn.setOnMouseClicked(event -> {
             System.out.println("hey");
-           try {
+            try {
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 System.out.println("hey");
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         });
     }
 
     @FXML
     private void gererprofile() {
-          ab51.setOnMouseClicked(event -> {
+        ab51.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/displayUsers.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -140,19 +140,33 @@ public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n"
     }
 
     @FXML
-    private void abonnementt(ActionEvent event) {
+    private void abonnementt() {
+        ab3.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/Myabbs.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
     }
 
     @FXML
     private void gerercours() {
-         ab4.setOnMouseClicked(event -> {
+        ab4.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/home.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -163,14 +177,14 @@ public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n"
 
     @FXML
     private void gererevenement() {
-         ab2.setOnMouseClicked(event -> {
+        ab2.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/AfficherEvenement.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -181,14 +195,14 @@ public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n"
 
     @FXML
     private void gerergalerie() {
-         ab.setOnMouseClicked(event -> {
+        ab.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -199,14 +213,14 @@ public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n"
 
     @FXML
     private void gererreclamation() {
-          ab1.setOnMouseClicked(event -> {
+        ab1.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -223,7 +237,7 @@ public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n"
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -313,7 +327,7 @@ public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n"
             title.setMinWidth(85);
             title.setMaxWidth(85);
             title.setAlignment(Pos.BASELINE_LEFT);
-            
+
             Label title_date = new Label("Date d'ajout");
             title_date.setMinWidth(250);
             title_date.setMaxWidth(250);
@@ -325,19 +339,19 @@ public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n"
             Label title_rating = new Label("Notation");
             title_rating.setMinWidth(65);
             title_rating.setMaxWidth(65);
- title_rating.setAlignment(Pos.CENTER);
+            title_rating.setAlignment(Pos.CENTER);
             n = (Node) FXMLLoader.load(getClass().getResource("/view/Item.fxml"));
             ((HBox) n).setFillHeight(true);
             ((HBox) n).setAlignment(Pos.CENTER);
-((HBox) n).setStyle(cs);
+            ((HBox) n).setStyle(cs);
             //((HBox) n).setStyle("-fx-background-color: #FFFACD;");
-            ((HBox) n).getChildren().addAll(title,title_date, title_description, title_rating);
-           
+            ((HBox) n).getChildren().addAll(title, title_date, title_description, title_rating);
+
             title.setStyle(ccss);
             title_date.setStyle(ccss);
             title_description.setStyle(ccss);
             title_rating.setStyle(ccss);
-            
+
             vb.getChildren().add(n);
             vb.setSpacing(15);
         } catch (IOException ex) {
@@ -350,7 +364,7 @@ public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n"
             feedbacks = fb.feedMembre(userId);
             TextField field = new TextField();
             Node[] nodes = new Node[feedbacks.size()];
-            UserDao ud= new UserDao();
+            UserDao ud = new UserDao();
             for (int i = 0; i < nodes.length; i++) {
                 Label label_user = new Label("" + ud.displayByIdM(feedbacks.get(i).getIdMembre()).getUserNom());
                 label_user.setMinWidth(100);
@@ -361,14 +375,16 @@ public  String csss ="-fx-text-fill:white;\n" +"-fx-background-color:#1f1f22;\n"
                 label_date.setMinWidth(250);
                 label_date.setMaxWidth(250);
                 label_date.setAlignment(Pos.CENTER);
+
                 Label label_description = new Label("" + feedbacks.get(i).getContenuFeedBack());
                 label_description.setMinWidth(300);
                 label_description.setMaxWidth(300);
                 label_description.setAlignment(Pos.CENTER);
+
                 Label label_rating = new Label("" + feedbacks.get(i).getRating());
                 label_rating.setMinWidth(25);
                 label_rating.setMaxWidth(25);
-label_rating.setAlignment(Pos.CENTER);
+                label_rating.setAlignment(Pos.CENTER);
                 Image image = new Image("/utils/star.png");
                 ImageView iv = new ImageView();
                 iv.setFitWidth(20);
@@ -379,14 +395,14 @@ label_rating.setAlignment(Pos.CENTER);
                 iv.setImage(image);
                 nodes[i] = (Node) FXMLLoader.load(getClass().getResource("/view/Item.fxml"));
                 ((HBox) nodes[i]).setFillHeight(true);
-                      label_date.setStyle(css);
-                      label_user.setStyle(css);
-                              label_description.setStyle(css);
-                        label_rating.setStyle(csss);
+                label_date.setStyle(css);
+                label_user.setStyle(css);
+                label_description.setStyle(css);
+                label_rating.setStyle(csss);
                 ((HBox) nodes[i]).setAlignment(Pos.CENTER);
-((HBox) nodes[i]).setStyle(cs);
+                ((HBox) nodes[i]).setStyle(cs);
 
-                ((HBox) nodes[i]).getChildren().addAll(label_user,label_date, label_description, label_rating, iv);
+                ((HBox) nodes[i]).getChildren().addAll(label_user, label_date, label_description, label_rating, iv);
                 vb.getChildren().add(nodes[i]);
             }
         } catch (SQLException | IOException ex) {

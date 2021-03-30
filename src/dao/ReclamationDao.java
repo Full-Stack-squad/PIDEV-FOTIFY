@@ -5,8 +5,6 @@
  */
 package dao;
 
-import entity.Photo;
-import entity.User;
 import entity.Reclamation;
 import enums.Etat;
 import utils.DataSource;
@@ -106,7 +104,7 @@ public class ReclamationDao implements Idao<Reclamation> {
                 r.setEtat(Etat.valueOf(rs.getString("etat")));
                 r.setDate_creation(rs.getString("date_creation"));
                 // get user
-              
+
             }
 
         } catch (SQLException ex) {
@@ -153,7 +151,6 @@ public class ReclamationDao implements Idao<Reclamation> {
                 r.setEtat(Etat.valueOf(rs.getString("etat")));
                 r.setDate_creation(rs.getString("date_creation"));
 
-              
                 list.add(r);
             }
 
@@ -163,48 +160,53 @@ public class ReclamationDao implements Idao<Reclamation> {
         return list;
 
     }
+
     public List<Reclamation> isplayById(int idd) {
-        String req="select * from reclamation where user_id ="+idd;
-          List<Reclamation> list=new ArrayList<>();
+        String req = "select * from reclamation where user_id =" + idd;
+        List<Reclamation> list = new ArrayList<>();
         try {
-           rs=st.executeQuery(req);
-           while(rs.next()){
-            Reclamation p=new Reclamation();
-                 p.setId(rs.getInt(1));
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                Reclamation p = new Reclamation();
+                p.setId(rs.getInt(1));
                 p.setSujet(rs.getString(2));
                 p.setDescription(rs.getString(3));
                 p.setEtat(Etat.valueOf(rs.getString(4)));
                 p.setDate_creation(rs.getString(5));
                 p.setUser_id(rs.getInt(6));
                 p.setPhoto_id(rs.getInt(7));
-                  list.add(p);
-            }  
-            
+                list.add(p);
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return list; }
- public ObservableList<Reclamation> playById() {
-        String req="select * from reclamation";
-       ObservableList<Reclamation> list=FXCollections.observableArrayList();
+        return list;
+    }
+
+    public ObservableList<Reclamation> playById() {
+        String req = "select * from reclamation";
+        ObservableList<Reclamation> list = FXCollections.observableArrayList();
         try {
-           rs=st.executeQuery(req);
-           while(rs.next()){
-            Reclamation p=new Reclamation();
-                 p.setId(rs.getInt(1));
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                Reclamation p = new Reclamation();
+                p.setId(rs.getInt(1));
                 p.setSujet(rs.getString(2));
                 p.setDescription(rs.getString(3));
                 p.setEtat(Etat.valueOf(rs.getString(4)));
                 p.setDate_creation(rs.getString(5));
                 p.setUser_id(rs.getInt(6));
                 p.setPhoto_id(rs.getInt(7));
-                  list.add(p);
-            }  
-            
+                list.add(p);
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(PhotoServiceDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return list; }
+        return list;
+    }
+
     @Override
     public void ajouter(Reclamation t) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -14,78 +14,93 @@ import javafx.beans.property.SimpleStringProperty;
  * @author YACINE
  */
 public class commentaire {
+
     private SimpleIntegerProperty id_comm;
     private SimpleStringProperty comm;
     private SimpleStringProperty nom_user;
     private SimpleIntegerProperty id_photo;
     private SimpleIntegerProperty idU;
-    
 
+    public commentaire() {
+    }
 
-public commentaire(){};
-public commentaire(int id_comm, String comm, String nom_user,int id_photo,int idU) {
-        this.id_comm = new SimpleIntegerProperty(id_comm);   
+    ;
+public commentaire(int id_comm, String comm, String nom_user, int id_photo, int idU) {
+        this.id_comm = new SimpleIntegerProperty(id_comm);
         this.comm = new SimpleStringProperty(comm);
         this.nom_user = new SimpleStringProperty(nom_user);
         this.id_photo = new SimpleIntegerProperty(id_photo);
-         this.id_comm = new SimpleIntegerProperty(idU); 
-};
+        this.id_comm = new SimpleIntegerProperty(idU);
+    }
+
+    ;
 public commentaire(int id_comm, String comm) {
-        this.id_comm = new SimpleIntegerProperty(id_comm);   
+        this.id_comm = new SimpleIntegerProperty(id_comm);
         this.comm = new SimpleStringProperty(comm);
-        
-};
-public commentaire(String comm, String nom_user,int id_photo) {
-        
+
+    }
+
+    ;
+public commentaire(String comm, String nom_user, int id_photo) {
+
         this.comm = new SimpleStringProperty(comm);
         this.nom_user = new SimpleStringProperty(nom_user);
         this.id_photo = new SimpleIntegerProperty(id_photo);
-};
-public commentaire(String comm, String nom_user,int id_photo,int idU) {
-        
+    }
+
+    ;
+public commentaire(String comm, String nom_user, int id_photo, int idU) {
+
         this.comm = new SimpleStringProperty(comm);
         this.nom_user = new SimpleStringProperty(nom_user);
         this.id_photo = new SimpleIntegerProperty(id_photo);
         this.idU = new SimpleIntegerProperty(idU);
-};
+    }
+
+    ;
 
 
 public int getid_comm() {
         return id_comm.get();
-}
-public void setid_comm(int id_comm) {
-        this.id_comm = new SimpleIntegerProperty(id_comm);
-}
+    }
 
-public String getcomm() {
+    public void setid_comm(int id_comm) {
+        this.id_comm = new SimpleIntegerProperty(id_comm);
+    }
+
+    public String getcomm() {
         return comm.get();
     }
-public void setcomm(String comm) {
+
+    public void setcomm(String comm) {
         this.comm = new SimpleStringProperty(comm);
     }
 
-public String getnom_user() {
+    public String getnom_user() {
         return nom_user.get();
     }
-public void setnom_user(String nom_user) {
+
+    public void setnom_user(String nom_user) {
         this.nom_user = new SimpleStringProperty(nom_user);
     }
-    
-public int getid_photo() {
+
+    public int getid_photo() {
         return id_photo.get();
     }
-public void setid_photo(int id_photo) {
+
+    public void setid_photo(int id_photo) {
         this.id_photo = new SimpleIntegerProperty(id_photo);
     }
-public int getidUser() {
+
+    public int getidUser() {
         return idU.get();
     }
-public void setidUser(int idU) {
+
+    public void setidUser(int idU) {
         this.idU = new SimpleIntegerProperty(idU);
     }
 
-
-@Override
+    @Override
     public int hashCode() {
         int hash = 5;
         hash = 53 * hash + Objects.hashCode(this.id_comm);
@@ -107,8 +122,4 @@ public void setidUser(int idU) {
         return true;
     }
 
-
-
 }
-
-

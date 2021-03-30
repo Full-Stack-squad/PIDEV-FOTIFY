@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,14 +18,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -35,6 +31,7 @@ import javafx.stage.Stage;
  * @author hazem
  */
 public class FController implements Initializable {
+
     public Pane pane;
     public AnchorPane ap;
     public BorderPane bp;
@@ -52,6 +49,8 @@ public class FController implements Initializable {
     private Button rec;
     @FXML
     private Button abons;
+    @FXML
+    private Hyperlink logout;
 
     /**
      * Initializes the controller class.
@@ -59,129 +58,129 @@ public class FController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        gal.setOnAction(e->{
-         try {
+        gal.setOnAction(e -> {
+            try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(type);
                 Image image = new Image("/img/pik.gif");
-        scene.setCursor(new ImageCursor(image,
-                                image.getWidth() / 2,
-                                image.getHeight() /2));
+                scene.setCursor(new ImageCursor(image,
+                        image.getWidth() / 2,
+                        image.getHeight() / 2));
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
-                 new animatefx.animation.Pulse(type).play();
+                stage.setTitle("Fotify");
+                new animatefx.animation.Pulse(type).play();
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-        
-           profil.setOnAction(e->{
-         try {
+
+        profil.setOnAction(e -> {
+            try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/displayUsers.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-           abons.setOnAction(e->{
-         try {
+        abons.setOnAction(e -> {
+            try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/Myabbs.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-        
-        
-        
-         btncours.setOnMouseClicked(event -> {
+
+        btncours.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/home.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-         ab512.setOnMouseClicked(event -> {
+        ab512.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/AfficherEvenement.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-           
-         
-          rec.setOnMouseClicked(event -> {
+
+        rec.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-          
-               feedback.setOnMouseClicked(event -> {
+
+        feedback.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
-          
-    }    
+        
+         logout.setOnMouseClicked(event -> {
+            try {
 
+                Parent type = FXMLLoader.load(getClass().getResource("/view/SignIn.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
+        });
 
+    }
 
-    
-
-    
-
-    
-
-    
-
-    
 }

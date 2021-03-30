@@ -5,6 +5,8 @@ import dao.PhotoServiceDao;
 import dao.UserDao;
 import entity.commentaire;
 import entity.Photo;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +25,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +32,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -37,7 +41,7 @@ import javafx.stage.Stage;
  * @author YACINE
  */
 public class ShowPhotoController implements Initializable {
-    
+
     public int g;
     @FXML
     private Label tftitre;
@@ -56,10 +60,10 @@ public class ShowPhotoController implements Initializable {
     public ArrayList comments;
     public ArrayList<Label> comms = new ArrayList<>();
     public ArrayList<String> usernames = new ArrayList<>();
-    public ArrayList<Label> imaa =new ArrayList<>();
+    public ArrayList<Label> imaa = new ArrayList<>();
     @FXML
     private ScrollPane sp1;
-    public int idU=2;
+    public int idU = 2;
     @FXML
     private Button btnmodif;
     @FXML
@@ -82,74 +86,86 @@ public class ShowPhotoController implements Initializable {
     private Button rec;
     @FXML
     private Label fotify;
+    @FXML
+    private Button savebtn;
+    
+    
+    public static void saveToFile(Image image) {
+    File outputFile = new File("C:\\Users\\Y A C I N E\\Desktop\\"+"downloaded.png");
+    BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+    try {
+      ImageIO.write(bImage, "png", outputFile);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }}
 
-    
-    
-    
-    
-    public void getcomms(int iidd){
-        
-    CommentaireServiceDao cc = new CommentaireServiceDao();
-     
-imaa.clear();
-    for (commentaire c : cc.displaycomms(iidd)){
-               
-               imaa.add(new Label("  "+c.getnom_user()+" :    "+c.getcomm()));
-               VBox vBox=new VBox();
-               vBox.getChildren().clear();
-               imaa.forEach( e-> vBox.getChildren().add(e));
-               imaa.forEach(e->e.setMinHeight(50));
-               String cssLayout = "-fx-background-color: #2d424a;\n" +
-                   "-fx-border-insets: 2;\n" +
-                   "-fx-border-width: 2;\n" +
-                  "-fx-text-fill:white;\n" +
-                   "-fx-border-radius: 10;\n";
-                String cLayout = "-fx-background-color:#1f1f22;\n" ;
-                vBox.setStyle(cLayout);
-                vBox.setSpacing(5);
-               imaa.forEach(e->e.setMaxWidth(Double.MAX_VALUE));
-               imaa.forEach(e->e.setStyle(cssLayout));
-               sp.setContent(vBox);   
-    }}
-    public void mycomms(int iidd){
-        
-    CommentaireServiceDao ccc = new CommentaireServiceDao();
-     
-comms.clear();
-    for (commentaire c : ccc.owndisplaycomms(iidd, UserDao.connectedUser.getUserId())){//////jddiiiiiid
-               
-               comms.add(new Label("  "+c.getnom_user()+" :    "+c.getcomm()));
-               VBox vB=new VBox();
-               vB.getChildren().clear();
-               comms.forEach( e-> vB.getChildren().add(e));
-               comms.forEach(e->e.setMinHeight(50));
-               String cssLayout = "-fx-background-color:#2d424a;\n" +
-                   "-fx-border-insets: 2;\n" +
-                   "-fx-border-width: 2;\n" +
-                   "-fx-text-fill:white;\n" +
-                   "-fx-border-radius: 10;\n";
-                String cLayout = "-fx-background-color:#1f1f22;\n" ;
-                vB.setStyle(cLayout);
-                vB.setSpacing(5);
-               comms.forEach(e->e.setMaxWidth(Double.MAX_VALUE));
-               comms.forEach(e->e.setStyle(cssLayout));
-               sp1.setContent(vB);   
-               
-    }}
+    public void getcomms(int iidd) {
+
+        CommentaireServiceDao cc = new CommentaireServiceDao();
+
+        imaa.clear();
+        for (commentaire c : cc.displaycomms(iidd)) {
+
+            imaa.add(new Label("  " + c.getnom_user() + " :    " + c.getcomm()));
+            VBox vBox = new VBox();
+            vBox.getChildren().clear();
+            imaa.forEach(e -> vBox.getChildren().add(e));
+            imaa.forEach(e -> e.setMinHeight(50));
+            String cssLayout = "-fx-background-color: #2d424a;\n"
+                    + "-fx-border-insets: 2;\n"
+                    + "-fx-border-width: 2;\n"
+                    + "-fx-text-fill:white;\n"
+                    + "-fx-border-radius: 10;\n";
+            String cLayout = "-fx-background-color:#1f1f22;\n";
+            vBox.setStyle(cLayout);
+            vBox.setSpacing(5);
+            imaa.forEach(e -> e.setMaxWidth(Double.MAX_VALUE));
+            imaa.forEach(e -> e.setStyle(cssLayout));
+            sp.setContent(vBox);
+        }
+    }
+
+    public void mycomms(int iidd) {
+
+        CommentaireServiceDao ccc = new CommentaireServiceDao();
+
+        comms.clear();
+        for (commentaire c : ccc.owndisplaycomms(iidd, UserDao.connectedUser.getUserId())) {//////jddiiiiiid
+
+            comms.add(new Label("  " + c.getnom_user() + " :    " + c.getcomm()));
+            VBox vB = new VBox();
+            vB.getChildren().clear();
+            comms.forEach(e -> vB.getChildren().add(e));
+            comms.forEach(e -> e.setMinHeight(50));
+            String cssLayout = "-fx-background-color:#2d424a;\n"
+                    + "-fx-border-insets: 2;\n"
+                    + "-fx-border-width: 2;\n"
+                    + "-fx-text-fill:white;\n"
+                    + "-fx-border-radius: 10;\n";
+            String cLayout = "-fx-background-color:#1f1f22;\n";
+            vB.setStyle(cLayout);
+            vB.setSpacing(5);
+            comms.forEach(e -> e.setMaxWidth(Double.MAX_VALUE));
+            comms.forEach(e -> e.setStyle(cssLayout));
+            sp1.setContent(vB);
+
+        }
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-         fotify.setOnMouseClicked(event -> {
+
+        fotify.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/firstView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -157,87 +173,94 @@ comms.clear();
 
         });
         // TODO
-        
 
-BtnRech.setOnAction(e->{
-    try {
+        BtnRech.setOnAction(e -> {
+            try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/RechercheView.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                stage.show();}
-    catch (IOException ex) {
+                stage.show();
+            } catch (IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
-         });
-        
-         btnProfil.setOnAction(e->{
-    try {
+        });
+
+        btnProfil.setOnAction(e -> {
+            try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                stage.show();}
-    catch (IOException ex) {
+                stage.show();
+            } catch (IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
-         });
-    }    
-    
-    
-    
-public int setIdd(int id){
-    
+        });
+    }
+
+    public int setIdd(int id) {
+
         PhotoServiceDao ps1 = new PhotoServiceDao();
         Photo photo1 = new Photo();
-        photo1=ps1.displayById(id);//recuperer la photo avec son id
-        g=id;
+        photo1 = ps1.displayById(id);//recuperer la photo avec son id
+        Image immg=new Image(photo1.geturl());//jdiiid
+        savebtn.setOnAction(e->{saveToFile(immg); JOptionPane.showMessageDialog(null, "Photo téléchargée");});//jdiiiid7
+        g = id;
         tftitre.setText(photo1.gettitre());
         Image image = new Image(photo1.geturl());
         ima.setImage(image);
-        ima.setFitHeight(300);
+        ima.setFitHeight(200);
+        ima.setFitWidth(200);
+        ima.setOnMouseEntered(é->{
+            ima.setFitHeight(300);
         ima.setFitWidth(300);
+        });
+        ima.setOnMouseExited(é->{
+            ima.setFitHeight(200);
+        ima.setFitWidth(200);
+        });
         sp.setContent(null);
         getcomms(id);
         mycomms(id);
 
-    
-     //le Bouton Ajouter Commentaire Lambda expression 🙂🙂   
-        
-    btncomm.setOnAction(e->{
-               CommentaireServiceDao ccc =CommentaireServiceDao.getInstance();
-                    TextInputDialog dialog = new TextInputDialog("walter");
-                    dialog.setTitle("ajouter un commentaire");
-                    
-                    dialog.setContentText("ajoutez votre commentaire:");
-                    Optional<String> result = dialog.showAndWait();
-                    if (result.isPresent()){
-                    commentaire c1 = new commentaire(result.get(),UserDao.connectedUser.getUserNom()+" "+UserDao.connectedUser.getUserPrenom(),id,UserDao.connectedUser.getUserId());
-                    ccc.insert(c1);
-                    sp.setContent(null);
-                    getcomms(id);
-                    mycomms(id);                   
-}                    
-});
-    
-    btnmodif.setOnAction(e->{
-     try {
+        //le Bouton Ajouter Commentaire Lambda expression 🙂🙂   
+        btncomm.setOnAction(e -> {
+            CommentaireServiceDao ccc = CommentaireServiceDao.getInstance();
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("ajouter un commentaire");
+
+            dialog.setContentText("ajoutez votre commentaire:");
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()&& !dialog.getResult().isEmpty()) {
+                commentaire c1 = new commentaire(result.get(), UserDao.connectedUser.getUserNom() + " " + UserDao.connectedUser.getUserPrenom(), id, UserDao.connectedUser.getUserId());
+                ccc.insert(c1);
+                sp.setContent(null);
+                getcomms(id);
+                mycomms(id);
+            }
+            else{JOptionPane.showMessageDialog(null, "veuillez saisir un commentaire");}
+           
+        });
+
+        btnmodif.setOnAction(e -> {
+            try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/GererComm.fxml"));
                 Region root = (Region) loader.load();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 GererCommController gcc = loader.getController();
-                gcc.setIdd(id,idU);//envoie de l'ID de la photo  
-                System.err.println(id+"+"+idU);
+                gcc.setIdd(id, idU);//envoie de l'ID de la photo  
+                System.err.println(id + "+" + idU);
                 stage.setScene(scene);
-                stage.show();}
-    catch (IOException ex) {
+                stage.show();
+            } catch (IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
-    });
-  
-      rec.setOnAction(e->{
-          try {
+        });
+
+        rec.setOnAction(e -> {
+            try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreeReclamation.fxml"));
                 Region root = (Region) loader.load();
                 Scene scene = new Scene(root);
@@ -245,16 +268,17 @@ public int setIdd(int id){
                 CreeReclamationController hspc = loader.getController();
                 hspc.setIdd(id);//envoie de l'ID de la photo   
                 stage.setScene(scene);
-                stage.show();}
-    catch (IOException ex) {
+                stage.show();
+            } catch (IOException ex) {
                 Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
             }
-      });
+        });
 
+        return id;
 
-return id; 
+    }
 
-};
+    ;
 
     
 
@@ -263,7 +287,7 @@ return id;
 
     @FXML
     private void gerercours() {
-        
+
         ab4.setOnMouseClicked(event -> {
             try {
 
@@ -271,7 +295,7 @@ return id;
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -289,7 +313,7 @@ return id;
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -300,14 +324,14 @@ return id;
 
     @FXML
     private void gerergalerie() {
-          ab.setOnMouseClicked(event -> {
+        ab.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ProfileView.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -315,7 +339,6 @@ return id;
 
         });
     }
-
 
     @FXML
     private void gererprofile() {
@@ -326,7 +349,7 @@ return id;
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(CoursController.class.getName()).log(Level.SEVERE, null, ex);
@@ -336,19 +359,33 @@ return id;
     }
 
     @FXML
-    private void abonnementt(ActionEvent event) {
+    private void abonnementt() {
+        ab3.setOnMouseClicked(event -> {
+            try {
+
+                Parent type = FXMLLoader.load(getClass().getResource("/view/Myabbs.fxml"));
+                Scene scene = new Scene(type);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Fotify");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
     }
 
     @FXML
     private void gererreclamation() {
-          ab1.setOnMouseClicked(event -> {
+        ab1.setOnMouseClicked(event -> {
             try {
 
                 Parent type = FXMLLoader.load(getClass().getResource("/view/MesReclamations.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -361,23 +398,18 @@ return id;
     private void gererFeedback() {
         feedback_window_btn.setOnMouseClicked(event -> {
             System.out.println("hey");
-           try {
+            try {
                 Parent type = FXMLLoader.load(getClass().getResource("/view/ListerFeedback.fxml"));
                 Scene scene = new Scene(type);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 System.out.println("hey");
-                 stage.setTitle("Fotify"); 
+                stage.setTitle("Fotify");
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         });
     }
 
-
-    
-
 }
-
-

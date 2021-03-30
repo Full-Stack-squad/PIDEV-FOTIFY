@@ -16,157 +16,154 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShowUserFeedsController">
-   <children>
-      <AnchorPane prefWidth="1120.0" style="-fx-background-color: #fabe2e;">
-         <children>
-            <BorderPane prefHeight="639.0" prefWidth="1156.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-               <center>
-                  <AnchorPane id="AnchorPane" prefHeight="623.0" prefWidth="796.0" style="-fx-background-color: #1f1f22;" styleClass="mainFxmlClass" BorderPane.alignment="TOP_LEFT">
-                     <stylesheets>
-                        <URL value="@listerfeedback.css" />
-                     </stylesheets>
-                     <children>
-                        <HBox layoutX="42.0" layoutY="35.0" prefHeight="59.0" prefWidth="305.0" spacing="8.0">
-                           <children>
-                              <Line endX="-101.99996948242188" endY="67.25125885009766" fill="#fabe2e" startX="-101.99999237060547" startY="30.201005935668945" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
-                              <Label prefHeight="48.0" prefWidth="298.0" text="Liste des feedback" textFill="WHITE">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="36.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <ScrollPane fx:id="scroll_feedback" fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="138.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="269.0" prefWidth="752.0" style="-fx-background-color: #1f1f22;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="15.0">
-                           <content>
-                              <VBox fx:id="vb" alignment="CENTER" prefHeight="272.0" prefWidth="735.0" style="-fx-background-color: #1f1f22;" />
-                           </content>
-                        </ScrollPane>
-                        <Pane layoutX="2.0" layoutY="389.0" prefHeight="250.0" prefWidth="699.0" style="-fx-text-fill: white;">
-                           <children>
-                              <PieChart fx:id="feedback_stats" layoutX="174.0" layoutY="1.0" prefHeight="228.0" prefWidth="397.0" style="-fx-text-fill: white;" stylesheets="@../utils/chart.css" />
-                              <ImageView fx:id="images" fitHeight="85.0" fitWidth="80.0" layoutX="583.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" styleClass="imgs">
-                                 <image>
-                                    <Image url="@../img/piv.png" />
-                                 </image>
-                              </ImageView>
-                              <Label layoutX="583.0" layoutY="151.0" text="Vous avez" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="images_nb" layoutX="583.0" layoutY="177.0" text="Label" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                              </Label>
-                              <HBox layoutX="67.0" layoutY="60.0" prefHeight="132.0" prefWidth="81.0" spacing="30.0">
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <ImageView fx:id="coms" fitHeight="85.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="imgs">
-                                             <image>
+    <children>
+        <AnchorPane prefWidth="1120.0" style="-fx-background-color: #fabe2e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <BorderPane prefHeight="639.0" prefWidth="1156.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <center>
+                        <AnchorPane id="AnchorPane" prefHeight="623.0" prefWidth="796.0" style="-fx-background-color: #1f1f22;" styleClass="mainFxmlClass" BorderPane.alignment="TOP_LEFT">
+                            <stylesheets>
+                                <URL value="@listerfeedback.css" />
+                            </stylesheets>
+                            <children>
+                                <HBox layoutX="42.0" layoutY="35.0" prefHeight="59.0" prefWidth="305.0" spacing="8.0">
+                                    <children>
+                                        <Line endX="-101.99996948242188" endY="67.25125885009766" fill="#fabe2e" startX="-101.99999237060547" startY="30.201005935668945" stroke="#fabe2e" style="-fx-stroke-width: 7;" />
+                                        <Label prefHeight="48.0" prefWidth="298.0" text="Liste des feedback" textFill="WHITE">
+                                            <font>
+                                                <Font name="Times New Roman Bold" size="36.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <ScrollPane fx:id="scroll_feedback" fitToWidth="true" hbarPolicy="NEVER" layoutX="13.0" layoutY="108.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="269.0" prefWidth="752.0" style="-fx-background-color: #1f1f22;" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="12.0">
+                                    <content>
+                                        <VBox fx:id="vb" alignment="CENTER" prefHeight="272.0" prefWidth="735.0" style="-fx-background-color: #1f1f22;" />
+                                    </content>
+                                </ScrollPane>
+                                <Pane layoutY="365.0" prefHeight="250.0" prefWidth="753.0" style="-fx-text-fill: white;">
+                                    <children>
+                                        <PieChart fx:id="feedback_stats" layoutX="128.0" layoutY="1.0" prefHeight="250.0" prefWidth="483.0" style="-fx-text-fill: white;" stylesheets="@../utils/chart.css" />
+                                        <ImageView fx:id="images" fitHeight="85.0" fitWidth="80.0" layoutX="637.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" styleClass="imgs">
+                                            <image>
+                                                <Image url="@../img/piv.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label layoutX="637.0" layoutY="151.0" text="Vous avez" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="17.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="images_nb" layoutX="637.0" layoutY="177.0" text="Label" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="17.0" />
+                                            </font>
+                                        </Label>
+                                        <HBox layoutX="67.0" layoutY="60.0" prefHeight="132.0" prefWidth="81.0" spacing="30.0">
+                                            <children>
+                                                <VBox />
+                                                <VBox />
+                                            </children>
+                                        </HBox>
+                                        <ImageView fx:id="coms" fitHeight="85.0" fitWidth="80.0" layoutX="21.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" styleClass="imgs">
+                                            <image>
                                                 <Image url="@../img/com.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label text="Vous avez" textFill="WHITE">
-                                             <font>
+                                            </image>
+                                        </ImageView>
+                                        <Label layoutX="21.0" layoutY="145.0" text="Vous avez" textFill="WHITE">
+                                            <font>
                                                 <Font name="System Bold" size="17.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="feedback_nb" text="Label" textFill="WHITE">
-                                             <font>
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="feedback_nb" layoutX="21.0" layoutY="171.0" text="Label" textFill="WHITE">
+                                            <font>
                                                 <Font name="System Bold" size="17.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                    <VBox />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </Pane>
-                        <Button fx:id="add_feedback_btn" layoutX="618.0" layoutY="85.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Ajouter commentaire" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-               </center>
-               <left>
-                  <Pane fx:id="pane" prefHeight="614.0" prefWidth="323.0" style="-fx-background-color: #1f1f22;" BorderPane.alignment="CENTER">
-                     <children>
-                        <AnchorPane layoutY="131.0" prefHeight="150.0" prefWidth="327.0">
-                           <children>
-                              <Label alignment="CENTER" layoutX="-7.0" layoutY="14.0" prefHeight="37.0" prefWidth="320.0" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </Pane>
+                                <Button fx:id="add_feedback_btn" layoutX="618.0" layoutY="85.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Ajouter commentaire" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Button>
+                            </children>
                         </AnchorPane>
-                        <VBox alignment="CENTER" layoutX="36.0" layoutY="206.0" prefHeight="376.0" prefWidth="252.0" spacing="10.0">
-                           <children>
-                              <Button fx:id="feedback_window_btn" mnemonicParsing="false" onAction="#gererFeedback" prefHeight="34.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Feedaback" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="ab51" alignment="CENTER" mnemonicParsing="false" onAction="#gererprofile" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Profile" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="ab3" mnemonicParsing="false" onAction="#abonnementt" prefHeight="53.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Abonnements" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="ab4" mnemonicParsing="false" onAction="#gerercours" prefHeight="44.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Cours" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="ab2" mnemonicParsing="false" onAction="#gererevenement" prefHeight="42.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Evenements " textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="ab" mnemonicParsing="false" onAction="#gerergalerie" prefHeight="52.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Galerie" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="ab1" mnemonicParsing="false" onAction="#gererreclamation" prefHeight="47.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Reclamation" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" layoutX="-20.0" layoutY="14.0" prefHeight="132.0" prefWidth="347.0">
-                           <children>
-                              <HBox alignment="CENTER" prefHeight="104.0" prefWidth="326.0">
-                                 <children>
-                                    <Label fx:id="fotify" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="92.0" prefWidth="242.0" style="-fx-background-color: #fabe2e; -fx-background-radius: 10;" text="Fotify" textFill="#1f1f22">
-                                       <font>
-                                          <Font name="Bauhaus 93" size="60.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" fillWidth="false" layoutX="314.5" layoutY="85.5" maxHeight="1.7976931348623157E308">
-                           <children>
-                              <Line endX="-12.0" endY="522.0" startX="-12.0" startY="8.0" stroke="#fabe1e" VBox.vgrow="ALWAYS" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </Pane>
-               </left>
-            </BorderPane>
-         </children>
-      </AnchorPane>
-   </children>
+                    </center>
+                    <left>
+                        <Pane fx:id="pane" prefHeight="614.0" prefWidth="323.0" style="-fx-background-color: #1f1f22;" BorderPane.alignment="CENTER">
+                            <children>
+                                <AnchorPane layoutY="131.0" prefHeight="150.0" prefWidth="327.0">
+                                    <children>
+                                        <Label alignment="CENTER" layoutX="-7.0" layoutY="14.0" prefHeight="37.0" prefWidth="320.0" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </AnchorPane>
+                                <VBox alignment="CENTER" layoutX="36.0" layoutY="206.0" prefHeight="376.0" prefWidth="252.0" spacing="10.0">
+                                    <children>
+                                        <Button fx:id="feedback_window_btn" mnemonicParsing="false" onAction="#gererFeedback" prefHeight="34.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Feedaback" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab51" alignment="CENTER" mnemonicParsing="false" onAction="#gererprofile" prefHeight="49.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Profile" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab3" mnemonicParsing="false" onAction="#abonnementt" prefHeight="53.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Abonnements" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab4" mnemonicParsing="false" onAction="#gerercours" prefHeight="44.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Cours" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab2" mnemonicParsing="false" onAction="#gererevenement" prefHeight="42.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Evenements " textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab" mnemonicParsing="false" onAction="#gerergalerie" prefHeight="52.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Galerie" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                        <Button fx:id="ab1" mnemonicParsing="false" onAction="#gererreclamation" prefHeight="47.0" prefWidth="323.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-width: 3; -fx-border-radius: 10;" text="Espace Reclamation" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" layoutX="-20.0" layoutY="14.0" prefHeight="132.0" prefWidth="347.0">
+                                    <children>
+                                        <HBox alignment="CENTER" prefHeight="104.0" prefWidth="326.0">
+                                            <children>
+                                                <Label id="lb" fx:id="fotify" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="92.0" prefWidth="242.0" style="-fx-background-color: #fabe2e; -fx-background-radius: 10;" stylesheets="@../utils/labelS.css" text="Fotify" textFill="#1f1f22">
+                                                    <font>
+                                                        <Font name="Bauhaus 93" size="60.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" fillWidth="false" layoutX="314.5" layoutY="85.5" maxHeight="1.7976931348623157E308">
+                                    <children>
+                                        <Line endX="-12.0" endY="522.0" startX="-12.0" startY="8.0" stroke="#fabe1e" VBox.vgrow="ALWAYS" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </Pane>
+                    </left>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

@@ -5,16 +5,12 @@
  */
 package dao;
 
-import entity.Photo;
 import entity.Reaction;
-import entity.Reclamation;
 import utils.Connexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -29,11 +25,12 @@ public class ReactionDAO implements IReactionDAO<Reaction> {
     //private static ReclamationDao instance;
     private final Connection cnx;
     private final Statement ste;
-private ResultSet rs;
+    private ResultSet rs;
+
     public ReactionDAO() throws SQLException {
         cnx = Connexion.getInstance().getConnection();
         ste = cnx.createStatement();
-    
+
     }
 
     @Override
@@ -119,7 +116,5 @@ private ResultSet rs;
         }
         return r;
     }
-      
-     
-    }
 
+}

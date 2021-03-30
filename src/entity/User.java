@@ -15,39 +15,40 @@ import javafx.beans.property.SimpleStringProperty;
 public class User {
 
     private Integer userId;
-    private String userNom;
-    private String userPrenom;
-    private String userBio;
-    private Integer userAge;
-    private Integer userTel;
-    private String userEmail;
+    private SimpleStringProperty userNom;
+    private SimpleStringProperty userPrenom;
+    private SimpleStringProperty userBio;
+    private SimpleIntegerProperty userAge;
+    private SimpleIntegerProperty userTel;
+    private SimpleStringProperty userEmail;
     private String userPassword;
-    private String userType;
+    private SimpleStringProperty userType;
 
     public User(Integer userId, String userNom, String userPrenom, String userBio, Integer userAge, Integer userTel, String userEmail, String userPassword, String userType) {
         this.userId = userId;
-        this.userNom = userNom;
-        this.userPrenom = userPrenom;
-        this.userBio = userBio;
-        this.userAge = userAge;
-        this.userTel = userTel;
-        this.userEmail = userEmail;
+        this.userNom = new SimpleStringProperty(userNom);
+        this.userPrenom = new SimpleStringProperty(userPrenom);
+        this.userBio = new SimpleStringProperty(userBio);
+        this.userAge = new SimpleIntegerProperty(userAge);
+        this.userTel = new SimpleIntegerProperty(userTel);
+        this.userEmail = new SimpleStringProperty(userEmail);
         this.userPassword = userPassword;
-        this.userType = userType;
+        this.userType = new SimpleStringProperty(userType);
     }
+
     public User(Integer userId, String userNom, String userPrenom, String userBio) {
         this.userId = userId;
-        this.userNom = userNom;
-        this.userPrenom = userPrenom;
-        this.userBio = userBio;
+        this.userNom = new SimpleStringProperty(userNom);
+        this.userPrenom = new SimpleStringProperty(userPrenom);
+        this.userBio = new SimpleStringProperty(userBio);
     }
-    
-     public User(String userNom, String userPrenom, String userBio, Integer userTel) {
-       
-        this.userNom = userNom;
-        this.userPrenom = userPrenom;
-        this.userBio = userBio;
-           this.userTel = userTel;
+
+    public User(String userNom, String userPrenom, String userBio, Integer userTel) {
+
+        this.userNom = new SimpleStringProperty(userNom);
+        this.userPrenom = new SimpleStringProperty(userPrenom);
+        this.userBio = new SimpleStringProperty(userBio);
+        this.userTel = new SimpleIntegerProperty(userTel);
     }
 
     public User() {
@@ -62,51 +63,51 @@ public class User {
     }
 
     public String getUserNom() {
-        return userNom;
+        return userNom.get();
     }
 
     public void setUserNom(String userNom) {
-        this.userNom = userNom;
+        this.userNom = new SimpleStringProperty(userNom);
     }
 
     public String getUserPrenom() {
-        return userPrenom;
+        return userPrenom.get();
     }
 
     public void setUserPrenom(String userPrenom) {
-        this.userPrenom = userPrenom;
+        this.userPrenom = new SimpleStringProperty(userPrenom);
     }
 
     public String getUserBio() {
-        return userBio;
+        return userBio.get();
     }
 
     public void setUserBio(String userBio) {
-        this.userBio = userBio;
+        this.userBio = new SimpleStringProperty(userBio);
     }
 
     public Integer getUserAge() {
-        return userAge;
+        return userAge.get();
     }
 
     public void setUserAge(Integer userAge) {
-        this.userAge = userAge;
+        this.userAge = new SimpleIntegerProperty(userAge);
     }
 
     public Integer getUserTel() {
-        return userTel;
+        return userTel.get();
     }
 
     public void setUserTel(Integer userTel) {
-        this.userTel = userTel;
+        this.userTel = new SimpleIntegerProperty(userTel);
     }
 
     public String getUserEmail() {
-        return userEmail;
+        return userEmail.get();
     }
 
     public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+        this.userEmail = new SimpleStringProperty(userEmail);
     }
 
     public String getUserPassword() {
@@ -118,18 +119,40 @@ public class User {
     }
 
     public String getUserType() {
-        return userType;
+        return userType.get();
     }
 
     public void setUserType(String userType) {
-        this.userType = userType;
+        this.userType = new SimpleStringProperty(userType);
     }
-    
-    
-    
-       
-       
-     
+
+    public SimpleStringProperty getUserNomProperty() {
+        return userNom;
+    }
+
+    public SimpleStringProperty getUserPrenomProperty() {
+        return userPrenom;
+    }
+
+    public SimpleStringProperty getUserBioProperty() {
+        return userBio;
+    }
+
+    public SimpleIntegerProperty getUserAgeProperty() {
+        return userAge;
+    }
+
+    public SimpleIntegerProperty getUserTelProperty() {
+        return userTel;
+    }
+
+    public SimpleStringProperty getUserEmailProperty() {
+        return userEmail;
+    }
+
+    public SimpleStringProperty getUserTypeProperty() {
+        return userType;
+    }
 
     @Override
     public String toString() {
