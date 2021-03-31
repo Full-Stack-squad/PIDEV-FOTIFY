@@ -25,7 +25,7 @@
                                         <WebView fx:id="wb" minHeight="-1.0" minWidth="-1.0" prefHeight="219.0" prefWidth="604.0" />
                                     </content>
                                 </ScrollPane>
-                                <HBox layoutX="14.0" layoutY="354.0" prefHeight="26.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="14.0">
+                                <HBox layoutX="529.0" layoutY="566.0" prefHeight="26.0" prefWidth="57.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="529.0">
                                     <children>
                                         <Button fx:id="back" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #1f1f22;" text="Retour" textFill="#fabe1e">
                                             <font>
@@ -34,6 +34,7 @@
                                         </Button>
                                     </children>
                                 </HBox>
+                        <Button fx:id="tele" layoutX="14.0" layoutY="563.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="97.0" style="-fx-background-color: #1f1f22; -fx-border-color: #fabe1e; -fx-border-radius: 10; -fx-border-width: 3; -fx-background-radius: 12;" text="Télécharger" textFill="WHITE" />
                             </children>
                         </AnchorPane>
                     </center>

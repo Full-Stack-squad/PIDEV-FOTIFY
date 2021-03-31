@@ -7,6 +7,7 @@ package controller;
 
 import dao.PhotoServiceDao;
 import dao.UserDao;
+import entity.Maptet;
 import entity.Photo;
 import utils.Upload;
 import java.io.File;
@@ -88,6 +89,10 @@ public class AjouterController implements Initializable {
     private Button feedback_window_btn;
     @FXML
     private Label fotify;
+    @FXML
+    private Pane mp;
+    @FXML
+    private Button loc;
 
     /**
      * Initializes the controller class.
@@ -109,7 +114,13 @@ public class AjouterController implements Initializable {
             }
 
         });
-
+loc.setOnAction(e->{
+   
+    String s =tfLocalisation.getText();
+    String [] spString=s.split(",");
+    Double a=Double.parseDouble(spString[0]);
+     Double b=Double.parseDouble(spString[1]);
+        Maptet mp = new Maptet(a,b);});
         //fonction du bouton d'ajout des photos     
         addAll.setOnAction(e -> {
             if (tfTitre.getText().isEmpty() || tfCouleur.getText().isEmpty() || tfLocalisation.getText().isEmpty() || tfTheme.getText().isEmpty()) {

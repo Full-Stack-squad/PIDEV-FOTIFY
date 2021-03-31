@@ -205,10 +205,7 @@ public class Cours {
         return image;
     }
 
-    @Override
-    public String toString() {
-        return "Cours{" + "id=" + id.get() + ", title=" + title.get() + ", author=" + author.get() + ", description=" + description.get() + ", date=" + date.get() + ", category=" + category.get() + '}';
-    }
+   
 
     @Override
     public int hashCode() {

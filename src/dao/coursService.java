@@ -21,24 +21,24 @@ import utils.DataSource;
  *
  * @author Amine
  */
-public class coursService implements Idao<Cours> {
+public class CoursService implements Idao<Cours> {
 
-    private static coursService instance;
+    private static CoursService instance;
     private Statement st;
     private ResultSet rs;
 
-    public coursService() {
+    public CoursService() {
         DataSource cs = DataSource.getInstance();
         try {
             st = cs.getCnx().createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static coursService getInstance() {
+    public static CoursService getInstance() {
         if (instance == null) {
-            instance = new coursService();
+            instance = new CoursService();
         }
         return instance;
     }
@@ -49,7 +49,7 @@ public class coursService implements Idao<Cours> {
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
-            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -64,7 +64,7 @@ public class coursService implements Idao<Cours> {
                 st.executeUpdate(req);
 
             } catch (SQLException ex) {
-                Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             System.out.println("n'existe pas");
@@ -81,7 +81,7 @@ public class coursService implements Idao<Cours> {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -109,7 +109,7 @@ public class coursService implements Idao<Cours> {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -135,7 +135,7 @@ public class coursService implements Idao<Cours> {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -159,7 +159,7 @@ public class coursService implements Idao<Cours> {
             p.setImage(rs.getString("image"));
             //}  
         } catch (SQLException ex) {
-            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
@@ -186,7 +186,7 @@ public class coursService implements Idao<Cours> {
                 list.add(p);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -212,7 +212,7 @@ public class coursService implements Idao<Cours> {
                 list.add(p);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }

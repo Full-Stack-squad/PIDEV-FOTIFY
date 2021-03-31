@@ -70,7 +70,7 @@ public class FController implements Initializable {
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("Fotify");
-                new animatefx.animation.Pulse(type).play();
+                new animatefx.animation.FadeInUp(type).play();
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,6 +86,7 @@ public class FController implements Initializable {
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("Fotify");
+                new animatefx.animation.FadeInUp(type).play();
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,6 +101,7 @@ public class FController implements Initializable {
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("Fotify");
+                new animatefx.animation.FadeInUp(type).play();
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,6 +117,7 @@ public class FController implements Initializable {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("Fotify");
+                new animatefx.animation.FadeInUp(type).play();
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,6 +132,7 @@ public class FController implements Initializable {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("Fotify");
+                new animatefx.animation.FadeInUp(type).play();
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -144,6 +148,7 @@ public class FController implements Initializable {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("Fotify");
+                new animatefx.animation.FadeInUp(type).play();
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -159,6 +164,7 @@ public class FController implements Initializable {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("Fotify");
+                new animatefx.animation.FadeInUp(type).play();
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);
@@ -174,6 +180,7 @@ public class FController implements Initializable {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("Fotify");
+                new animatefx.animation.FadeInUp(type).play();
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(FController.class.getName()).log(Level.SEVERE, null, ex);

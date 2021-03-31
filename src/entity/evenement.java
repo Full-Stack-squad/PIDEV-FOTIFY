@@ -162,9 +162,6 @@ public class evenement {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "actualite{" + "id=" + id + ", titre=" + titre + ", contenu=" + contenu + ", image=" + image + ", dateajout=" + dateajout + ", datemodif=" + datemodif + ", photo=" + photo + '}';
-    }
+   
 
 }

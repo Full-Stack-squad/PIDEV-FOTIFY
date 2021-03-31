@@ -5,11 +5,9 @@
  */
 package controller;
 
-import com.itextpdf.text.DocumentException;
 import com.pdfjet.Letter;
 import com.pdfjet.PDF;
 import com.pdfjet.Page;
-import entity.Cours;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +16,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -8,7 +8,7 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import entity.Cours;
-import dao.coursService;
+import dao.CoursService;
 
 /**
  *
@@ -23,7 +23,7 @@ public class ListData {
 
     public ListData() {
 
-        coursService pdao = coursService.getInstance();
+        CoursService pdao = CoursService.getInstance();
         cours = pdao.displayAll();
         System.out.println(cours);
     }

@@ -339,7 +339,7 @@ String req="select * from membre where id ="+idM;
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(coursService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoursService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }

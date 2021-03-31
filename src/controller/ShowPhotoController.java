@@ -91,7 +91,7 @@ public class ShowPhotoController implements Initializable {
     
     
     public static void saveToFile(Image image) {
-    File outputFile = new File("C:\\Users\\Y A C I N E\\Desktop\\"+"downloaded.png");
+    File outputFile = new File("C:\\Users\\Amine\\Desktop\\"+"downloaded.png");
     BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
     try {
       ImageIO.write(bImage, "png", outputFile);

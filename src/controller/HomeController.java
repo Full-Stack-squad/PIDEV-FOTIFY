@@ -35,7 +35,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import entity.Cours;
-import dao.coursService;
+import dao.CoursService;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -128,7 +128,7 @@ public class HomeController implements Initializable {
 
         });
 
-        coursService pdao = new coursService();
+        CoursService pdao = new CoursService();
 
         for (Cours c : pdao.displayAllList()) {
             title.add(new Label(c.getTitle()));
@@ -137,7 +137,7 @@ public class HomeController implements Initializable {
 
             xx.add(c.getUrl());
 
-            pnl.add(new Label("By : Mr " + c.getAuthor()));
+            pnl.add(new Label("Par : Mr " + c.getAuthor()));
         }
         final WebView wb = new WebView();
 

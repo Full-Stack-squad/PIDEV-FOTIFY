@@ -52,7 +52,7 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import entity.Cours;
-import dao.coursService;
+import dao.CoursService;
 
 /**
  * FXML Controller class
@@ -197,10 +197,16 @@ public class CoursController implements Initializable {
     void Delete(ActionEvent event) {
         try {
             ObservableList<Cours> cours = tvCours.getSelectionModel().getSelectedItems();
-            coursService pdao = coursService.getInstance();
+            CoursService pdao = CoursService.getInstance();
             pdao.delete(cours.get(0));
             tvCours.getItems().removeAll(tvCours.getSelectionModel().getSelectedItem());
             JOptionPane.showMessageDialog(null, "Cours delete success");
+            tftitle.clear();
+                txtdesc.clear();
+                s.clear();
+                lbl.clear();
+                imgview.setImage(null);
+                n.setText("");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please select item to delete");
@@ -220,12 +226,20 @@ public class CoursController implements Initializable {
 
                 Cours C = new Cours(tftitle.getText(), tfauthor.getText(), txtdesc.getText(), s.getText(), n.getText(), this.path, photo.getText(), UserDao.connectedUser.getUserId());
 
-                coursService pdao = coursService.getInstance();
+                CoursService pdao = CoursService.getInstance();
                 pdao.insert(C);
                 tvCours.getItems().add(C);
 
                 JOptionPane.showMessageDialog(null, "Cours add success");
-
+                tftitle.clear();
+                txtdesc.clear();
+                s.clear();
+                lbl.clear();
+                imgview.setImage(null);
+                n.setText("");
+                
+                
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Please fill in the fields");
 
@@ -240,11 +254,18 @@ public class CoursController implements Initializable {
 
         try {
             ObservableList<Cours> cours = tvCours.getSelectionModel().getSelectedItems();
-            coursService pdao = coursService.getInstance();
+            CoursService pdao = CoursService.getInstance();
             Cours cours1 = new Cours(cours.get(0).getId(), tftitle.getText(), tfauthor.getText(), txtdesc.getText(), s.getText(), n.getText(), lbl.getText(), photo.getText());
 
             pdao.update(cours1);
+         
             JOptionPane.showMessageDialog(null, "Cours updated with success");
+            tftitle.clear();
+                txtdesc.clear();
+                s.clear();
+                lbl.clear();
+                imgview.setImage(null);
+                n.setText("");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please select item to update");
@@ -351,7 +372,7 @@ public class CoursController implements Initializable {
 
     @FXML
     void my() {
-        coursService pdao = coursService.getInstance();
+        CoursService pdao = CoursService.getInstance();
         my.setOnMouseClicked(e -> {
 
             tvCours.setItems(pdao.displayByAu(UserDao.connectedUser.getUserId()));
@@ -476,7 +497,7 @@ public class CoursController implements Initializable {
         colimage.setCellValueFactory(cell -> cell.
                 getValue().getImageProperty());
 
-        coursService pdao = coursService.getInstance();
+        CoursService pdao = CoursService.getInstance();
         ArrayList<Cours> c33 = new ArrayList<>();
         c33 = (ArrayList<Cours>) pdao.displayByA(u);
         tfauthor.setText(UserDao.connectedUser.getUserNom() + " " + UserDao.connectedUser.getUserPrenom());
